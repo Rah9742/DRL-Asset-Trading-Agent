@@ -8,6 +8,21 @@ from ..config import ExperimentConfig, load_env_file
 from ..data.price_loader import MarketDataLoader
 
 
+def load_and_cache_price_data(
+    config: ExperimentConfig,
+    force_download: bool = False,
+) -> tuple[object, object]:
+    """Load price data and ensure the cache is populated."""
+    loader = MarketDataLoader(config.data)
+    csv_path = loader.default_csv_path()
+
+    if force_download and csv_path.exists():
+        csv_path.unlink()
+
+    data = loader.load()
+    return data, csv_path
+
+
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments for the data loader runner."""
     parser = argparse.ArgumentParser(description="Load and cache market data.")
@@ -34,13 +49,7 @@ def main() -> None:
     args = parse_args()
     load_env_file(args.env_file)
     config = ExperimentConfig.from_json(args.config)
-    loader = MarketDataLoader(config.data)
-    csv_path = loader.default_csv_path()
-
-    if args.force_download and csv_path.exists():
-        csv_path.unlink()
-
-    data = loader.load()
+    data, csv_path = load_and_cache_price_data(config=config, force_download=args.force_download)
 
     print(f"Loaded ticker: {config.data.ticker}")
     print(f"Provider: {config.data.provider}")

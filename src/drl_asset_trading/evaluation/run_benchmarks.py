@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--dataset",
-        choices=["baseline", "augmented"],
+        choices=["baseline", "sentiment_zero", "augmented"],
         default="baseline",
         help="Processed dataset variant to evaluate.",
     )

@@ -18,6 +18,13 @@ SENTIMENT_COLUMNS = [
     "weighted_ticker_sentiment",
     "sentiment_std",
 ]
+DECAY_SENTIMENT_COLUMNS = [
+    "mean_overall_sentiment",
+    "mean_ticker_sentiment",
+    "mean_ticker_relevance",
+    "weighted_ticker_sentiment",
+    "sentiment_std",
+]
 
 
 class FeatureBuilder:
@@ -56,20 +63,46 @@ class FeatureBuilder:
         price_data: pd.DataFrame,
         sentiment_daily: pd.DataFrame | None = None,
     ) -> dict[str, pd.DataFrame]:
-        """Create baseline and optionally sentiment-augmented feature datasets."""
+        """Create baseline and optional sentiment-augmented feature datasets."""
         baseline = self.transform(price_data)
         datasets = {"baseline": baseline}
 
         if sentiment_daily is not None and not sentiment_daily.empty:
-            augmented = self.merge_sentiment_features(baseline, sentiment_daily)
-            datasets["augmented"] = augmented
+            datasets["sentiment_zero"] = self.merge_sentiment_features(
+                price_features=baseline,
+                sentiment_daily=sentiment_daily,
+                imputation_mode="zero",
+            )
+            datasets["augmented"] = self.merge_sentiment_features(
+                price_features=baseline,
+                sentiment_daily=sentiment_daily,
+                imputation_mode="decay",
+            )
 
         return datasets
 
-    def merge_sentiment_features(self, price_features: pd.DataFrame, sentiment_daily: pd.DataFrame) -> pd.DataFrame:
-        """Merge lagged daily sentiment data onto price-derived features."""
+    def merge_sentiment_features(
+        self,
+        price_features: pd.DataFrame,
+        sentiment_daily: pd.DataFrame,
+        imputation_mode: str | None = None,
+    ) -> pd.DataFrame:
+        """Merge lagged daily sentiment data onto price-derived features.
+
+        Zero mode:
+        Missing sentiment values are replaced by `sentiment_fill_value`, while `news_count`
+        remains available so the model can distinguish no-news days from low-sentiment days.
+
+        Decay mode:
+        The latest available sentiment observation is carried forward with exponential decay
+        based on `days_since_last_news`. This creates an enriched state that reflects stale
+        sentiment fading over time rather than disappearing immediately.
+        """
         if "date" not in sentiment_daily.columns:
             raise ValueError("Sentiment daily data must contain a 'date' column.")
+        mode = imputation_mode or self.config.sentiment_imputation_mode
+        if mode not in {"zero", "decay"}:
+            raise ValueError(f"Unsupported sentiment imputation mode: {mode}")
 
         sentiment = sentiment_daily.copy()
         sentiment["date"] = pd.to_datetime(sentiment["date"])
@@ -77,20 +110,44 @@ class FeatureBuilder:
         sentiment = sentiment.set_index("date")
         sentiment.index = sentiment.index + pd.Timedelta(days=self.config.sentiment_lag_days)
         sentiment = sentiment.reindex(columns=SENTIMENT_COLUMNS)
-        sentiment = sentiment.fillna(self.config.sentiment_fill_value)
 
         augmented = price_features.copy()
         augmented.index = pd.to_datetime(augmented.index).normalize()
         augmented = augmented.join(sentiment, how="left")
-        augmented[SENTIMENT_COLUMNS] = augmented[SENTIMENT_COLUMNS].fillna(self.config.sentiment_fill_value)
-        return augmented
+        augmented["news_count"] = augmented["news_count"].fillna(0.0)
+
+        if mode == "zero":
+            augmented[SENTIMENT_COLUMNS] = augmented[SENTIMENT_COLUMNS].fillna(self.config.sentiment_fill_value)
+            return augmented
+
+        return self._apply_decay_imputation(augmented)
+
+    def _apply_decay_imputation(self, dataset: pd.DataFrame) -> pd.DataFrame:
+        """Apply exponential decay to carry sentiment forward across no-news days."""
+        enriched = dataset.copy()
+        sentiment_observed = enriched["news_count"] > 0
+
+        last_news_date = pd.Series(enriched.index.where(sentiment_observed), index=enriched.index).ffill()
+        days_since_last_news = (
+            pd.Series(enriched.index, index=enriched.index) - pd.to_datetime(last_news_date)
+        ).dt.days.fillna(0.0)
+        enriched["days_since_last_news"] = days_since_last_news.astype(float)
+
+        decay_factor = np.exp(-self.config.sentiment_decay_rate * enriched["days_since_last_news"])
+        for column in DECAY_SENTIMENT_COLUMNS:
+            forward_filled = enriched[column].ffill().fillna(self.config.sentiment_fill_value)
+            enriched[column] = forward_filled * decay_factor
+
+        enriched["news_count"] = enriched["news_count"].fillna(0.0)
+        return enriched
 
     @staticmethod
     def default_processed_paths(ticker: str, start_date: str, end_date: str) -> dict[str, Path]:
-        """Return default output paths for processed baseline and augmented datasets."""
+        """Return default output paths for processed dataset variants."""
         filename = f"{ticker}_{start_date}_{end_date}.csv"
         return {
             "baseline": Path("data/processed/baseline") / filename,
+            "sentiment_zero": Path("data/processed/sentiment_zero") / filename,
             "augmented": Path("data/processed/augmented") / filename,
         }
 
@@ -119,3 +176,16 @@ class FeatureBuilder:
 def load_sentiment_daily_csv(path: str | Path) -> pd.DataFrame:
     """Load an interim daily sentiment CSV."""
     return pd.read_csv(path)
+
+
+def resolve_processed_dataset_name(state_mode: str, sentiment_imputation_mode: str) -> str:
+    """Map an ablation state configuration to a processed dataset name."""
+    if state_mode == "price_only":
+        return "baseline"
+    if state_mode != "price_sentiment":
+        raise ValueError(f"Unsupported state mode: {state_mode}")
+    if sentiment_imputation_mode == "zero":
+        return "sentiment_zero"
+    if sentiment_imputation_mode == "decay":
+        return "augmented"
+    raise ValueError(f"Unsupported sentiment imputation mode: {sentiment_imputation_mode}")

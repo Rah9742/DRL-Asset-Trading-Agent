@@ -41,6 +41,9 @@ class TradingEnvironment:
         self.units_held = 0.0
         self.position = 0
         self.prev_portfolio_value = self.config.initial_cash
+        self.dsr_mean_return = 0.0
+        self.dsr_mean_squared_return = 0.0
+        self.dsr_steps = 0
         self.history: list[dict[str, float | int]] = []
         return self._observation()
 
@@ -94,14 +97,34 @@ class TradingEnvironment:
         return self.cash + self.units_held * price
 
     def _compute_reward(self, portfolio_value: float) -> float:
-        """Support a simple return reward and a lightweight risk-aware placeholder."""
+        """Support profit and differential-Sharpe rewards."""
         step_return = (portfolio_value / self.prev_portfolio_value) - 1.0
         if self.config.reward_mode == "profit":
             return float(step_return)
-        if self.config.reward_mode == "risk_adjusted":
-            penalty = abs(step_return) * 0.1
-            return float(step_return - penalty)
+        if self.config.reward_mode == "differential_sharpe":
+            return float(self._differential_sharpe_reward(step_return))
         raise ValueError(f"Unsupported reward mode: {self.config.reward_mode}")
+
+    def _differential_sharpe_reward(self, step_return: float) -> float:
+        """Compute an online differential Sharpe reward using exponentially weighted moments."""
+        if self.dsr_steps < 2:
+            reward = step_return
+        else:
+            variance = max(
+                self.dsr_mean_squared_return - self.dsr_mean_return ** 2,
+                self.config.differential_sharpe_epsilon,
+            )
+            numerator = (
+                self.dsr_mean_squared_return * (step_return - self.dsr_mean_return)
+                - 0.5 * self.dsr_mean_return * (step_return ** 2 - self.dsr_mean_squared_return)
+            )
+            reward = numerator / (variance ** 1.5)
+
+        eta = self.config.differential_sharpe_eta
+        self.dsr_mean_return += eta * (step_return - self.dsr_mean_return)
+        self.dsr_mean_squared_return += eta * (step_return ** 2 - self.dsr_mean_squared_return)
+        self.dsr_steps += 1
+        return reward
 
     def _record_step(self, action: int, price: float, portfolio_value: float, reward: float) -> None:
         date_value = self.market_data.loc[self.current_step, self.market_data.columns[0]]

@@ -76,15 +76,17 @@ def save_benchmark_outputs(
     ticker: str,
     start_date: str,
     end_date: str,
+    base_dir: str | Path = "results",
 ) -> tuple[Path, list[Path]]:
     """Persist benchmark metrics and episode histories."""
     stem = f"{ticker}_{start_date}_{end_date}"
-    metrics_path = Path("results") / dataset_name / f"{stem}_metrics.csv"
+    base_path = Path(base_dir)
+    metrics_path = base_path / dataset_name / f"{stem}_metrics.csv"
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
     metrics.to_csv(metrics_path, index=False)
 
     history_paths: list[Path] = []
-    history_dir = Path("results") / dataset_name / "histories"
+    history_dir = base_path / dataset_name / "histories"
     history_dir.mkdir(parents=True, exist_ok=True)
 
     for history_name, history in histories.items():
