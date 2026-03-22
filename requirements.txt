@@ -1,4 +1,6 @@
 certifi>=2024.8.30
+matplotlib>=3.8
 numpy>=1.26
 pandas>=2.2
+torch>=2.2
 yfinance>=0.2.54
