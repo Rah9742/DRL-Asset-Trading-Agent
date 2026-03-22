@@ -1,0 +1,33 @@
+{
+  "data": {
+    "provider": "yfinance",
+    "ticker": "AAPL",
+    "start_date": "2015-01-01",
+    "end_date": "2024-12-31",
+    "interval": "1d"
+  },
+  "features": {
+    "include_returns": true,
+    "include_log_returns": true,
+    "include_momentum": true,
+    "include_volatility": true,
+    "include_rsi": true,
+    "lookback_window": 14,
+    "sentiment_lag_days": 1,
+    "sentiment_fill_value": 0.0
+  },
+  "environment": {
+    "initial_cash": 10000.0,
+    "transaction_cost": 0.001,
+    "reward_mode": "profit",
+    "annualization_factor": 252
+  },
+  "splits": {
+    "train_end": "2020-12-31",
+    "validation_end": "2022-12-31",
+    "test_end": "2024-12-31"
+  },
+  "experiment": {
+    "random_seed": 42
+  }
+}

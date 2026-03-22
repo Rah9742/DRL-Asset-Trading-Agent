@@ -1,0 +1,3036 @@
+{
+  "items": "72",
+  "sentiment_score_definition": "x <= -0.35: Bearish; -0.35 < x <= -0.15: Somewhat-Bearish; -0.15 < x < 0.15: Neutral; 0.15 <= x < 0.35: Somewhat_Bullish; x >= 0.35: Bullish",
+  "relevance_score_definition": "0 < x <= 1, with a higher score indicating higher relevance.",
+  "feed": [
+    {
+      "title": "The S&P 500 (SPY) Is Ready for a Sell-Off",
+      "url": "https://247wallst.com/investing/2024/11/27/the-sp-500-spy-is-ready-for-a-sell-off/",
+      "time_published": "20241127T104600",
+      "authors": [
+        "Rich Duprey"
+      ],
+      "summary": "The S&P 500 has gained 25% year-to-date, but this growth is largely driven by a small group of \"Magnificent 7\" stocks, pushing valuations above historical averages. While the SPDR S&P 500 ETF Trust (SPY) is generally recommended for long-term investors due to the market's historical resilience, the current concentration of gains suggests a potential sell-off is due. Despite this, experts advise against shorting the market and suggest that consistently investing in SPY can still lead to long-term gains, as bear markets are typically short-lived and followed by stronger bull markets.",
+      "banner_image": "https://247wallst.com/wp-content/uploads/2024/10/Untitled-design-2024-11-03T115410.908.jpg",
+      "source": "24/7 Wall St.",
+      "category_within_source": "General",
+      "source_domain": "24/7 Wall St.",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.929003"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.817824"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.725295"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.626411"
+        }
+      ],
+      "overall_sentiment_score": 0.108958,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.093826",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.707760",
+          "ticker_sentiment_score": "0.103994",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.701960",
+          "ticker_sentiment_score": "0.146609",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.706357",
+          "ticker_sentiment_score": "0.130020",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.605536",
+          "ticker_sentiment_score": "0.112351",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "SPY Becomes First ETF to Reach $600 Billion in AUM",
+      "url": "https://www.etftrends.com/spy-becomes-first-etf-reach-600-billion-aum/",
+      "time_published": "20241018T000000",
+      "authors": [
+        "Nick Wodeshick"
+      ],
+      "summary": "The SPDR S&P 500 ETF Trust (SPY) has become the first ETF to surpass $600 billion in assets under management, reaching $603 billion as of October 17, 2024. This milestone follows over $7 billion in inflows this week and highlights SPY's legacy as the first U.S. ETF and its continued appeal to investors for broad S&P 500 exposure. The fund's success is attributed to market-based drivers, technical and momentum factors during a recent rally, and its unheralded liquidity and optionality.",
+      "banner_image": null,
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.931808"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.824595"
+        }
+      ],
+      "overall_sentiment_score": 0.814926,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.844279",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPY's Big Outflows Hamper State Street: Morningstar",
+      "url": "https://www.etf.com/sections/news/spys-big-outflows-hamper-state-street-morningstar",
+      "time_published": "20240920T103454",
+      "authors": [
+        "Jeff Benjamin"
+      ],
+      "summary": "State Street Global Advisors (SSGA), the third-largest ETF issuer, is facing significant challenges this year due to substantial outflows from its flagship SPDR S&P 500 ETF Trust (SPY). SPY has bled $26.9 billion in net outflows, impacting SSGA's overall flow figures and widening the gap with larger competitors BlackRock and Vanguard. While Morningstar reports SSGA is on track for its worst year of ETF flows since 2018, State Street disputes the data, citing seasonal and structural factors that typically lead to strong year-end inflows for SPY.",
+      "banner_image": "https://www.etf.com/sites/default/files/inline-images/image_228.png",
+      "source": "ETF.com",
+      "category_within_source": "General",
+      "source_domain": "ETF.com",
+      "topics": [
+        {
+          "topic": "finance",
+          "relevance_score": "0.945604"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.840510"
+        }
+      ],
+      "overall_sentiment_score": -0.150339,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.239698",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "STT",
+          "relevance_score": "0.720220",
+          "ticker_sentiment_score": "-0.285038",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "BLK",
+          "relevance_score": "0.630232",
+          "ticker_sentiment_score": "0.116013",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSCI",
+          "relevance_score": "0.589287",
+          "ticker_sentiment_score": "-0.147921",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Market Sell-Off? This Active Equity ETF Is Still Outperforming",
+      "url": "https://www.etftrends.com/active-etf-channel/market-selloff-active-equity-etf-still-outperforming/",
+      "time_published": "20240805T112619",
+      "authors": [
+        "Nick Peters-Golden"
+      ],
+      "summary": "Amidst a recent market sell-off, the T. Rowe Price Capital Appreciation Equity ETF (TCAF) has demonstrated outperformance against the SPDR S&P 500 ETF Trust (SPY) over both the last three months and the past month. TCAF, an active equity ETF, attributes its success to fundamental analysis and the flexibility inherent in its active management approach, allowing it to adapt better to market volatility compared to index funds. It has also outperformed its ETF Database Category and FactSet Segment averages.",
+      "banner_image": "https://www.etftrends.com/wp-content/uploads/2025/09/Active_ETFs_TRP_masthead_overlay_NHG_1600x121@2x.png",
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.916582"
+        }
+      ],
+      "overall_sentiment_score": -0.321192,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.333343",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "SPY vs. VOO: Which of Warren Buffett\u2019s ETFs Is Better?",
+      "url": "https://www.morningstar.com/funds/spy-vs-voo-which-warren-buffetts-etfs-is-better",
+      "time_published": "20240702T000000",
+      "authors": [
+        "Margaret Giles"
+      ],
+      "summary": "This article compares two S&P 500 tracking ETFs, SPY and VOO, both of which were previously held by Berkshire Hathaway. While both funds are highly rated and track the same index, VOO is identified as the better option due to its lower expense ratio and more efficient structure compared to SPY's unit investment trust limitations. The analysis highlights Morningstar's \"Gold\" rating for VOO versus \"Silver\" for SPY, emphasizing the importance of fees and structural efficiency for long-term investor benefit.",
+      "banner_image": null,
+      "source": "Morningstar",
+      "category_within_source": "General",
+      "source_domain": "Morningstar",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.946428"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.725007"
+        }
+      ],
+      "overall_sentiment_score": 0.205582,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.208265",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Exploring Economic Indicators: May 2024 Employment Shows Mixed Signals",
+      "url": "https://www.etftrends.com/innovative-etfs-content-hub/exploring-economic-indicators-may-2024-employment-shows-mixed-signals/",
+      "time_published": "20240610T132102",
+      "authors": [
+        "Jennifer Nash"
+      ],
+      "summary": "The May 2024 employment reports presented mixed signals for the U.S. labor market, with the official Employment Report showing more jobs added than expected but the unemployment rate rising. Concurrently, the JOLTS report indicated a cooling labor market with job openings falling, while the ADP Employment Report revealed lower-than-projected private sector job additions. These varied indicators reinforce expectations that the Federal Reserve will likely keep interest rates steady at its upcoming meeting.",
+      "banner_image": "https://www.etftrends.com/wp-content/uploads/2025/10/Innovative_ETFs_Invesco_masthead_overlay_1600x121@2x-1.png",
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.945836"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.818680"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.715745"
+        }
+      ],
+      "overall_sentiment_score": 0.004019,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.312549",
+          "ticker_sentiment_score": "0.025787",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Index values for Dow, S&P 500 are working again after hourlong freeze",
+      "url": "https://www.cnbc.com/2024/05/30/ddata-feed-issue-cause-halt-in-calculations-for-dow-sp-500-indexes-as-trading-appears-normal.html",
+      "time_published": "20240530T121800",
+      "authors": [
+        "Jesse Pound"
+      ],
+      "summary": "The data feeds for key market averages, including the S&P 500 and Dow Jones Industrial Average, experienced an hour-long freeze on Thursday morning. The issue, confirmed by CME Group, affected the calculation of index values but did not disrupt individual stock trading or futures markets. The calculations froze around 10:41 AM ET and resumed shortly before noon.",
+      "banner_image": "https://image.cnbcfm.com/api/v1/image/106306076-1577903875323gettyimages-106306076.jpeg?v=1577903901&w=1920&h=1080",
+      "source": "CNBC",
+      "category_within_source": "General",
+      "source_domain": "CNBC",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.938750"
+        }
+      ],
+      "overall_sentiment_score": 0.013487,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.315645",
+          "ticker_sentiment_score": "0.008609",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Stock Market Recap: The Power of the 23-Month Moving Average",
+      "url": "https://www.seeitmarket.com/stock-market-recap-the-power-of-the-23-month-moving-average/",
+      "time_published": "20240516T141536",
+      "authors": [
+        "Michele Schneider"
+      ],
+      "summary": "This article examines the significance of the 23-month moving average in stock market analysis, focusing on the S&P 500 (SPY), Alibaba, and the KRE regional banking ETF. It highlights how SPY's performance relative to its 23-month MA indicates an expansion phase, while Alibaba's struggle below it suggests caution. The analysis also points to KRE's potential for expansion if it can sustainably cross its 23-month MA.",
+      "banner_image": "https://www.seeitmarket.com/wp-content/uploads/2024/05/sp-500-spy-etf-stock-bull-market-image-year-2024--1024x474.jpg",
+      "source": "See It Market",
+      "category_within_source": "General",
+      "source_domain": "See It Market",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.935206"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.733173"
+        }
+      ],
+      "overall_sentiment_score": 0.402009,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.419869",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "The Biggest Investors Are Selling Stocks Right Now, Yet S&P 500 Notches Best 3-Day Streak In 7 Months - Should You Buy?",
+      "url": "https://www.tradingview.com/news/benzinga:d5cabd000094b:0-the-biggest-investors-are-selling-stocks-right-now-yet-s-p-500-notches-best-3-day-streak-in-7-months-should-you-buy/",
+      "time_published": "20240506T141536",
+      "authors": [],
+      "summary": "Major U.S. pension funds, including CalPERS and the New York State Common Retirement Fund, are significantly reducing their equity allocations in favor of private equity and real estate. This strategic shift comes despite the S&P 500 experiencing a robust rebound in early May, driven by the Federal Reserve's dovish stance on interest rates and a cooler-than-expected jobs report. The S&P 500 recently achieved its strongest three-day winning streak since November 2023, recovering from a challenging April.",
+      "banner_image": "https://s3.tradingview.com/news/image/benzinga:d5cabd000094b-b83b8180299d86bc0a695014d77094b7-resized.webp",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.910042"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.801317"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.701021"
+        },
+        {
+          "topic": "real_estate",
+          "relevance_score": "0.606658"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.648784"
+        }
+      ],
+      "overall_sentiment_score": 0.412564,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.446256",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "The Most Popular ETF for Tracking the S&P 500",
+      "url": "https://global.morningstar.com/en-ca/etfs/the-most-popular-etf-for-tracking-the-s-p-500",
+      "time_published": "20240321T163346",
+      "authors": [
+        "Mo'ath Almahasneh"
+      ],
+      "summary": "The SPDR S&P 500 ETF Trust (SPY) is highlighted as the most popular and effective ETF for tracking the S&P 500, earning a Morningstar Medalist Rating of Silver. Its success is attributed to a rock-bottom fee and a well-diversified, market-cap-weighted portfolio that accurately represents the U.S. large-cap market. While market-cap weighting can lead to concentration risks, the ETF's broad diversification and low costs generally lead to sound long-term performance.",
+      "banner_image": "https://cloudfront-us-east-1.images.arcpublishing.com/morningstar/RWHWFZJLSV52RXCK5FB7ALUTWQ.jpg",
+      "source": "Morningstar Canada",
+      "category_within_source": "General",
+      "source_domain": "Morningstar Canada",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.941531"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.700470"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.632574"
+        }
+      ],
+      "overall_sentiment_score": 0.331751,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.315885",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Can you beat the market with Modern Portfolio Theory?",
+      "url": "https://medium.datadriveninvestor.com/can-you-beat-the-market-with-modern-portfolio-theory-102dc6d03915",
+      "time_published": "20240319T163347",
+      "authors": [
+        "Jacob Ingle"
+      ],
+      "summary": "This article explores Modern Portfolio Theory (MPT) and its application in portfolio management using Python. It discusses how MPT, developed by Harry Markowitz, aims to maximize returns for a given level of risk by optimizing capital allocation. The author promises a walkthrough on backtesting an MPT approach against a benchmark to assess its effectiveness.",
+      "banner_image": "https://miro.medium.com/v2/resize:fill:96:96/1*2mBCfRUpdSYRuf9EKnhTDQ.png",
+      "source": "DataDrivenInvestor",
+      "category_within_source": "General",
+      "source_domain": "DataDrivenInvestor",
+      "topics": [
+        {
+          "topic": "finance",
+          "relevance_score": "0.925716"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.849132"
+        }
+      ],
+      "overall_sentiment_score": 0.153756,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.709179",
+          "ticker_sentiment_score": "0.218111",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSCI",
+          "relevance_score": "0.645466",
+          "ticker_sentiment_score": "0.119731",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Citadel's Ken Griffin Oversees $500 Billion in Managed Assets: These Are His Top 5 Holdings",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/AMD/pressreleases/24470375/citadels-ken-griffin-oversees-500-billion-in-managed-assets-these-are-his-top-5-holdings/",
+      "time_published": "20240301T163346",
+      "authors": [
+        "Motley Fool"
+      ],
+      "summary": "Ken Griffin's Citadel Advisors manages $500 billion in assets and is a top-performing hedge fund. SEC filings reveal its top non-derivative holdings, which include the SPDR S&P 500 ETF Trust, Nvidia, Microsoft, Amazon, and Advanced Micro Devices. These investments highlight a strategy of betting on market indexes and major players in tech and AI while acknowledging potential risks and sector trends.",
+      "banner_image": "https://barchart-news-media-prod.aws.barchart.com/FC/e6fb614172a503250fe322a02799cf4c/%3Furl%3Dhttps%253a%252f%252fg.foolcdn.com%252feditorial%252fimages%252f767381%252fstock-trader-analyst-fund-manager-buy-sell-chart-decline-bear-market-smartphone-getty.jpg%26amp%3Bw%3D700",
+      "source": "The Globe and Mail",
+      "category_within_source": "General",
+      "source_domain": "The Globe and Mail",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.932394"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.814556"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.610081"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.649857"
+        }
+      ],
+      "overall_sentiment_score": 0.437871,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.435849",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.920845",
+          "ticker_sentiment_score": "0.348475",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.846613",
+          "ticker_sentiment_score": "0.518322",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.732292",
+          "ticker_sentiment_score": "0.506120",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "AMD",
+          "relevance_score": "0.743850",
+          "ticker_sentiment_score": "0.444248",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPY ETF Reaches Record High Amid Nvidia-Fueled AI Rally\u2014Key Chart Pattern to Watch",
+      "url": "https://www.investopedia.com/spy-etf-reaches-record-high-amid-nvidia-fueled-ai-rally-key-chart-pattern-to-watch-8599112",
+      "time_published": "20240223T065200",
+      "authors": [
+        "Timothy Smith"
+      ],
+      "summary": "The SPDR S&P 500 ETF Trust (SPY) reached a record high, mirroring the S&P 500's surge driven by mega-cap technology stocks, particularly after Nvidia's strong earnings report. Nvidia, along with other AI-related companies like Microsoft and Broadcom, contributed significantly to the rally, highlighting the outsized influence of Magnificent Seven stocks within the SPY's portfolio. Investors should watch the SPY's rising wedge pattern for potential breakouts or breakdowns, which could signal future price movements.",
+      "banner_image": null,
+      "source": "Investopedia",
+      "category_within_source": "General",
+      "source_domain": "Investopedia",
+      "topics": [
+        {
+          "topic": "earnings",
+          "relevance_score": "0.818464"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.932495"
+        }
+      ],
+      "overall_sentiment_score": 0.371895,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.463896",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.800551",
+          "ticker_sentiment_score": "0.542588",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.628458",
+          "ticker_sentiment_score": "0.289055",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AVGO",
+          "relevance_score": "0.592574",
+          "ticker_sentiment_score": "0.278137",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AMD",
+          "relevance_score": "0.598379",
+          "ticker_sentiment_score": "0.254025",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Shinichi Ata",
+      "url": "https://www.theworldfolio.com/leader/shinichi-ata/410/",
+      "time_published": "20231209T192537",
+      "authors": [],
+      "summary": "This article provides a leadership profile for Shinichi Ata, President & CEO of SB Technology Corp. It details his extensive career background, including key roles at Microsoft and SoftBank, and outlines his current goals for SB Technology, focusing on significant growth, technological advancement, and fostering employee engagement to contribute to the Information Revolution.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-6980234bd7143.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "technology",
+          "relevance_score": "0.830649"
+        }
+      ],
+      "overall_sentiment_score": 0.171739,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.319549",
+          "ticker_sentiment_score": "0.013945",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.706049",
+          "ticker_sentiment_score": "0.309800",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "AI-Driven Market Analysis: Revolutionizing Financial Insights for AMEX:SPY by JS_TechTrading",
+      "url": "https://www.tradingview.com/chart/SPY/V9OQ3yrL-AI-Driven-Market-Analysis-Revolutionizing-Financial-Insights/",
+      "time_published": "20231127T201717",
+      "authors": [
+        "JS_TechTrading"
+      ],
+      "summary": "This article explores how Artificial Intelligence (AI) is transforming market analysis, moving from traditional methods to advanced AI integration. It details various AI models used, such as neural networks and NLP, and their applications in predictive analytics, real-time data processing, automated technical analysis, and sentiment analysis for AMEX:SPY. The text also highlights real-world success stories and discusses future trends and shifts in AI's role in financial market decision-making.",
+      "banner_image": "https://s3.tradingview.com/v/V9OQ3yrL_mid.webp",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.910497"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.802739"
+        }
+      ],
+      "overall_sentiment_score": 0.455564,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.484828",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Volatility: Treasury Bonds Fluctuating Even More Than Stocks",
+      "url": "https://www.ai-cio.com/news/volatility-treasury-bonds-fluctuating-even-more-than-stocks/",
+      "time_published": "20231018T210723",
+      "authors": [
+        "Larry Light"
+      ],
+      "summary": "Treasury bonds are experiencing unusual volatility, surpassing that of the S&P 500, according to Bespoke Investment Group. This elevated fluctuation, with daily swings of around 1% for long-term Treasury ETFs, has persisted despite a general decline in market volatility this year. Factors contributing to this trend include the Federal Reserve's interest rate hikes, increased government debt issuance, and Treasurys' role as a refuge investment.",
+      "banner_image": "https://si-interactive.s3.amazonaws.com/prod/ai-cio-com/wp-content/uploads/2023/10/18095628/CIO-101823-Volatility-Treasury-Bonds-Are-Fluctuating-Even-More-Than-Stocks-469027666-web.jpg",
+      "source": "Chief Investment Officer",
+      "category_within_source": "General",
+      "source_domain": "Chief Investment Officer",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.938117"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.801656"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.727074"
+        }
+      ],
+      "overall_sentiment_score": 0.01572,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.319121",
+          "ticker_sentiment_score": "0.038455",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Economic Growth: The Role of Consumer Consumption and Confidence",
+      "url": "https://www.etftrends.com/innovative-etfs-content-hub/economic-growth-role-consumer-consumption-confidence/",
+      "time_published": "20231002T210723",
+      "authors": [
+        "Jennifer Nash"
+      ],
+      "summary": "The article discusses key economic releases from late September 2023, focusing on personal consumption expenditures (PCE), gross domestic product (GDP), and consumer confidence. It highlights that while GDP growth slowed but remained positive, core PCE showed signs of cooling, suggesting a potential end to Fed rate hikes. However, consumer confidence significantly declined due to rising prices and interest rates, raising concerns about future economic conditions.",
+      "banner_image": "https://www.etftrends.com/wp-content/uploads/2025/10/Innovative_ETFs_Invesco_masthead_overlay_1600x121@2x-1.png",
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.908579"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.802643"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.737989"
+        }
+      ],
+      "overall_sentiment_score": 0.021559,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.345838",
+          "ticker_sentiment_score": "0.001310",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Exchange Traded Fund (ETF) Definition",
+      "url": "https://coinmarketcap.com/academy/glossary/exchange-traded-fund-etf",
+      "time_published": "20230922T215817",
+      "authors": [],
+      "summary": "An Exchange Traded Fund (ETF) is a security that tracks a basket of assets like stocks, bonds, and cryptocurrencies, trading like a single stock on an exchange. ETFs offer diversification and generally lower costs compared to mutual funds, while also providing tax advantages and the ability to engage in short selling. They can be passively managed, tracking market indices, or actively managed by portfolio managers.",
+      "banner_image": null,
+      "source": "CoinMarketCap",
+      "category_within_source": "General",
+      "source_domain": "CoinMarketCap",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.923811"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.803322"
+        },
+        {
+          "topic": "blockchain",
+          "relevance_score": "0.746663"
+        }
+      ],
+      "overall_sentiment_score": 0.003882,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.328545",
+          "ticker_sentiment_score": "0.005707",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Small Account Options Trading: How to Scale",
+      "url": "https://www.tastylive.com/news-insights/scaling-up-in-small-accounts",
+      "time_published": "20230727T233317",
+      "authors": [
+        "Kai Zeng"
+      ],
+      "summary": "This article discusses strategies for scaling up trading capital in small accounts, focusing on options trading. It explores two primary approaches: increasing an individual position's risk/buying power requirement or increasing the number of contracts, while emphasizing the importance of understanding risk and probability of loss. The author advises widening the spread while keeping the number of contracts low to balance premium and risk, ensuring sustainable growth rather than just profitability.",
+      "banner_image": "https://images.contentstack.io/v3/assets/blt40263f25ec36953f/blt73c0e40629d19882/64c2aa6d61d287a9688561a6/aapl-bpr-Scaling_Up_in_Small_Accounts.jpg?format=pjpg&auto=webp&quality=50&width=1000&disable=upscale",
+      "source": "tastylive",
+      "category_within_source": "General",
+      "source_domain": "tastylive",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.904220"
+        }
+      ],
+      "overall_sentiment_score": 0.116729,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.110906",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.723044",
+          "ticker_sentiment_score": "0.144985",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Building a new sustainable foundation",
+      "url": "https://www.theworldfolio.com/news/building-new-sustainable-foundation-/4686/",
+      "time_published": "20230525T011206",
+      "authors": [],
+      "summary": "Ishihara Co., Ltd., a trading company, supports the construction industry by focusing on efficiency, sustainability, and automation. The company leverages factory-based pre-cutting of gypsum boards to eliminate waste at construction sites and introduces new technologies like robotics to address labor shortages. Ishihara also launched a new housing brand, Fularika, to combine its various construction-related divisions into one comprehensive service, with future plans to expand internationally.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-6463c4d924866.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "real_estate",
+          "relevance_score": "0.931976"
+        },
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.732524"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.602896"
+        }
+      ],
+      "overall_sentiment_score": 0.192176,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.349450",
+          "ticker_sentiment_score": "0.035086",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BLDR",
+          "relevance_score": "0.617410",
+          "ticker_sentiment_score": "0.339033",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "TMW: the integral and beyond",
+      "url": "https://www.theworldfolio.com/news/tmw-the-integral-and-beyond/4637/",
+      "time_published": "20230409T020437",
+      "authors": [],
+      "summary": "TMW, founded in 1949, is a Japanese specialist in plastic-injection molds for automobile parts, serving major vehicle manufacturers globally. The company emphasizes partnerships and maintains a global network to stay competitive. TMW is adapting to the automotive industry's shift towards EVs and FCVs, anticipating changes in design complexity rather than a fundamental alteration of its core business.",
+      "banner_image": "https://www.theworldfolio.com//wfmin/uploads/2023/03/img-641a10eb68b49.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.924301"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.700809"
+        }
+      ],
+      "overall_sentiment_score": 0.232672,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.341380",
+          "ticker_sentiment_score": "0.030379",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "F",
+          "relevance_score": "0.605004",
+          "ticker_sentiment_score": "0.323097",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "GM",
+          "relevance_score": "0.649593",
+          "ticker_sentiment_score": "0.345166",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.601040",
+          "ticker_sentiment_score": "0.344282",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPDR S&P 500 (SPY) Stock: Breakout Leveraging Tech Stocks Rally?",
+      "url": "https://www.thecoinrepublic.com/2023/03/31/spdr-sp-500-spy-stock-breakout-leveraging-tech-stocks-rally/",
+      "time_published": "20230331T025550",
+      "authors": [
+        "Kartik Dhankani"
+      ],
+      "summary": "The SPDR S&P 500 (SPY) ETF has shown a positive resurgence in 2023, largely driven by gains in tech and semiconductor stocks, which comprise a significant portion of its portfolio. Technical analysis suggests a potential bullish breakout for SPY, with indicators pointing to an upcoming rally. Investors are advised to watch support levels and anticipate a rise leveraging the strength of its underlying tech holdings.",
+      "banner_image": "https://www.thecoinrepublic.com/wp-content/uploads/2024/05/SPY-stock-2.jpg",
+      "source": "The Coin Republic",
+      "category_within_source": "General",
+      "source_domain": "The Coin Republic",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.947062"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.803547"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.622559"
+        }
+      ],
+      "overall_sentiment_score": 0.361118,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.492747",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.734831",
+          "ticker_sentiment_score": "0.322531",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.634831",
+          "ticker_sentiment_score": "0.302992",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.625236",
+          "ticker_sentiment_score": "0.285948",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NVDA",
+          "relevance_score": "0.627092",
+          "ticker_sentiment_score": "0.436995",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Momotani Juntenkan: The beginning of modern Japanese cosmetics",
+      "url": "https://www.theworldfolio.com/news/momotani-juntenkan-the-beginning-of-modern-japanese-cosmetics/4624/",
+      "time_published": "20230324T025550",
+      "authors": [],
+      "summary": "Momotani Juntenkan, established in 1885 by Masajiro Momotani, played a pivotal role in shaping the modern Japanese cosmetics industry with its original BIGANSUI product. The company's commitment to research and development, evidenced by its institutes and product innovations like MEISHOKU Cleansing Cream, led to its growth and eventual split into three entities in 1993. Current president Seiichiro Momotani continues to uphold the founding principles, emphasizing ongoing innovation and R&D capabilities.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-640361ac00a7a.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "retail_wholesale",
+          "relevance_score": "0.844201"
+        },
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.712680"
+        }
+      ],
+      "overall_sentiment_score": 0.006469,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.306611",
+          "ticker_sentiment_score": "0.020803",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Hightec Systems continues to grow as essential partner for semiconductor and FPD manufacturers",
+      "url": "https://www.theworldfolio.com/news/hightec-systems-continues-to-grow-as-essential-partner-for-semiconductor-and-fpd-manufacturers-/4611/",
+      "time_published": "20230316T025550",
+      "authors": [],
+      "summary": "Hightec Systems Corporation, led by CEO Moriaki Abe, has thrived despite Japan's \"lost 30 years\" by developing a unique three-pronged business model that includes buying/selling used manufacturing equipment, offering engineering services, and importing advanced microelectromechanical systems technology. The company emphasizes long-term customer relationships and is now looking to expand its global reach into the U.S. and European markets, building on its existing business in China, South Korea, and Taiwan. Abe's persistent efforts in securing new clients and fostering customer trust have been crucial to the company's growth from three to 100 employees and $200 million in annual sales.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-63f52c593d313.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.901837"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.727397"
+        }
+      ],
+      "overall_sentiment_score": 0.459585,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.337134",
+          "ticker_sentiment_score": "0.020989",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AMAT",
+          "relevance_score": "0.831843",
+          "ticker_sentiment_score": "0.609962",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "LRCX",
+          "relevance_score": "0.715837",
+          "ticker_sentiment_score": "0.637833",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "MU",
+          "relevance_score": "0.647052",
+          "ticker_sentiment_score": "0.531246",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "QCOM",
+          "relevance_score": "0.603278",
+          "ticker_sentiment_score": "0.543796",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Promoting shared value through rubber compounding technology",
+      "url": "https://www.theworldfolio.com/news/promoting-shared-value-through-rubber-compounding-technology-/4596/",
+      "time_published": "20230217T034905",
+      "authors": [],
+      "summary": "Yamato Chemical, established in 1972, has grown into a leading provider of rubber products. The company aims to offer high-quality rubber products at low prices, primarily targeting the rapidly growing ASEAN market. President Hidehiro Nakamura emphasizes the importance of consistent values and vision across domestic and international operations to maintain quality and expand overseas presence.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-63ebef8f44206.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.634612"
+        }
+      ],
+      "overall_sentiment_score": 0.266087,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.557158",
+          "ticker_sentiment_score": "0.265892",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Best Editors' Picks of 2022 for AMEX:SPY by PineCoders",
+      "url": "https://www.tradingview.com/chart/SPY/eTOyVYgR-Best-Editors-Picks-of-2022/",
+      "time_published": "20230213T034905",
+      "authors": [],
+      "summary": "TradingView's PineCoders announced the \"Best Editors' Picks of 2022\" awards, highlighting four outstanding open-source Pine Script\u2122 publications from 84 selections. These scripts, chosen by the PineCoders team, will earn their authors 50,000 TradingView coins. The initiative aims to encourage learning and sharing within the TradingView community by showcasing original and valuable scripts.",
+      "banner_image": "https://s3.tradingview.com/e/eTOyVYgR_mid.webp",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.916911"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.738330"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.621672"
+        }
+      ],
+      "overall_sentiment_score": 0.241917,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.243603",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Pressing ahead: AIDA ENGINEERING provides press forming solutions for sustainable industries",
+      "url": "https://www.theworldfolio.com/news/pressing-ahead-aida-engineering-provides-press-forming-solutions-for-sustainable-industries/4583/",
+      "time_published": "20230209T034905",
+      "authors": [],
+      "summary": "AIDA ENGINEERING, a global leader in press manufacturing for over a century, is adapting its metalforming technologies to address changing market needs, particularly in sustainable industries. The company is developing solutions for electric vehicles (EVs), energy conservation, and carbon reduction, employing technologies like cold stamping to reduce emissions and advanced presses (MSP and UL series) for producing lighter components and motor cores with high precision. AIDA is focused on product development, advanced production technologies, and leveraging AI/DX to enhance customer productivity.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-63d030db58b38.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.725841"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.630147"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.622693"
+        }
+      ],
+      "overall_sentiment_score": 0.293204,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.563706",
+          "ticker_sentiment_score": "0.273259",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Private equity may be up next for ETF innovation as State Street celebrates SPY",
+      "url": "https://www.marketwatch.com/story/private-equity-may-be-up-next-for-etf-innovation-as-state-street-celebrates-spy-11674658023?gaa_at=eafs&gaa_n=AWEtsqcVFSpbrh5a2lZnKiDTadY7CJUN0gq3OQ9iM9od6eE9TalCI8TLxRD8&gaa_ts=699a8e2a&gaa_sig=7WQN1Rgh6ABWOtI_R_2TujcrhRHPs5F8znkSU_u2CARC1tZhFDWsE0CbJxEuA8CV40q8Pf3HU4dLl5kXlGgIzA%3D%3D",
+      "time_published": "20230125T094600",
+      "authors": [
+        "Christine Idzelis"
+      ],
+      "summary": "State Street is exploring private equity as the next area for innovation in the exchange-traded fund (ETF) market, as the SPDR S&P 500 ETF Trust (SPY) celebrates its 30th anniversary. Sue Thompson, head of Americas distribution for SPDR ETFs at State Street Global Advisors, expressed a desire to see private equity democratized within the ETF structure. This discussion took place during a panel celebrating the SPY ETF's milestone, focusing on future ETF market innovations.",
+      "banner_image": "https://images.mktw.net/im-709400?width=1260&height=876",
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "finance",
+          "relevance_score": "0.811118"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.724014"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.625368"
+        }
+      ],
+      "overall_sentiment_score": 0.227797,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.274263",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "STT",
+          "relevance_score": "0.728078",
+          "ticker_sentiment_score": "0.201639",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "BLK",
+          "relevance_score": "0.610738",
+          "ticker_sentiment_score": "0.103318",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "A 30-year revolution: SPY opened stocks to the masses, spawning a raft of options for today's investors",
+      "url": "https://www.marketwatch.com/story/spy-30th-anniversary-revolution-began-after-etf-launch-seemed-an-answer-to-a-question-no-one-was-asking-says-datatrek-11674579957?gaa_at=eafs&gaa_n=AWEtsqcal4cvobO3V7v5eQGQLQFljZCayUJKPIIh95wLjLDl0Ox_GkJwyWlH&gaa_ts=699a8e2a&gaa_sig=kg-oqRZAlHVfNZTeGqPFwzLlCjXM6je8mDpDhEU51r7Joxf6VHph0KXUpMtqAvJrQnZYe7tNnPnrgyzhyiKQCg%3D%3D",
+      "time_published": "20230124T120500",
+      "authors": [
+        "Christine Idzelis"
+      ],
+      "summary": "The SPDR S&P 500 ETF Trust (SPY), established in January 1993, is celebrating its 30th anniversary. This first U.S. exchange-traded fund revolutionized investing, making it accessible to a broader audience and leading to the creation of a vast new market. The introduction of SPY marked a significant instance of disruptive innovation in the financial sector.",
+      "banner_image": "https://images.mktw.net/im-707475?width=1260&height=840",
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.935874"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.730631"
+        }
+      ],
+      "overall_sentiment_score": 0.426227,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.422435",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Teruaki Nakatsuka",
+      "url": "https://www.theworldfolio.com/leader/teruaki-nakatsuka/200/",
+      "time_published": "20221230T054817",
+      "authors": [],
+      "summary": "This article provides a detailed biography of Teruaki Nakatsuka, highlighting his current role as President & CEO of JATCO Ltd. since June 2014. It also outlines his professional background, including prior positions at GE Aviation, GE Japan, McKinsey & Company, Inc., and Marubeni Corporation, as well as his educational qualifications from Northwestern University and Keio University.",
+      "banner_image": null,
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.705151"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.605095"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.621231"
+        }
+      ],
+      "overall_sentiment_score": 0.003819,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.334771",
+          "ticker_sentiment_score": "0.026753",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "2012 and the Maya World",
+      "url": "https://www.theworldfolio.com/news/maya-world-mexico-n1/1750/",
+      "time_published": "20221230T054817",
+      "authors": [],
+      "summary": "This article discusses the widespread fascination and misunderstanding surrounding the Maya civilization's prediction for December 21, 2012. It clarifies that while the date marked the end of a long cycle in the Maya calendar, archaeologists agree it did not signify the end of the world but rather a shift in human consciousness or a new era. The piece also highlights the enduring presence and distinct cultural traditions of modern Maya peoples in Mexico.",
+      "banner_image": "https://www.theworldfolio.com/img_db/old/13521126281.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.638773"
+        },
+        {
+          "topic": "retail_wholesale",
+          "relevance_score": "0.623173"
+        },
+        {
+          "topic": "life_sciences",
+          "relevance_score": "0.621397"
+        }
+      ],
+      "overall_sentiment_score": 0.227431,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.592892",
+          "ticker_sentiment_score": "0.018243",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CCL",
+          "relevance_score": "0.632806",
+          "ticker_sentiment_score": "0.337004",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "BKNG",
+          "relevance_score": "0.559027",
+          "ticker_sentiment_score": "0.277458",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "MORINAGA & CO., LTD",
+      "url": "https://www.theworldfolio.com/company/morinaga--co-ltd/1399/",
+      "time_published": "20221226T054817",
+      "authors": [],
+      "summary": "Morinaga & Co., Ltd. is a Japanese confectionery company founded in 1899, aiming to provide delicious, fun, and healthy food products globally. The company focuses on confectioneries, foodstuffs, frozen desserts, and health-related items, with a strategic expansion into overseas markets and health segments. Despite anticipating challenges in domestic snack and frozen food markets, Morinaga is committed to strengthening its business base, expanding its product offerings, and fostering open innovation to adapt to rapid market changes.",
+      "banner_image": null,
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.915953"
+        },
+        {
+          "topic": "retail_wholesale",
+          "relevance_score": "0.841132"
+        }
+      ],
+      "overall_sentiment_score": 0.040165,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.344297",
+          "ticker_sentiment_score": "0.005545",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "ETF pioneer Kathleen Moriarty dies at 69",
+      "url": "https://www.investmentnews.com/etfs/etf-pioneer-kathleen-moriarty-dies-at-69/232218",
+      "time_published": "20221222T184610",
+      "authors": [
+        "Bloomberg"
+      ],
+      "summary": "Kathleen Moriarty, a prominent lawyer instrumental in the creation of the first exchange-traded fund, the SPDR S&P 500 ETF Trust, has died at 69. Known as \"SPDR Woman,\" she was a pioneer in the ETF industry, guiding numerous innovative products to market and representing clients in groundbreaking ventures like the first Bitcoin ETF application. Her colleagues remember her as a humble, kind-hearted, and impactful figure who shaped the fastest-growing segment of the money-management industry.",
+      "banner_image": null,
+      "source": "InvestmentNews",
+      "category_within_source": "General",
+      "source_domain": "InvestmentNews",
+      "topics": [
+        {
+          "topic": "finance",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.838332"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.726446"
+        },
+        {
+          "topic": "blockchain",
+          "relevance_score": "0.642286"
+        }
+      ],
+      "overall_sentiment_score": 0.37291,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.443933",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "STT",
+          "relevance_score": "0.718429",
+          "ticker_sentiment_score": "0.336884",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Ken Griffin among world\u2019s richest after stellar year for Citadel",
+      "url": "https://www.cmcmarkets.com/en-au/opto-partners/ken-griffin-among-worlds-richest-after-stellar-year-for-citadel",
+      "time_published": "20221221T054817",
+      "authors": [
+        "OPTO"
+      ],
+      "summary": "Ken Griffin, CEO of Citadel, has joined the ranks of the world's top 40 wealthiest individuals following an exceptional year for his hedge fund, with its flagship Wellington fund returning 32%. This success comes despite a challenging market for other financial institutions and amid accusations of market manipulation (\"spoofing\") by biotech firm Northwest Biotherapeutics, which Citadel firmly denies. The firm's performance was reportedly boosted by strategic trading of S&P 500 options.",
+      "banner_image": "https://assets.cmcmarkets.com/images/CEO_Griffin_GettyImages-1240402197_1200px.jpg",
+      "source": "CMC Markets",
+      "category_within_source": "General",
+      "source_domain": "CMC Markets",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.932795"
+        },
+        {
+          "topic": "earnings",
+          "relevance_score": "0.815606"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.749549"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.620550"
+        },
+        {
+          "topic": "life_sciences",
+          "relevance_score": "0.600940"
+        }
+      ],
+      "overall_sentiment_score": 0.178848,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.991152",
+          "ticker_sentiment_score": "0.279569",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.745847",
+          "ticker_sentiment_score": "0.127370",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.663089",
+          "ticker_sentiment_score": "0.112269",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "This fund beats the S&P 500 by using 75 of its stocks. Here's how it works.",
+      "url": "https://www.marketwatch.com/story/this-fund-beats-the-s-p-500-by-using-just-75-of-its-components-heres-how-it-works-11670511856?gaa_at=eafs&gaa_n=AWEtsqdnyTtXSOqGonpri0-6k-EfvpPt-CAjaXoz5Nlw0JTLzd0Kk9POwWV6&gaa_ts=6907aa1e&gaa_sig=71hbWPFnvWjnsxP3mYFC-HrJnzTYd2w5XmmfRRmicZn9sMabZdkA9kMgnB3K52t_lYLUkXBGw_QV3_99DSy3qQ%3D%3D",
+      "time_published": "20221208T100400",
+      "authors": [
+        "Philip van Doorn"
+      ],
+      "summary": "This article discusses how the Invesco S&P 500 GARP ETF has managed to outperform the S&P 500 by focusing on only 75 of its components. The fund's success is attributed to its investment strategy which combines quality and lower prices, proving effective in both bull and bear markets. This approach might be particularly appealing to investors concerned about a potential recession.",
+      "banner_image": "https://images.mktw.net/im-682570/social",
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.938545"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.733953"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.615221"
+        }
+      ],
+      "overall_sentiment_score": 0.284176,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.337673",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "IVZ",
+          "relevance_score": "0.842107",
+          "ticker_sentiment_score": "0.277353",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Driving innovation in fabric and fibers",
+      "url": "https://www.theworldfolio.com/news/driving-innovation-in-fabric-and-fibers/4564/",
+      "time_published": "20221208T054817",
+      "authors": [],
+      "summary": "Komatsu Matere, a Japanese fabric manufacturer, excels in the global market through continuous R&D and unique chemical fabric manufacturing technologies. The company's commitment to innovation has led to the development of \"ultra components\" utilized by leading fashion brands and world-class athletes, as well as expansions into construction materials like Greenbiz and anti-seismic solutions with CABKOMA technology. Komatsu Matere also innovated in personal protective equipment, creating a comfortable face mask during the Covid-19 pandemic, all while adhering to its philosophy of freshness in every action.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-639107f60a3b2.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.916698"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.606252"
+        },
+        {
+          "topic": "real_estate",
+          "relevance_score": "0.634571"
+        },
+        {
+          "topic": "retail_wholesale",
+          "relevance_score": "0.602718"
+        }
+      ],
+      "overall_sentiment_score": 0.271208,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.590470",
+          "ticker_sentiment_score": "0.291030",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NDAQ",
+          "relevance_score": "0.581029",
+          "ticker_sentiment_score": "0.291330",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SWCC: Providing next-generation power infrastructure",
+      "url": "https://www.theworldfolio.com/news/swcc-providing-nextgeneration-power-infrastructure-/4556/",
+      "time_published": "20221124T064506",
+      "authors": [],
+      "summary": "SWCC, a Japanese manufacturer of electric wires and cables, is addressing the critical need for advanced power infrastructure. The company's e-Ribbon\u00ae optical fiber cables are designed for high-capacity communication and efficient installation in data centers, which are crucial for the global digital revolution. SWCC is also adapting its innovative technology for the automotive sector's transition to electric vehicles.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-637ec5d9b5ccf.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.947388"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.818822"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.715129"
+        }
+      ],
+      "overall_sentiment_score": 0.264665,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.586457",
+          "ticker_sentiment_score": "0.268765",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Where 5 Wall Street Analysts Think the SPY ETF Will Go in 2023",
+      "url": "https://investorplace.com/2022/10/where-5-wall-street-analysts-think-the-spy-etf-will-go-in-2023/",
+      "time_published": "20221026T074147",
+      "authors": [
+        "Chris MacDonald"
+      ],
+      "summary": "This article compiles the 2023 price predictions for the SPDR S&P 500 ETF (SPY) from five Wall Street analysts. With the SPY ETF down significantly year-to-date due to rising interest rates, analysts from Morgan Stanley, Citi, Goldman Sachs, Credit Suisse, and UBS offer varied price targets for the coming year. These predictions range from around $389 to $419, reflecting mixed expectations for the S&P 500's performance.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/02/spy-1600-768x432.jpg",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.925784"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.831386"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.739889"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.629205"
+        }
+      ],
+      "overall_sentiment_score": 0.131359,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.073302",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MS",
+          "relevance_score": "0.744578",
+          "ticker_sentiment_score": "0.089553",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "C",
+          "relevance_score": "0.707488",
+          "ticker_sentiment_score": "0.109464",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GS",
+          "relevance_score": "0.738026",
+          "ticker_sentiment_score": "0.229081",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Price Correction to fix data manipulation and mispricing \u2014 Indicator by Techotomy",
+      "url": "https://www.tradingview.com/script/RGa1yeCB-Price-Correction-to-fix-data-manipulation-and-mispricing/",
+      "time_published": "20221017T074147",
+      "authors": [],
+      "summary": "This article introduces the \"Price Correction\" indicator by Techotomy, designed to rectify data manipulation and mispricing issues in financial charts on TradingView. It highlights specific instances of mispricing in the SPY ETF and the NYSE Composite Index (NYA) by the AMEX exchange and NYSE, respectively, explaining how these inconsistencies are addressed. The indicator aims to provide accurate financial data by correcting daily and intraday OHLC data based on actual price action, offering a tool for traders to ensure reliable charting.",
+      "banner_image": "https://s3.tradingview.com/r/RGa1yeCB_mid.webp?v=1665999509",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.911821"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.829134"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.712048"
+        }
+      ],
+      "overall_sentiment_score": 0.104646,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.147928",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Lightweight parts for the EV revolution",
+      "url": "https://www.theworldfolio.com/news/lightweight-parts-fo/4509/",
+      "time_published": "20220906T083828",
+      "authors": [],
+      "summary": "Akashi-Kikai, a Japanese manufacturer and Daihatsu subsidiary, is leveraging its expertise in lightweight, cost-effective vehicle parts for the electric vehicle (EV) revolution and construction industry. The company, founded in 1946, has developed a five-year plan to adapt to new market demands, focusing on high-performance noiseless gears and camshafts with applications in both automotive and construction machinery. Akashi-Kikai emphasizes human resource development and has expanded into Indonesian and Malaysian markets through joint ventures.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-6311210ea1887.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "0.902261"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.823907"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.626504"
+        }
+      ],
+      "overall_sentiment_score": 0.183771,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.311663",
+          "ticker_sentiment_score": "0.004797",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CAT",
+          "relevance_score": "0.618493",
+          "ticker_sentiment_score": "0.331743",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "The S&P 500 Just Flashed A Significant Signal",
+      "url": "https://www.valuewalk.com/the-sp-500-just-flashed-a-significant-signal/",
+      "time_published": "20220830T093847",
+      "authors": [
+        "MarketBeat Editor"
+      ],
+      "summary": "The S&P 500 has flashed a significant negative signal by confirming resistance in the 4,100-4,300 range, forming a Head & Shoulders Reversal Pattern. This indicates a potential for at least 4 to 12 months of selling. Several headwinds, including a strong dollar, contraction in the housing sector, aggressive interest rate hikes from the FOMC, and a declining earnings outlook with shrinking margins, are contributing to this bearish forecast.",
+      "banner_image": "https://www.valuewalk.com/wp-content/uploads/2022/08/SP-500.webp",
+      "source": "ValueWalk",
+      "category_within_source": "General",
+      "source_domain": "ValueWalk",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.901734"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.813480"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.936540"
+        },
+        {
+          "topic": "real_estate",
+          "relevance_score": "0.749365"
+        },
+        {
+          "topic": "earnings",
+          "relevance_score": "0.801737"
+        }
+      ],
+      "overall_sentiment_score": 0.000897,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.331929",
+          "ticker_sentiment_score": "0.042114",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "The SPDR S&P 500 ETF Trust Is Still Overvalued",
+      "url": "https://news.yahoo.com/spdr-p-500-etf-trust-121541783.html",
+      "time_published": "20220603T184610",
+      "authors": [
+        "Steve Booyens"
+      ],
+      "summary": "The author argues that the recent surge in the SPDR S&P 500 ETF Trust (SPY) is premature because the S&P 500 remains overvalued. Utilizing the Fed Valuation Model and considering sector weightings, the article suggests that key metrics are not aligned for sustained index success in the near term, anticipating a plateau rather than a continued recovery. Divergent analyst opinions and a low VIX further support the uncertainty in the market.",
+      "banner_image": null,
+      "source": "Yahoo News",
+      "category_within_source": "General",
+      "source_domain": "Yahoo News",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.914025"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.814677"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.739519"
+        }
+      ],
+      "overall_sentiment_score": -0.169585,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.974834",
+          "ticker_sentiment_score": "-0.312363",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "JPM",
+          "relevance_score": "0.641288",
+          "ticker_sentiment_score": "0.210910",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MS",
+          "relevance_score": "0.612622",
+          "ticker_sentiment_score": "-0.418529",
+          "ticker_sentiment_label": "Bearish"
+        }
+      ]
+    },
+    {
+      "title": "Analyzing the SPY's Recent Options Volume",
+      "url": "https://www.schaeffersresearch.com/content/analysis/2022/06/02/analyzing-the-spys-recent-options-volume",
+      "time_published": "20220602T080000",
+      "authors": [
+        "Rocky White"
+      ],
+      "summary": "This article analyzes recent options volume for the SPDR S&P 500 ETF Trust (SPY), examining the behavior of put and call options since the COVID-19 pandemic. It highlights a general increase in options volume, particularly calls relative to puts, and a significant shortening of option timeframes. The analysis also reveals a dramatic fall in the typical call option delta, possibly indicating increased retail trader activity or speculation on a market snap-back rally.",
+      "banner_image": "https://schaeffers-cdn.s3.amazonaws.com/images/default-source/schaeffers-cdn-images/default-images/trader/bigstock-businessmen-work-with-stock-ma-450067507.jpg?sfvrsn=33b0d006_4",
+      "source": "Schaeffer's Investment Research",
+      "category_within_source": "General",
+      "source_domain": "Schaeffer's Investment Research",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.914048"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.600902"
+        }
+      ],
+      "overall_sentiment_score": 0.254532,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.033851",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GE",
+          "relevance_score": "0.648124",
+          "ticker_sentiment_score": "0.308518",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "TJX",
+          "relevance_score": "0.623547",
+          "ticker_sentiment_score": "0.312860",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "ORCL",
+          "relevance_score": "0.628007",
+          "ticker_sentiment_score": "0.291624",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Why the Immense Selling Pressure on the SPY ETF Must End",
+      "url": "https://investorplace.com/2022/04/why-the-immense-selling-pressure-on-the-spy-etf-must-end/",
+      "time_published": "20220418T115800",
+      "authors": [
+        "Chris Lau"
+      ],
+      "summary": "The article discusses why the intense selling pressure on the SPDR S&P 500 ETF Trust (SPY) is likely to subside, presenting a buying opportunity. It attributes recent declines to concerns surrounding major holdings like Microsoft, Amazon, and Tesla, including antitrust reviews, Rivian losses, and Elon Musk's distraction with Twitter. Despite these issues, the author argues that the fundamental strength of the top companies in the S&P 500 remains, and investors should accumulate SPY shares on dips.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/04/spy-1600-1-768x432.png",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.918103"
+        }
+      ],
+      "overall_sentiment_score": -0.194768,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.314827",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.743361",
+          "ticker_sentiment_score": "-0.402316",
+          "ticker_sentiment_label": "Bearish"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.710349",
+          "ticker_sentiment_score": "-0.241625",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.603405",
+          "ticker_sentiment_score": "-0.329110",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "SPY Stock: Earnings and Key Support Are in Play for SPY ETF",
+      "url": "https://investorplace.com/2022/04/earnings-and-key-support-are-in-play-for-spy-etf/",
+      "time_published": "20220413T114800",
+      "authors": [
+        "Chris Tyler"
+      ],
+      "summary": "The article discusses the SPDR S&P 500 ETF (SPY) amidst bearish macro drivers, focusing on the upcoming earnings season and key technical support levels. It highlights how investor sentiment is influenced by corporate health reports from SPY constituents like JPMorgan Chase & Co and Delta Airlines, alongside technical indicators such as the 50% Fibonacci retracement and the Chicago Board Options Exchange Volatility Index, to assess potential market bottoms.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/04/spy-1600-768x432.png",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "earnings",
+          "relevance_score": "0.810431"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.905670"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.633527"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.846027"
+        }
+      ],
+      "overall_sentiment_score": -0.011336,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.147489",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "JPM",
+          "relevance_score": "0.703815",
+          "ticker_sentiment_score": "-0.219001",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "DAL",
+          "relevance_score": "0.643977",
+          "ticker_sentiment_score": "0.303281",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Curb Your Bearish Enthusiasm and Invest in SPY Stock",
+      "url": "https://investorplace.com/2022/03/curb-your-bearish-enthusiasm-and-invest-in-spy-stock/",
+      "time_published": "20220329T140515",
+      "authors": [
+        "Muslim Farooque"
+      ],
+      "summary": "Despite market weakness and macroeconomic challenges in 2022, the article argues that the SPDR S&P 500 ETF Trust (SPY) remains an attractive investment. Citing its low expense ratio, exposure to major U.S. companies, and historical resilience, the author suggests SPY stock offers substantial upside potential and protection against downside risks, echoing advice from investors like Warren Buffett. The S&P 500 has consistently recovered from past crashes and provided positive long-term growth.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/02/spy-1600-300x169.jpg",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.943856"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.734687"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.618779"
+        }
+      ],
+      "overall_sentiment_score": 0.499364,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.460618",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPY Stock Is a Safe Investment During Times of Volatility",
+      "url": "https://investorplace.com/2022/03/spy-stock-is-a-safe-investment-during-times-of-volatility/",
+      "time_published": "20220329T140515",
+      "authors": [
+        "Faizan Farooque"
+      ],
+      "summary": "The article suggests that SPDR S&P 500 ETF Trust (SPY) stock is a safe investment during volatile market conditions due to its diversification and exposure to large-cap U.S. equities. It highlights SPY's historical outperformance, dividend payments, and minimal management requirements, making it suitable for risk-averse investors seeking a buy-and-hold option. While acknowledging some downsides like holding laggards and higher expense ratios compared to some alternatives, the article concludes that SPY remains a reliable, low-risk investment.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/02/spy-1600-300x169.jpg",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.926088"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.708674"
+        }
+      ],
+      "overall_sentiment_score": 0.490812,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.498377",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "The SPY ETF Is an Attractive Long-Term Option to Buy in April",
+      "url": "https://investorplace.com/2022/03/spy-stock-offers-an-attractive-long-term-option-for-april/",
+      "time_published": "20220325T195100",
+      "authors": [
+        "Tezcan Gecgil"
+      ],
+      "summary": "The SPDR S&P 500 ETF Trust (SPY) has seen an 8% decline since January but is up almost 5% in the last month, tracking broader market swings. The author suggests this dip, along with the recent interest rate hike, creates a good entry point for long-term investors. SPY, which tracks the S&P 500 and is the oldest and largest ETF in the US, offers diversified access to major companies, making it a reliable long-term investment despite potential short-term volatility.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/02/spy-1600-300x169.jpg",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.902320"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.820003"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.718443"
+        }
+      ],
+      "overall_sentiment_score": 0.37769,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.463706",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.599527",
+          "ticker_sentiment_score": "0.302866",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPY Stock: Today the SPDR S&P 500 ETF Is a Certain Buy",
+      "url": "https://investorplace.com/2022/03/spy-stock-today-the-spdr-sp-500-etf-is-a-certain-buy/",
+      "time_published": "20220321T140515",
+      "authors": [
+        "Chris Tyler"
+      ],
+      "summary": "The article argues that the SPDR S&P 500 ETF (SPY) is a good buy, despite recent market volatility and corrections. It highlights SPY's strong rally the previous week, suggesting that market uncertainty is diminishing. The author recommends buying SPY to gain market exposure at an attractive discount, citing factors like the Federal Reserve's \"nimble\" approach to inflation, global COVID-19 management, and historical trends of geopolitical events creating buying opportunities.",
+      "banner_image": "https://investorplace.com/wp-content/uploads/2022/02/spy-1600-768x432.jpg",
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.929446"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.834044"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.749683"
+        }
+      ],
+      "overall_sentiment_score": 0.535981,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.549709",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "SPY Stock: SPDR S&P 500 ETF Trust Is a Stock to Hold Onto Forever",
+      "url": "https://investorplace.com/2022/02/spy-stock-is-a-stock-to-hold-on-forever/",
+      "time_published": "20220210T102700",
+      "authors": [
+        "Muslim Farooque"
+      ],
+      "summary": "Despite a volatile start to the year and concerns about a potential recession, the article argues that the SPDR S&P 500 ETF Trust (SPY) remains a strong long-term investment. It highlights the ETF's consistent performance, exposure to top U.S. companies, and low expense ratio as reasons to overlook current bearish sentiment. The author believes that while the market may experience short-term wobbles, a crippling long-term recession is unlikely, making SPY a reliable choice for investors.",
+      "banner_image": null,
+      "source": "InvestorPlace",
+      "category_within_source": "General",
+      "source_domain": "InvestorPlace",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.908232"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.805912"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.706515"
+        }
+      ],
+      "overall_sentiment_score": 0.36385,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.388792",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "How to Automate Your Stock and ETF Trading Strategies for AMEX:SPY by TradeAutomation",
+      "url": "https://www.tradingview.com/chart/SPY/cqBhOlym-How-to-Automate-Your-Stock-and-ETF-Trading-Strategies/",
+      "time_published": "20211129T173501",
+      "authors": [
+        "TradeAutomation"
+      ],
+      "summary": "This article provides an overview of how retail investors can automate stock and ETF trading strategies using TradingView alerts and Interactive Brokers. It outlines a process that involves setting up an AWS RDP server, installing IB Gateway and TradeRelay software, coding strategies in PineScript, and configuring webhooks for alerts. The author emphasizes that this method requires minimal coding expertise for the user.",
+      "banner_image": "https://s3.tradingview.com/c/cqBhOlym_mid.webp",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.937543"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.811797"
+        }
+      ],
+      "overall_sentiment_score": 0.209816,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.238399",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Fourier: Interpreting and Over-interpreting Frequency Analysis for AMEX:SPY by tbtkg",
+      "url": "https://www.tradingview.com/chart/SPY/Zfsm6LDg-Fourier-Interpreting-and-Over-interpreting-Frequency-Analysis/",
+      "time_published": "20211001T182720",
+      "authors": [
+        "tbtkg"
+      ],
+      "summary": "This article explores the application of Fourier transform for frequency analysis of financial data, using an artificial price dataset for demonstration. It discusses the capabilities and limitations of the Fast Fourier Transform (FFT) algorithm in identifying periodicity, discontinuities, and random walks within price data. The author concludes that while Fourier analysis is a powerful mathematical tool, its utility in capitalizing on market cycles in financial time series is questionable, though it could be generally useful for price data analysis.",
+      "banner_image": "https://s3.tradingview.com/z/Zfsm6LDg_mid.webp",
+      "source": "TradingView",
+      "category_within_source": "General",
+      "source_domain": "TradingView",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.900971"
+        }
+      ],
+      "overall_sentiment_score": 0.143737,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.105745",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Satisfying the ever-evolving demands of the the semiconductor industry",
+      "url": "https://www.theworldfolio.com/news/satisfying-the-evere/4487/",
+      "time_published": "20210914T191809",
+      "authors": [],
+      "summary": "Yamaha Robotics Holdings (YRH) serves as a one-stop smart solution provider in the semiconductor industry, operating in back-end semiconductor manufacturing, surface mount technology (SMT), and factory automation. As demand for semiconductors grows with Industry 4.0, YRH leverages Japan's expertise in \"integral manufacturing\" and its significant investments in advanced technologies to meet the market's evolving needs. The company aims to become the number one one-stop smart solution provider globally within three years, particularly strengthening its position in European SMT sales and utilizing its strong presence in the automotive inspection market.",
+      "banner_image": "https://www.theworldfolio.com/img_db/articles/article-614112c6d1207.jpg",
+      "source": "The Worldfolio",
+      "category_within_source": "General",
+      "source_domain": "The Worldfolio",
+      "topics": [
+        {
+          "topic": "manufacturing",
+          "relevance_score": "1.000000"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.944852"
+        }
+      ],
+      "overall_sentiment_score": 0.314956,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.556825",
+          "ticker_sentiment_score": "0.284726",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AMAT",
+          "relevance_score": "0.716594",
+          "ticker_sentiment_score": "0.431206",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "LRCX",
+          "relevance_score": "0.610710",
+          "ticker_sentiment_score": "0.315412",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "KLAC",
+          "relevance_score": "0.625819",
+          "ticker_sentiment_score": "0.319482",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "ADI",
+          "relevance_score": "0.577362",
+          "ticker_sentiment_score": "0.286493",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Indicator That Signaled Corrections In 2010 And 2018 Flashes Red Again: Marshallian K Shows Liquidity Evaporating.",
+      "url": "https://www.benzinga.com/21/08/22492938/indicator-that-signaled-corrections-in-2010-and-2018-flashes-red-again-marshallian-k-shows-liquidity",
+      "time_published": "20210813T142700",
+      "authors": [
+        "David Pinsen"
+      ],
+      "summary": "The Marshallian K indicator, which measures market liquidity, has turned negative again, a signal that previously preceded market corrections in 2010 and 2018. While elevated market valuations increase the risk, the article notes that correction predictions often outnumber actual corrections. It suggests adding downside protection, such as hedging with SPY options, as a precautionary measure given the current inexpensive cost of hedging market risk.",
+      "banner_image": "https://cdn.benzinga.com/files/images/story/2025/07/24/article-header-background-image.png?quality=85&auto=webp&width=1300",
+      "source": "Benzinga",
+      "category_within_source": "General",
+      "source_domain": "Benzinga",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.905327"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.841429"
+        }
+      ],
+      "overall_sentiment_score": -0.293061,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.254091",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "S&P 500 warning signals start flashing as ETF short bets build",
+      "url": "https://www.etfstream.com/articles/sp-500-warning-signals-start-flashing-as-etf-short-bets-build",
+      "time_published": "20210616T211720",
+      "authors": [
+        "Jamie Gordon"
+      ],
+      "summary": "Concerns are rising for a potential S&P 500 market correction, evidenced by increased short positions against the SPDR S&P 500 ETF Trust (SPY) and negative S&P 500 constituent earnings minus inflation. The SKEW index hitting record highs also suggests investors are paying a premium for protection against large market drawdowns. While some indicators point to caution, analysts suggest that improving economic conditions and strong earnings expectations could continue to support valuations, with any dips likely to be bought.",
+      "banner_image": null,
+      "source": "ETF Stream",
+      "category_within_source": "General",
+      "source_domain": "ETF Stream",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.948091"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.849647"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.731239"
+        }
+      ],
+      "overall_sentiment_score": 0.040425,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.300465",
+          "ticker_sentiment_score": "0.048322",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "S&P 500 ekes out a small gain in light trading, boosted by reopening plays",
+      "url": "https://www.cnbc.com/2021/05/25/stock-market-futures-open-to-close-newshtml.html",
+      "time_published": "20210525T180600",
+      "authors": [
+        "Yun Li",
+        "Hannah Miao"
+      ],
+      "summary": "U.S. stocks saw slight gains, with the S&P 500 climbing 0.2% driven by companies linked to economic reopening, such as Carnival and Royal Caribbean. Ford's increased investment in electric vehicles also boosted its shares, while Bitcoin's comeback contributed to positive risk sentiment. Trading was light ahead of the Memorial Day weekend, as investors also watched for developments on an infrastructure bill and major bank testimonies.",
+      "banner_image": "https://image.cnbcfm.com/api/v1/image/106888514-16220368341622036831-16348845461-1080pnbcnews.jpg?v=1622036832&w=750&h=422&vtcrop=y",
+      "source": "CNBC",
+      "category_within_source": "General",
+      "source_domain": "CNBC",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.905022"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.837130"
+        },
+        {
+          "topic": "earnings",
+          "relevance_score": "0.705649"
+        },
+        {
+          "topic": "blockchain",
+          "relevance_score": "0.623304"
+        },
+        {
+          "topic": "retail_wholesale",
+          "relevance_score": "0.627848"
+        }
+      ],
+      "overall_sentiment_score": 0.355033,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.223851",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "CCL",
+          "relevance_score": "0.873162",
+          "ticker_sentiment_score": "0.407192",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "RCL",
+          "relevance_score": "0.844383",
+          "ticker_sentiment_score": "0.472678",
+          "ticker_sentiment_label": "Bullish"
+        },
+        {
+          "ticker": "F",
+          "relevance_score": "0.789925",
+          "ticker_sentiment_score": "0.304721",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "TSLA",
+          "relevance_score": "0.632596",
+          "ticker_sentiment_score": "0.228789",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Bets Against $357 Billion S&P 500 ETF Jump to Highest This Year",
+      "url": "https://www.bloomberg.com/news/articles/2021-05-25/bets-against-357-billion-s-p-500-etf-jump-to-highest-this-year",
+      "time_published": "20210525T172800",
+      "authors": [
+        "Sam Potter and Kamaron Leach"
+      ],
+      "summary": "Investors are increasing their bets against the S&P 500 by shorting the SPDR S&P 500 ETF Trust (SPY). Short interest in the $357 billion ETF has reached its highest level this year, even as the S&P 500 fluctuates near its all-time high.",
+      "banner_image": null,
+      "source": "Bloomberg.com",
+      "category_within_source": "General",
+      "source_domain": "Bloomberg.com",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.941659"
+        }
+      ],
+      "overall_sentiment_score": -0.240405,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.236608",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "SPY - Ssga Active Trust - Spdr S&p 500 Etf Trust Quote, Price, Charts & News",
+      "url": "https://www.cmlviz.com/stocks/SPY/summary",
+      "time_published": "20210117T211720",
+      "authors": [],
+      "summary": "This page provides real-time quote, price, charts, and news for the SPDR S&P 500 ETF Trust (SPY), managed by SSgA Active Trust. It displays current market data for SPY, along with major indices like SPX, Dow 30, QQQ, and VIX. The content appears to be a tear sheet or summary page for the SPY ETF from CMLViz.com.",
+      "banner_image": null,
+      "source": "CMLviz",
+      "category_within_source": "General",
+      "source_domain": "CMLviz",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.914540"
+        }
+      ],
+      "overall_sentiment_score": 0.359524,
+      "overall_sentiment_label": "Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.343587",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "S&P 500 Approaching Elliott Wave 5 Top",
+      "url": "https://www.seeitmarket.com/sp-500-approaching-elliott-wave-5-top/",
+      "time_published": "20201204T025514",
+      "authors": [
+        "T. Pizzuti and K. Hulse"
+      ],
+      "summary": "The article suggests the S&P 500 is nearing a potential long-term top based on Elliott Wave analysis, with major U.S. indices showing possibly completed upward patterns. Investors are advised to rebalance portfolios defensively, and traders should recognize higher risk for bullish positions. While a major correction could start soon, the authors caution against premature bearishness, noting an alternative wave count that could lead to further gains.",
+      "banner_image": "https://www.seeitmarket.com/wp-content/uploads/2020/12/sp-500-index-elliott-wave-5-top-peak-now-analysis-chart.png",
+      "source": "See It Market",
+      "category_within_source": "General",
+      "source_domain": "See It Market",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.933588"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.624587"
+        }
+      ],
+      "overall_sentiment_score": -0.386178,
+      "overall_sentiment_label": "Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.404018",
+          "ticker_sentiment_label": "Bearish"
+        }
+      ]
+    },
+    {
+      "title": "Dow pulls back more than 150 points after reaching 30,000 milestone",
+      "url": "https://www.cnbc.com/2020/11/24/stock-market-futures-open-to-close-news.html",
+      "time_published": "20201124T035205",
+      "authors": [
+        "Fred Imbert"
+      ],
+      "summary": "The Dow Jones Industrial Average fell on Wednesday, pulling back after reaching the 30,000 milestone the previous day, amidst disappointing unemployment data. The S&P 500 dipped while the Nasdaq Composite rose, and trading volumes were lighter ahead of Thanksgiving. Salesforce led the Dow lower on news of its potential acquisition of Slack, while positive vaccine news and political clarity had previously fueled market rallies.",
+      "banner_image": "https://image.cnbcfm.com/api/v1/image/106551748-1590491426318gettyimages-1215156253.jpeg?v=1601294246&w=750&h=422&vtcrop=y",
+      "source": "CNBC",
+      "category_within_source": "General",
+      "source_domain": "CNBC",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.934316"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.816264"
+        },
+        {
+          "topic": "life_sciences",
+          "relevance_score": "0.639470"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.604716"
+        },
+        {
+          "topic": "mergers_and_acquisitions",
+          "relevance_score": "0.623419"
+        }
+      ],
+      "overall_sentiment_score": -0.142793,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.129013",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CRM",
+          "relevance_score": "0.846187",
+          "ticker_sentiment_score": "-0.433871",
+          "ticker_sentiment_label": "Bearish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.623432",
+          "ticker_sentiment_score": "0.144894",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CVX",
+          "relevance_score": "0.649379",
+          "ticker_sentiment_score": "-0.328064",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        },
+        {
+          "ticker": "JNJ",
+          "relevance_score": "0.638752",
+          "ticker_sentiment_score": "0.240752",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "How to invest in the S&P 500 without betting hard on the \u2018FAAMG\u2019 stocks that are 20% of the index",
+      "url": "https://www.marketwatch.com/story/how-to-invest-in-the-sp-500-without-betting-on-faamg-stocks-2020-10-23?gaa_at=eafs&gaa_n=AWEtsqcVe5OvxafNY1tih3paw4PGK5Lt9VOIG40RIBMeU60E8b9NnM-5J_EM&gaa_ts=6907eaa8&gaa_sig=oRNV3Myd3V_ABsYnni4y6Ko0cX3hfaY-XjIqNQhDdmOMiCLTkEM__rHXR6_zwaunwL1G9xdJfMFTWrCmsBSkIA%3D%3D",
+      "time_published": "20201024T091900",
+      "authors": [],
+      "summary": "This article discusses how to invest in the S&P 500 without heavily relying on the \"FAAMG\" stocks (Facebook, Apple, Amazon.com, Microsoft, and Google/Alphabet), which represent a significant portion of the index's valuation. It suggests that when investing in a standard S&P 500 index fund, one is implicitly making a large bet on the continued success of these five tech giants. The article hints at an alternative strategy, specifically mentioning an \"Equal-weight S&P 500 ETF,\" for investors looking to diversify away from the concentrated influence of FAAMG stocks within the S&P 500.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.905594"
+        }
+      ],
+      "overall_sentiment_score": 0.286151,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.275588",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "META",
+          "relevance_score": "0.846997",
+          "ticker_sentiment_score": "0.274821",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.829256",
+          "ticker_sentiment_score": "0.294774",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "AMZN",
+          "relevance_score": "0.818454",
+          "ticker_sentiment_score": "0.259574",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.808779",
+          "ticker_sentiment_score": "0.278470",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "ETF of the Week: SPDR Portfolio S&P 500 ETF (SPLG)",
+      "url": "https://www.etftrends.com/multi-asset-channel/etf-of-the-week-spdr-portfolio-sp-500-etf-splg/",
+      "time_published": "20200227T232130",
+      "authors": [
+        "Aaron Neuwirth"
+      ],
+      "summary": "This article discusses the SPDR Portfolio S&P 500 ETF (SPLG) as a cheaper, more modernized alternative to the flagship SPDR S&P 500 ETF Trust (SPY). ETF Trends CEO Tom Lydon highlights SPLG's advantages for long-term investors, including a lower expense ratio and a more flexible structure compared to SPY's unit investment trust setup. The article notes SPLG's growing traction with $700 million in net inflows for the week ended February 21, 2020.",
+      "banner_image": null,
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.947570"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.822068"
+        }
+      ],
+      "overall_sentiment_score": -0.256197,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.269395",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "SPDR chairman and industry pioneer Jim Ross to retire",
+      "url": "https://www.etfstream.com/articles/spdr-chairman-and-industry-pioneer-jim-ross-to-retire",
+      "time_published": "20191122T000000",
+      "authors": [
+        "Tom Eckett"
+      ],
+      "summary": "Jim Ross, an industry pioneer who helped launch the first ETFs including the SPDR S&P 500 ETF Trust (SPY), is retiring as chairman of the global SPDR ETFs business after 27 years with State Street Global Advisors. Ross, who led SPDR's ETF business since 2005 and became chairman in 2016, will retire in March 2020. His contributions were lauded by State Street CEO Ron O\u2019Hanley as instrumental to one of the most important product innovations in the investment management industry.",
+      "banner_image": null,
+      "source": "ETF Stream",
+      "category_within_source": "General",
+      "source_domain": "ETF Stream",
+      "topics": [
+        {
+          "topic": "finance",
+          "relevance_score": "0.847568"
+        }
+      ],
+      "overall_sentiment_score": 0.1064,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.135097",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "STT",
+          "relevance_score": "0.614812",
+          "ticker_sentiment_score": "0.117830",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "SPY ETF Breaks New All-Time High, Up Over 18% YTD",
+      "url": "https://www.etftrends.com/equity-etf-channel/spy-etf-breaks-new-all-time-high-up-over-18-ytd/",
+      "time_published": "20190501T114200",
+      "authors": [
+        "Ben Hernandez"
+      ],
+      "summary": "The SPDR S&P 500 ETF (SPY) reached a new all-time high of $294.78, up over 18% year-to-date, driven by strong U.S. equities and better-than-expected Q1 GDP numbers. The article highlights SPY's enduring popularity and significant inflows into ETFs compared to mutual funds, reflecting resilient investor sentiment despite past market challenges. It also details the key features of SPY and its top holdings.",
+      "banner_image": null,
+      "source": "ETF Trends",
+      "category_within_source": "General",
+      "source_domain": "ETF Trends",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.908161"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.885119"
+        }
+      ],
+      "overall_sentiment_score": 0.032778,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.309341",
+          "ticker_sentiment_score": "0.041958",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "If you\u2019re tracking the S&P 500 instead of this fund, you\u2019re leaving money on the table",
+      "url": "https://www.marketwatch.com/story/if-youre-tracking-the-sp-500-instead-of-this-fund-youre-leaving-money-on-the-table-2019-03-13?gaa_at=eafs&gaa_n=AWEtsqcLhmlUZjs0Oy8Cq43yweAyma_LaU2xbYMt4WcrYoX-mlmdEO2SjEYG&gaa_ts=690806ed&gaa_sig=sNl8QRDH99I-IyiAcvfSQLFrBLDYaNyFySDMNE4BEtNP1iBbPBMyjHq3Z_1pML-68AAZL0hL01Z-LeTV7nQE5Q%3D%3D",
+      "time_published": "20190315T091300",
+      "authors": [],
+      "summary": "The article suggests that investors tracking the S&P 500 might be missing out on better performance by not considering the Invesco QQQ Trust. It highlights QQQ as a successful and diversified alternative, noting that even with \"FAANG\" company dominance, valuations are lower than during the dot-com bubble. The piece advocates for diversification beyond traditional S&P 500 index funds for retirement savers.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.901606"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.843523"
+        }
+      ],
+      "overall_sentiment_score": 0.190219,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.294594",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "IVZ",
+          "relevance_score": "0.893331",
+          "ticker_sentiment_score": "0.334368",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "NFLX",
+          "relevance_score": "0.742981",
+          "ticker_sentiment_score": "0.147182",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "QCOM",
+          "relevance_score": "0.733049",
+          "ticker_sentiment_score": "0.116691",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "GOOGL",
+          "relevance_score": "0.725192",
+          "ticker_sentiment_score": "0.117529",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "SPY Chart, Investor Sentiment Echo November 2016 Stock Market",
+      "url": "https://www.schaeffersresearch.com/content/analysis/2018/04/23/spy-chart-investor-sentiment-echo-november-2016-stock-market",
+      "time_published": "20180423T084200",
+      "authors": [
+        "Todd Salamone"
+      ],
+      "summary": "The article discusses the stock market's resistance at key technical levels and the lingering influence of FOMC rate hikes. It highlights how current investor sentiment, specifically low equity allocations and technical indicators, echoes the pre-November 2016 election period. The author suggests that a resolution to trade war concerns, similar to the removal of election uncertainty in 2016, may be needed to push the S&P 500 above resistance.",
+      "banner_image": null,
+      "source": "Schaeffer's Investment Research",
+      "category_within_source": "General",
+      "source_domain": "Schaeffer's Investment Research",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.914437"
+        },
+        {
+          "topic": "economy_monetary",
+          "relevance_score": "0.849588"
+        },
+        {
+          "topic": "earnings",
+          "relevance_score": "0.704091"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.603373"
+        }
+      ],
+      "overall_sentiment_score": -0.213693,
+      "overall_sentiment_label": "Somewhat-Bearish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "-0.235726",
+          "ticker_sentiment_label": "Somewhat-Bearish"
+        }
+      ]
+    },
+    {
+      "title": "S&P 500\u2019s new mini-uptrend give bears more reason to be nervous, charts suggest",
+      "url": "https://www.marketwatch.com/story/sp-500s-new-mini-uptrend-give-bears-more-reason-to-be-nervous-charts-suggest-2018-03-13?gaa_at=eafs&gaa_n=AWEtsqcs8AHmfCcntz_gxYdznpFu94O_lgCFbWwIkOCPb6p5KC3xtbuaGa5Q&gaa_ts=6908241c&gaa_sig=UaxJagDOWUDHshUK2hNB7g6HnNIPekIoFhZ40-xPEmxlmk0PVo7kBC-KV85sjFEVyCOcZua5aLV91Qjcsa8Tew%3D%3D",
+      "time_published": "20180314T082500",
+      "authors": [],
+      "summary": "The S&P 500's recent movements, characterized by higher lows and higher highs, suggest the start of a new mini-uptrend. This pattern, observed through technical analysis, implies that the broader nine-year bull market is still intact. Consequently, charts indicate that market bears should be more concerned about the current market trajectory.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.902089"
+        }
+      ],
+      "overall_sentiment_score": 0.265796,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.348868",
+          "ticker_sentiment_score": "0.043264",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "SPGI",
+          "relevance_score": "0.909088",
+          "ticker_sentiment_score": "0.526506",
+          "ticker_sentiment_label": "Bullish"
+        }
+      ]
+    },
+    {
+      "title": "Bitcoin\u2019s surge over $15,000 makes it bigger than all but 12 S&P 500 components",
+      "url": "https://www.marketwatch.com/story/bitcoins-surge-makes-it-bigger-than-these-iconic-companies-2017-11-27?gaa_at=eafs&gaa_n=AWEtsqftdn-d5ItMA77sxVnMXa4GsZ7gOwRYSLV4y0nKW3XIVXNpUbYV0UfA&gaa_ts=69084150&gaa_sig=rOfBEuUbo5p8A8aJiQu4qX3-jdD48CYEetnAjoZ4mt2ng3jYlll93Bv3WziNTlImsJ-w_cRyfvY0ytle0PUTEQ%3D%3D",
+      "time_published": "20171207T144800",
+      "authors": [],
+      "summary": "Bitcoin's market capitalization has grown to exceed that of all but 12 S&P 500 companies, including major bellwethers like Visa, Procter & Gamble, and Chevron. This surge is attributed to its massive price appreciation, which saw it climb over 1,400% in 2017 and break through the $15,000 mark. The digital currency's rapid growth positions it as larger than many established and well-known global brands.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "blockchain",
+          "relevance_score": "0.912906"
+        },
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.847366"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.605719"
+        }
+      ],
+      "overall_sentiment_score": 0.195643,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.912318",
+          "ticker_sentiment_score": "0.312820",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "V",
+          "relevance_score": "0.637346",
+          "ticker_sentiment_score": "0.148500",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "PG",
+          "relevance_score": "0.611028",
+          "ticker_sentiment_score": "0.103713",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "CVX",
+          "relevance_score": "0.637958",
+          "ticker_sentiment_score": "0.102744",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "A new ETF tries turning market-cap weighting on its head",
+      "url": "https://www.marketwatch.com/story/a-new-etf-tries-turning-market-cap-weighting-on-its-head-2017-11-01?gaa_at=eafs&gaa_n=AWEtsqdr9UjZ0AfuKMK5i8eGRq0HYzmDkXEUVZvfWc9U4SgAy87WIwSYwQGq&gaa_ts=69084150&gaa_sig=6_g81P5NpYEcxmnd7X-pex8txuXs7KTk61muy35mbtYerLZbVXJUofiAsiCra92DiDBHEDW_mJtMeqRvg8oACQ%3D%3D",
+      "time_published": "20171101T131500",
+      "authors": [],
+      "summary": "A new exchange-traded fund, the Reverse Cap Weighted US Large Cap ETF, is challenging traditional market-cap weighting by inversing the proportions of its S&P 500 components. This means that while Apple is the largest stock in the benchmark index, it will be the smallest component in this new fund, launching on Wednesday. The fund aims to flip the time-tested approach of passive investments that typically rank stocks by size.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.926451"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.738552"
+        }
+      ],
+      "overall_sentiment_score": 0.103526,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.720067",
+          "ticker_sentiment_score": "-0.108922",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "AAPL",
+          "relevance_score": "0.717083",
+          "ticker_sentiment_score": "0.330674",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        }
+      ]
+    },
+    {
+      "title": "This new ETF tracks the green version of the S&P 500",
+      "url": "https://www.investmentnews.com/equities/this-new-etf-tracks-the-green-version-of-the-sp-500/65501",
+      "time_published": "20151201T093631",
+      "authors": [
+        "Bloomberg"
+      ],
+      "summary": "A new ETF, the SPDR S&P 500 Fossil Fuel Free ETF (SPYX), has been launched to offer a greener version of the traditional S&P 500. This ETF removes companies with fossil fuel reserves from the S&P 500, significantly reducing its energy sector exposure compared to the SPDR S&P 500 ETF Trust (SPY). While not entirely carbon-free, SPYX offers investors a lower-carbon footprint option for broad market exposure.",
+      "banner_image": null,
+      "source": "InvestmentNews",
+      "category_within_source": "General",
+      "source_domain": "InvestmentNews",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.922484"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.840017"
+        }
+      ],
+      "overall_sentiment_score": 0.1905,
+      "overall_sentiment_label": "Somewhat-Bullish",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "1.000000",
+          "ticker_sentiment_score": "0.250468",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "MSCI",
+          "relevance_score": "0.725014",
+          "ticker_sentiment_score": "0.113513",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Opinion: ETFs for \u2018growth\u2019 and \u2018value\u2019 stocks can trip up investors",
+      "url": "https://www.marketwatch.com/story/etfs-for-growth-and-value-stocks-can-trip-up-investors-2015-05-29?gaa_at=eafs&gaa_n=AWEtsqf8DD_g-5MiOi8CQgLjEB3EE_s5AgrwAUpwtURkc6gP1icglnhV3ZmK&gaa_ts=69087ac6&gaa_sig=zus6Rb02vmTdpIBX4oMUvbyL3VemjrodXuXGqAmq0pFOXCA8Kq__5fn8i5-p3RdAkSvIPZJBYVdw7sPinEgB_g%3D%3D",
+      "time_published": "20150529T060100",
+      "authors": [
+        "John Prestbo"
+      ],
+      "summary": "This article discusses the challenges investors face with \"growth\" and \"value\" stock classifications when using ETFs. The author argues that despite these being common investment labels, their definitions are often ambiguous and lack consensus, complicating investment decisions. This lack of clear definitions can lead to confusion and potential pitfalls for investors relying on these categories.",
+      "banner_image": null,
+      "source": "MarketWatch",
+      "category_within_source": "General",
+      "source_domain": "MarketWatch",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.905645"
+        }
+      ],
+      "overall_sentiment_score": 0.095108,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.810957",
+          "ticker_sentiment_score": "0.094057",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "BLK",
+          "relevance_score": "0.629445",
+          "ticker_sentiment_score": "0.055101",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "V",
+          "relevance_score": "0.555980",
+          "ticker_sentiment_score": "0.083737",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSCI",
+          "relevance_score": "0.579910",
+          "ticker_sentiment_score": "0.080977",
+          "ticker_sentiment_label": "Neutral"
+        }
+      ]
+    },
+    {
+      "title": "Ray Dalio's Bridgewater picks up chunk of Microsoft, ditches UPS",
+      "url": "https://www.investmentnews.com/equities/ray-dalios-bridgewater-picks-up-chunk-of-microsoft-ditches-ups/60966",
+      "time_published": "20150210T093631",
+      "authors": [
+        "Bloomberg"
+      ],
+      "summary": "Ray Dalio's Bridgewater Associates significantly increased its stake in Microsoft Corp. while divesting its holdings in SPDR S&P 500 ETF Trust and United Parcel Service Inc. during the last quarter. The hedge fund, despite seeing its equity holdings decline in value, still outperformed most peers in January with an 8.3% gain, managing $160 billion in assets. These portfolio changes were detailed in a recent SEC filing.",
+      "banner_image": null,
+      "source": "InvestmentNews",
+      "category_within_source": "General",
+      "source_domain": "InvestmentNews",
+      "topics": [
+        {
+          "topic": "financial_markets",
+          "relevance_score": "0.949067"
+        },
+        {
+          "topic": "finance",
+          "relevance_score": "0.827342"
+        },
+        {
+          "topic": "economy_macro",
+          "relevance_score": "0.700027"
+        },
+        {
+          "topic": "technology",
+          "relevance_score": "0.644725"
+        },
+        {
+          "topic": "energy_transportation",
+          "relevance_score": "0.601675"
+        }
+      ],
+      "overall_sentiment_score": -0.140483,
+      "overall_sentiment_label": "Neutral",
+      "ticker_sentiment": [
+        {
+          "ticker": "SPY",
+          "relevance_score": "0.906162",
+          "ticker_sentiment_score": "0.147022",
+          "ticker_sentiment_label": "Neutral"
+        },
+        {
+          "ticker": "MSFT",
+          "relevance_score": "0.944968",
+          "ticker_sentiment_score": "0.330971",
+          "ticker_sentiment_label": "Somewhat-Bullish"
+        },
+        {
+          "ticker": "UPS",
+          "relevance_score": "0.944156",
+          "ticker_sentiment_score": "-0.715662",
+          "ticker_sentiment_label": "Bearish"
+        }
+      ]
+    }
+  ]
+}
