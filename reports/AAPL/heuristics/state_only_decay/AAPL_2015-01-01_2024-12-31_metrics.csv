@@ -1,0 +1,7 @@
+dataset,strategy,cumulative_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown,variant,run_name,state_mode,reward_mode,sentiment_imputation_mode,dataset_name
+train,buy_and_hold,3.697822570325248,0.35596865902063657,0.29630598531386987,1.2013549393663696,-0.38729694508624535,state_only,state_only_decay,price_sentiment,profit,decay,augmented
+train,random,-0.33492864562678637,-0.04314884958278642,0.22103565325093907,-0.1952121702909171,-0.5336905213295737,state_only,state_only_decay,price_sentiment,profit,decay,augmented
+validation,buy_and_hold,0.004018151603098596,0.050666584807763204,0.30820066375775357,0.1643947945796355,-0.3075105504121448,state_only,state_only_decay,price_sentiment,profit,decay,augmented
+validation,random,0.026993289274213295,0.03434127341394011,0.20201472317391925,0.16999391368308783,-0.2250121630449483,state_only,state_only_decay,price_sentiment,profit,decay,augmented
+test,buy_and_hold,0.9958847398706141,0.45019855470334913,0.21355916390564017,2.108074158326761,-0.16712937513676185,state_only,state_only_decay,price_sentiment,profit,decay,augmented
+test,random,0.028047100342767584,0.026327356972621008,0.15484062263208892,0.17002874649488117,-0.2533779181371687,state_only,state_only_decay,price_sentiment,profit,decay,augmented
