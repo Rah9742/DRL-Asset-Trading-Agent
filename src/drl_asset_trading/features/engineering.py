@@ -1,4 +1,4 @@
-"""Feature engineering for baseline and extended state representations."""
+"""Feature engineering for price-only and price-plus-sentiment state datasets."""
 
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ class FeatureBuilder:
         self.config = config
 
     def transform(self, data: pd.DataFrame) -> pd.DataFrame:
-        """Create a baseline set of price-derived and technical features."""
+        """Create the core price-derived and technical feature set."""
         required_columns = {"Close", "Volume"}
         missing = required_columns.difference(data.columns)
         if missing:
@@ -63,18 +63,18 @@ class FeatureBuilder:
         price_data: pd.DataFrame,
         sentiment_daily: pd.DataFrame | None = None,
     ) -> dict[str, pd.DataFrame]:
-        """Create baseline and optional sentiment-augmented feature datasets."""
-        baseline = self.transform(price_data)
-        datasets = {"baseline": baseline}
+        """Create price-only and optional sentiment-augmented feature datasets."""
+        price = self.transform(price_data)
+        datasets = {"price": price}
 
         if sentiment_daily is not None and not sentiment_daily.empty:
-            datasets["sentiment_zero"] = self.merge_sentiment_features(
-                price_features=baseline,
+            datasets["price_sentiment_sparse"] = self.merge_sentiment_features(
+                price_features=price,
                 sentiment_daily=sentiment_daily,
-                imputation_mode="zero",
+                imputation_mode="sparse",
             )
-            datasets["augmented"] = self.merge_sentiment_features(
-                price_features=baseline,
+            datasets["price_sentiment_decay"] = self.merge_sentiment_features(
+                price_features=price,
                 sentiment_daily=sentiment_daily,
                 imputation_mode="decay",
             )
@@ -89,7 +89,7 @@ class FeatureBuilder:
     ) -> pd.DataFrame:
         """Merge lagged daily sentiment data onto price-derived features.
 
-        Zero mode:
+        Sparse mode:
         Missing sentiment values are replaced by `sentiment_fill_value`, while `news_count`
         remains available so the model can distinguish no-news days from low-sentiment days.
 
@@ -101,7 +101,9 @@ class FeatureBuilder:
         if "date" not in sentiment_daily.columns:
             raise ValueError("Sentiment daily data must contain a 'date' column.")
         mode = imputation_mode or self.config.sentiment_imputation_mode
-        if mode not in {"zero", "decay"}:
+        if mode == "zero":
+            mode = "sparse"
+        if mode not in {"sparse", "decay"}:
             raise ValueError(f"Unsupported sentiment imputation mode: {mode}")
 
         sentiment = sentiment_daily.copy()
@@ -116,7 +118,7 @@ class FeatureBuilder:
         augmented = augmented.join(sentiment, how="left")
         augmented["news_count"] = augmented["news_count"].fillna(0.0)
 
-        if mode == "zero":
+        if mode == "sparse":
             augmented[SENTIMENT_COLUMNS] = augmented[SENTIMENT_COLUMNS].fillna(self.config.sentiment_fill_value)
             return augmented
 
@@ -146,9 +148,9 @@ class FeatureBuilder:
         """Return default output paths for processed dataset variants."""
         filename = f"{ticker}_{start_date}_{end_date}.csv"
         return {
-            "baseline": Path("data/processed/baseline") / filename,
-            "sentiment_zero": Path("data/processed/sentiment_zero") / filename,
-            "augmented": Path("data/processed/augmented") / filename,
+            "price": Path("data/processed/price") / filename,
+            "price_sentiment_sparse": Path("data/processed/price_sentiment_sparse") / filename,
+            "price_sentiment_decay": Path("data/processed/price_sentiment_decay") / filename,
         }
 
     @staticmethod
@@ -182,9 +184,9 @@ def resolve_processed_dataset_name(sentiment_variant: str) -> str:
     """Map a sentiment variant to a processed dataset name."""
     sentiment_variant = normalize_sentiment_variant(sentiment_variant)
     if sentiment_variant == "none":
-        return "baseline"
-    if sentiment_variant == "zero":
-        return "sentiment_zero"
+        return "price"
+    if sentiment_variant == "sparse":
+        return "price_sentiment_sparse"
     if sentiment_variant == "decay":
-        return "augmented"
+        return "price_sentiment_decay"
     raise ValueError(f"Unsupported sentiment variant: {sentiment_variant}")

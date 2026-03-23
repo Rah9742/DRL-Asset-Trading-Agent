@@ -35,7 +35,7 @@ class ConfigNormalizationTests(unittest.TestCase):
             }
         )
         self.assertEqual(config.environment.reward_mode, "sharpe")
-        self.assertEqual(config.features.sentiment_variant, "zero")
+        self.assertEqual(config.features.sentiment_variant, "sparse")
         self.assertEqual(config.features.state_mode, "price_sentiment")
 
 
@@ -54,13 +54,14 @@ class ExperimentNamingTests(unittest.TestCase):
         configured, dataset_name, run_name = configure_experiment(config, reward_mode="profit", sentiment_variant="none")
         self.assertEqual(configured.environment.reward_mode, "profit")
         self.assertEqual(configured.features.sentiment_variant, "none")
-        self.assertEqual(dataset_name, "baseline")
+        self.assertEqual(dataset_name, "price")
         self.assertEqual(run_name, "profit_none")
 
     def test_processed_dataset_resolution_matches_sentiment_variant(self) -> None:
-        self.assertEqual(resolve_processed_dataset_name("none"), "baseline")
-        self.assertEqual(resolve_processed_dataset_name("zero"), "sentiment_zero")
-        self.assertEqual(resolve_processed_dataset_name("decay"), "augmented")
+        self.assertEqual(resolve_processed_dataset_name("none"), "price")
+        self.assertEqual(resolve_processed_dataset_name("zero"), "price_sentiment_sparse")
+        self.assertEqual(resolve_processed_dataset_name("sparse"), "price_sentiment_sparse")
+        self.assertEqual(resolve_processed_dataset_name("decay"), "price_sentiment_decay")
 
 
 if __name__ == "__main__":

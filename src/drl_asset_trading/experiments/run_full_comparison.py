@@ -69,7 +69,6 @@ def run_full_comparison(
     heuristic_metrics["run_name"] = "heuristic_reference"
     heuristic_metrics["reward_mode"] = "profit"
     heuristic_metrics["sentiment_variant"] = "none"
-    heuristic_metrics["dataset_name"] = heuristic_dataset_name
     heuristic_metrics_path, heuristic_history_paths, heuristic_scaler_path, heuristic_manifest_path = save_benchmark_outputs(
         metrics=heuristic_metrics,
         histories=heuristic_histories,
@@ -88,10 +87,10 @@ def run_full_comparison(
 
     experiment_settings = [
         ("profit", "none"),
-        ("profit", "zero"),
+        ("profit", "sparse"),
         ("profit", "decay"),
         ("sharpe", "none"),
-        ("sharpe", "zero"),
+        ("sharpe", "sparse"),
         ("sharpe", "decay"),
     ]
 
@@ -139,7 +138,6 @@ def run_full_comparison(
 
             ddqn_metrics = ddqn_results["split_metrics"].copy()
             ddqn_metrics["comparison_group"] = run_name
-            ddqn_metrics["dataset_name"] = dataset_name
             ddqn_metrics["seed"] = seed
             per_seed_metrics.append(ddqn_metrics)
             test_seed_histories.append(ddqn_results["split_histories"]["test"])
@@ -155,7 +153,6 @@ def run_full_comparison(
                 "strategy": "double_dqn",
                 "reward_mode": variant_config.environment.reward_mode,
                 "sentiment_variant": variant_config.features.sentiment_variant,
-                "dataset_name": dataset_name,
                 "seed_count": len(seed_values),
                 "test_sharpe_ratio_mean": test_only["sharpe_ratio"].mean(),
                 "test_sharpe_ratio_std": test_only["sharpe_ratio"].std(ddof=0),
@@ -166,7 +163,7 @@ def run_full_comparison(
             }
         )
 
-        test_histories_for_plots[f"{run_name}_double_dqn_mean"] = _average_test_history(test_seed_histories)
+        test_histories_for_plots[f"{run_name}_dqn"] = _average_test_history(test_seed_histories)
 
     comparison_table = pd.concat(comparison_rows, ignore_index=True, sort=False)
     comparison_path = report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_comparison_table.csv"
@@ -184,7 +181,6 @@ def run_full_comparison(
                 "strategy": row["strategy"],
                 "reward_mode": row["reward_mode"],
                 "sentiment_variant": row["sentiment_variant"],
-                "dataset_name": heuristic_dataset_name,
                 "seed_count": 1,
                 "test_sharpe_ratio_mean": row["sharpe_ratio"],
                 "test_sharpe_ratio_std": 0.0,

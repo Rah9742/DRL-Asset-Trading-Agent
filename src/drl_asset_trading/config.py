@@ -47,7 +47,7 @@ class FeatureConfig:
     lookback_window: int = 14
     sentiment_lag_days: int = 1
     sentiment_fill_value: float = 0.0
-    sentiment_imputation_mode: str = "zero"
+    sentiment_imputation_mode: str = "sparse"
     sentiment_decay_rate: float = 0.25
 
 
@@ -161,20 +161,24 @@ def normalize_sentiment_variant(
     """Map new and legacy sentiment settings to the canonical variant label."""
     if sentiment_variant is not None:
         normalized = sentiment_variant.strip().lower()
-        if normalized in {"none", "zero", "decay"}:
+        if normalized == "zero":
+            return "sparse"
+        if normalized in {"none", "sparse", "decay"}:
             return normalized
         raise ValueError(f"Unsupported sentiment variant: {sentiment_variant}")
 
     if sentiment_imputation_mode is not None:
         normalized = sentiment_imputation_mode.strip().lower()
-        if normalized in {"none", "zero", "decay"}:
+        if normalized == "zero":
+            return "sparse"
+        if normalized in {"none", "sparse", "decay"}:
             return normalized
         raise ValueError(f"Unsupported sentiment mode: {sentiment_imputation_mode}")
 
     if state_mode == "price_only":
         return "none"
     if state_mode == "price_sentiment":
-        return "zero"
+        return "sparse"
     return "none"
 
 

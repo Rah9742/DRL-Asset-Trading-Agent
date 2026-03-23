@@ -9,7 +9,7 @@ from drl_asset_trading.experiments.run_full_comparison import run_full_compariso
 
 class ComparisonInterfaceTests(unittest.TestCase):
     def test_profit_sentiment_runner_defaults_to_three_variants(self) -> None:
-        self.assertEqual(DEFAULT_SENTIMENT_VARIANTS, ("none", "zero", "decay"))
+        self.assertEqual(DEFAULT_SENTIMENT_VARIANTS, ("none", "sparse", "decay"))
 
     def test_legacy_variant_aliases_remain_defined(self) -> None:
         self.assertEqual(LEGACY_VARIANTS["baseline"]["reward_mode"], "profit")

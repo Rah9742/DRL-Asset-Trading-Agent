@@ -1,0 +1,4 @@
+seed,run_name,state_mode,reward_mode,sentiment_imputation_mode,dataset,strategy,cumulative_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown
+45,both_decay_seed45,price_sentiment,differential_sharpe,decay,train,double_dqn,12.206353045671797,0.6329717646527455,0.3370886181847461,1.877760714856995,-0.455545955558047
+45,both_decay_seed45,price_sentiment,differential_sharpe,decay,validation,double_dqn,0.4989987886975047,0.362570816175221,0.4615310827336169,0.7855826611454617,-0.4014073499689561
+45,both_decay_seed45,price_sentiment,differential_sharpe,decay,test,double_dqn,1.2450173739127335,0.6866304122545759,0.4810277757468941,1.4274236268133198,-0.5247303383224908

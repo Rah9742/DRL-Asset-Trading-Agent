@@ -19,15 +19,15 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--dataset",
-        choices=["baseline", "sentiment_zero", "augmented"],
-        default="baseline",
+        choices=["price", "price_sentiment_sparse", "price_sentiment_decay"],
+        default="price",
         help="Processed dataset variant to train on.",
     )
     return parser.parse_args()
 
 
 def main() -> None:
-    """Train the baseline Double DQN agent and save artifacts."""
+    """Train the Double DQN agent and save artifacts."""
     args = parse_args()
     config = ExperimentConfig.from_json(args.config)
     dataset_path = default_processed_dataset_path(

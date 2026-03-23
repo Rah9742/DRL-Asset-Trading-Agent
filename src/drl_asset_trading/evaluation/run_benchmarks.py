@@ -23,8 +23,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--dataset",
-        choices=["baseline", "sentiment_zero", "augmented"],
-        default="baseline",
+        choices=["price", "price_sentiment_sparse", "price_sentiment_decay"],
+        default="price",
         help="Processed dataset variant to evaluate.",
     )
     return parser.parse_args()

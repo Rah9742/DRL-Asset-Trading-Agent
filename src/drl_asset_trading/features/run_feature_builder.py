@@ -1,4 +1,4 @@
-"""Build processed baseline and augmented feature datasets."""
+"""Build processed price-only and price-plus-sentiment datasets."""
 
 from __future__ import annotations
 
@@ -53,13 +53,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--skip-sentiment",
         action="store_true",
-        help="Build only the baseline dataset even if sentiment data exists.",
+        help="Build only the price dataset even if sentiment data exists.",
     )
     return parser.parse_args()
 
 
 def main() -> None:
-    """Build and save processed baseline and augmented datasets."""
+    """Build and save processed feature datasets."""
     args = parse_args()
     config = ExperimentConfig.from_json(args.config)
     saved_paths = build_and_save_feature_datasets(config=config, skip_sentiment=args.skip_sentiment)
@@ -67,10 +67,10 @@ def main() -> None:
         print(f"{dataset_name} dataset: {dataset_path}")
 
     sentiment_path = Path("data/interim/sentiment/daily") / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}.csv"
-    if "augmented" in saved_paths:
+    if "price_sentiment_decay" in saved_paths:
         print(f"Sentiment source: {sentiment_path}")
     else:
-        print("Augmented dataset not built. No interim sentiment daily CSV was found.")
+        print("Sentiment datasets not built. No interim sentiment daily CSV was found.")
 
 
 if __name__ == "__main__":

@@ -22,18 +22,18 @@ That is the public experiment interface. The older `state_only`, `both`, and `se
 
 - `none`
   - no sentiment columns in the state
-  - loads the processed dataset `baseline`
+  - loads the processed dataset `price`
 
-- `zero`
+- `sparse`
   - sentiment columns included
   - no-news days use zero-filled sentiment values
-  - loads the processed dataset `sentiment_zero`
+  - loads the processed dataset `price_sentiment_sparse`
 
 - `decay`
   - sentiment columns included
   - no-news days carry the latest sentiment forward with exponential decay
   - includes `days_since_last_news`
-  - loads the processed dataset `augmented`
+  - loads the processed dataset `price_sentiment_decay`
 
 ## Canonical Run Names
 
@@ -41,9 +41,9 @@ Run names are built directly from the two axes:
 
 - `profit_none`
 - `sharpe_none`
-- `profit_zero`
+- `profit_sparse`
 - `profit_decay`
-- `sharpe_zero`
+- `sharpe_sparse`
 - `sharpe_decay`
 
 These names are intended to be self-explanatory:
@@ -66,9 +66,9 @@ Those aliases are only kept for backward compatibility. New runs should use `rew
 
 Clean comparisons now read naturally:
 
-- `profit_none` vs `profit_zero`
+- `profit_none` vs `profit_sparse`
 - `profit_none` vs `profit_decay`
-- `profit_zero` vs `profit_decay`
+- `profit_sparse` vs `profit_decay`
 - `sharpe_none` vs `sharpe_decay`
 
 This keeps the experimental story tied to the actual knobs the code is using.
@@ -85,5 +85,5 @@ python -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
 That runs:
 
 - `profit_none`
-- `profit_zero`
+- `profit_sparse`
 - `profit_decay`

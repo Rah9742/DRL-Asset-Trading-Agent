@@ -14,7 +14,7 @@ from ..config import ExperimentConfig
 from ..evaluation.benchmarks import default_processed_dataset_path, load_processed_dataset
 from .run_ablation import configure_experiment
 
-DEFAULT_SENTIMENT_VARIANTS = ("none", "zero", "decay")
+DEFAULT_SENTIMENT_VARIANTS = ("none", "sparse", "decay")
 
 
 def parse_args() -> argparse.Namespace:
@@ -28,7 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--sentiment-variants",
         nargs="+",
-        choices=["none", "zero", "decay"],
+        choices=["none", "sparse", "decay"],
         default=list(DEFAULT_SENTIMENT_VARIANTS),
         help="Sentiment variants to compare under profit reward.",
     )
@@ -97,7 +97,6 @@ def run_profit_sentiment_comparison(
 
             ddqn_metrics = ddqn_results["split_metrics"].copy()
             ddqn_metrics["comparison_group"] = run_name
-            ddqn_metrics["dataset_name"] = dataset_name
             per_seed_metrics.append(ddqn_metrics)
 
         variant_metrics = pd.concat(per_seed_metrics, ignore_index=True, sort=False)
@@ -109,7 +108,6 @@ def run_profit_sentiment_comparison(
                 "comparison_group": run_name,
                 "reward_mode": "profit",
                 "sentiment_variant": sentiment_variant,
-                "dataset_name": dataset_name,
                 "seed_count": len(seed_values),
                 "test_sharpe_ratio_mean": test_only["sharpe_ratio"].mean(),
                 "test_sharpe_ratio_std": test_only["sharpe_ratio"].std(ddof=0),

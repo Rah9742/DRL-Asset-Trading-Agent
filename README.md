@@ -41,7 +41,7 @@ Coursework-oriented codebase for evaluating reward engineering and state augment
 The experiment interface uses two explicit axes:
 
 - `reward_mode`: `profit` or `sharpe`
-- `sentiment_variant`: `none`, `zero`, or `decay`
+- `sentiment_variant`: `none`, `sparse`, or `decay`
 
 Run names are built directly from those choices, for example `profit_none` or `sharpe_decay`.
 

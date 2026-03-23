@@ -27,7 +27,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--sentiment-variants",
         nargs="+",
-        choices=sorted(("none", "zero", "decay")),
+        choices=sorted(("none", "sparse", "decay")),
         default=list(ETA_SWEEP_SENTIMENT_VARIANTS),
         help="Sentiment variants to include in the eta sweep.",
     )
@@ -113,7 +113,6 @@ def run_differential_sharpe_eta_sweep(
 
                 ddqn_metrics = ddqn_results["split_metrics"].copy()
                 ddqn_metrics["comparison_group"] = run_name
-                ddqn_metrics["dataset_name"] = dataset_name
                 eta_seed_frames.append(ddqn_metrics)
 
             eta_metrics = pd.concat(eta_seed_frames, ignore_index=True, sort=False)
@@ -125,7 +124,6 @@ def run_differential_sharpe_eta_sweep(
                     "comparison_group": run_name,
                     "reward_mode": variant_config.environment.reward_mode,
                     "sentiment_variant": variant_config.features.sentiment_variant,
-                    "dataset_name": dataset_name,
                     "differential_sharpe_eta": eta,
                     "seed_count": len(seed_values),
                     "test_cumulative_return_mean": test_only["cumulative_return"].mean(),

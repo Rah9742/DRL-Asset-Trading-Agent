@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--sentiment-variant",
-        choices=["none", "zero", "decay"],
+        choices=["none", "sparse", "decay"],
         default=None,
         help="Sentiment feature variant used to select the processed dataset.",
     )
@@ -80,7 +80,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--sentiment-imputation-mode",
-        choices=["zero", "decay"],
+        choices=["zero", "sparse", "decay"],
         default=None,
         help="Legacy alias for --sentiment-variant when using price-sentiment variants.",
     )
@@ -128,7 +128,6 @@ def main() -> None:
     )
 
     summary = results["split_metrics"].copy()
-    summary["dataset_name"] = dataset_name
     summary["reward_mode"] = config.environment.reward_mode
     summary["sentiment_variant"] = config.features.sentiment_variant
 

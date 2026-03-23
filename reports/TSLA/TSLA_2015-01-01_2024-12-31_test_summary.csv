@@ -1,0 +1,7 @@
+variant,strategy,state_mode,reward_mode,sentiment_imputation_mode,seed_count,test_sharpe_ratio_mean,test_sharpe_ratio_std,test_annualized_return_mean,test_annualized_return_std,test_max_drawdown_mean,test_max_drawdown_std
+shared_baselines,buy_and_hold,price_only,profit,none,1,2.1960482280441553,0.0,1.2783148584502162,0.0,-0.5157496256046374,0.0
+shared_baselines,random,price_only,profit,none,1,1.1226318652378682,0.0,0.519315302849293,0.0,-0.430999477216917,0.0
+baseline,double_dqn,price_only,profit,none,1,1.5555897581628857,0.0,0.4639764690730779,0.0,-0.2085749948719261,0.0
+reward_only,double_dqn,price_only,differential_sharpe,none,1,1.4510969754383278,0.0,0.6049529320539753,0.0,-0.4772295414233065,0.0
+state_only,double_dqn,price_sentiment,profit,decay,1,0.6452197294906643,0.0,0.2802050178927715,0.0,-0.5891638049049784,0.0
+both,double_dqn,price_sentiment,differential_sharpe,decay,1,1.4284522598656182,0.0,0.3630879056817755,0.0,-0.1668804308880611,0.0

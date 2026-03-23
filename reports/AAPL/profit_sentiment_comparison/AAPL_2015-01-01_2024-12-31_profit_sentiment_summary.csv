@@ -1,0 +1,4 @@
+comparison_group,reward_mode,sentiment_variant,seed_count,test_sharpe_ratio_mean,test_sharpe_ratio_std,test_annualized_return_mean,test_annualized_return_std,test_max_drawdown_mean,test_max_drawdown_std
+profit_decay,profit,decay,1,0.6273559147408319,0.0,0.0863676870169021,0.0,-0.2038889388536162,0.0
+profit_none,profit,none,1,0.4157383322028261,0.0,0.0682257551468104,0.0,-0.2325221563866265,0.0
+profit_zero,profit,zero,1,0.7389013806612023,0.0,0.1007416117214687,0.0,-0.1790270452723608,0.0

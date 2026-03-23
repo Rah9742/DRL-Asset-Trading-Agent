@@ -1,0 +1,13 @@
+{
+  "dataset_name": "heuristic_reference",
+  "scaler_path": "reports/AAPL/heuristics/heuristic_reference/AAPL_2015-01-01_2024-12-31_feature_scaler.json",
+  "metrics_path": "reports/AAPL/heuristics/heuristic_reference/AAPL_2015-01-01_2024-12-31_metrics.csv",
+  "history_paths": [
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_train_buy_and_hold.csv",
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_train_random.csv",
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_validation_buy_and_hold.csv",
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_validation_random.csv",
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_test_buy_and_hold.csv",
+    "reports/AAPL/heuristics/heuristic_reference/histories/AAPL_2015-01-01_2024-12-31_test_random.csv"
+  ]
+}
