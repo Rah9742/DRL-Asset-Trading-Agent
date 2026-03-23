@@ -146,7 +146,8 @@ class SentimentDataLoader:
 
         return response
 
-    def default_paths(self, query: SentimentQuery) -> SentimentPaths:
+    @staticmethod
+    def default_paths(query: SentimentQuery) -> SentimentPaths:
         """Build default output paths for a given sentiment query."""
         start_label = _timestamp_to_date_label(query.time_from) if query.time_from else "start"
         end_label = _timestamp_to_date_label(query.time_to) if query.time_to else "latest"

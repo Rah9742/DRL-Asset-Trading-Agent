@@ -107,13 +107,17 @@ class TradingEnvironment:
 
     def _differential_sharpe_reward(self, step_return: float) -> float:
         """Compute an online differential Sharpe reward using exponentially weighted moments."""
-        if self.dsr_steps < 2:
+        variance = self.dsr_mean_squared_return - self.dsr_mean_return ** 2
+        # Fall back to plain return until the running moments are both warmed up and numerically stable.
+        use_plain_return = (
+            self.dsr_steps < self.config.differential_sharpe_warmup_steps
+            or variance < self.config.differential_sharpe_min_variance
+        )
+
+        if use_plain_return:
             reward = step_return
         else:
-            variance = max(
-                self.dsr_mean_squared_return - self.dsr_mean_return ** 2,
-                self.config.differential_sharpe_epsilon,
-            )
+            variance = max(variance, self.config.differential_sharpe_epsilon)
             numerator = (
                 self.dsr_mean_squared_return * (step_return - self.dsr_mean_return)
                 - 0.5 * self.dsr_mean_return * (step_return ** 2 - self.dsr_mean_squared_return)

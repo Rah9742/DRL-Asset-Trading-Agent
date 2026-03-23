@@ -29,6 +29,7 @@ This project uses a 2x2 ablation design with two experiment axes:
 - `differential_sharpe`
   - the reward is an online differential Sharpe approximation
   - this is the reward-engineering variant
+  - the checked-in default uses `differential_sharpe_eta = 0.005`, with a recommended sweep over `0.001`, `0.005`, and `0.01`
   - see [`reward_engineering.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/reward_engineering.md)
 
 ## Four Variants

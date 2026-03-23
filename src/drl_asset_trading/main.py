@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 
 from .config import ExperimentConfig, load_env_file
+from .data.price_loader import MarketDataLoader
 from .data.run_price_loader import load_and_cache_price_data
-from .data.run_sentiment_loader import load_and_cache_sentiment_data
+from .data.run_sentiment_loader import build_sentiment_query, load_and_cache_sentiment_data
+from .data.sentiment_loader import SentimentDataLoader
 from .experiments.run_full_comparison import run_full_comparison
 from .features.run_feature_builder import build_and_save_feature_datasets
 
@@ -56,6 +58,16 @@ def parse_args() -> argparse.Namespace:
         default=1000,
         help="Alpha Vantage sentiment batch limit.",
     )
+    parser.add_argument(
+        "--force-sentiment-download",
+        action="store_true",
+        help="Redownload sentiment artifacts even if the cached raw/interim files already exist.",
+    )
+    parser.add_argument(
+        "--seeds",
+        default=None,
+        help="Optional comma-separated seed list overriding experiment.seed_values.",
+    )
     return parser.parse_args()
 
 
@@ -70,22 +82,44 @@ def main() -> None:
 
     print(f"Running pipeline for ticker {config.data.ticker}", flush=True)
 
-    print("Step 1/4: loading price data", flush=True)
+    price_path = MarketDataLoader(config.data).default_csv_path()
+    if price_path.exists() and not args.force_price_download:
+        print("Step 1/4: using cached price data", flush=True)
+    else:
+        print("Step 1/4: loading price data", flush=True)
     _, price_path = load_and_cache_price_data(
         config=config,
         force_download=args.force_price_download,
     )
     print(f"Price CSV ready: {price_path}", flush=True)
 
-    print("Step 2/4: loading sentiment data", flush=True)
-    sentiment_result = load_and_cache_sentiment_data(
+    sentiment_query = build_sentiment_query(
         config=config,
         ticker=config.data.ticker,
         topics=args.sentiment_topics,
         sort=args.sentiment_sort,
         limit=args.sentiment_limit,
     )
-    print(f"Sentiment daily CSV ready: {sentiment_result['paths'].daily_sentiment_csv}", flush=True)
+    sentiment_paths = SentimentDataLoader.default_paths(sentiment_query)
+    sentiment_cache_ready = (
+        sentiment_paths.raw_json.exists()
+        and sentiment_paths.articles_csv.exists()
+        and sentiment_paths.daily_sentiment_csv.exists()
+    )
+
+    if sentiment_cache_ready and not args.force_sentiment_download:
+        print("Step 2/4: using cached sentiment data", flush=True)
+        print(f"Sentiment daily CSV ready: {sentiment_paths.daily_sentiment_csv}", flush=True)
+    else:
+        print("Step 2/4: loading sentiment data", flush=True)
+        sentiment_result = load_and_cache_sentiment_data(
+            config=config,
+            ticker=config.data.ticker,
+            topics=args.sentiment_topics,
+            sort=args.sentiment_sort,
+            limit=args.sentiment_limit,
+        )
+        print(f"Sentiment daily CSV ready: {sentiment_result['paths'].daily_sentiment_csv}", flush=True)
 
     print("Step 3/4: building processed feature datasets", flush=True)
     dataset_paths = build_and_save_feature_datasets(config=config, skip_sentiment=False)
@@ -96,6 +130,7 @@ def main() -> None:
     results = run_full_comparison(
         config=config,
         sentiment_imputation_mode=args.sentiment_imputation_mode,
+        seeds=[int(chunk.strip()) for chunk in args.seeds.split(",") if chunk.strip()] if args.seeds else None,
     )
     print(f"Comparison table: {results['comparison_path']}", flush=True)
     print(f"Equity plot: {results['equity_plot_path']}", flush=True)

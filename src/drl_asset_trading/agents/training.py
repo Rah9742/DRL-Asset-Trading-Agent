@@ -43,6 +43,25 @@ def evaluate_agent(
     return history, metrics
 
 
+def _validation_selection_key(validation_metrics: dict[str, float], validation_metric: str) -> tuple[float, ...]:
+    """Build the checkpoint-selection key from validation metrics."""
+    if validation_metric == "sharpe_ratio_then_cumulative_return":
+        return (
+            float(validation_metrics["sharpe_ratio"]),
+            float(validation_metrics["cumulative_return"]),
+        )
+    if validation_metric in validation_metrics:
+        return (float(validation_metrics[validation_metric]),)
+    raise ValueError(f"Unsupported validation metric: {validation_metric}")
+
+
+def _format_validation_value(selection_key: tuple[float, ...]) -> str:
+    """Format the checkpoint-selection key for logs."""
+    if len(selection_key) == 1:
+        return f"{selection_key[0]:.6f}"
+    return ", ".join(f"{value:.6f}" for value in selection_key)
+
+
 def train_double_dqn(
     dataset: pd.DataFrame,
     config: ExperimentConfig,
@@ -75,7 +94,7 @@ def train_double_dqn(
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    best_validation_value = float("-inf")
+    best_validation_key: tuple[float, ...] | None = None
     best_checkpoint_path = checkpoint_dir / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}_best.pt"
     training_log_rows: list[dict[str, float | int]] = []
 
@@ -101,16 +120,20 @@ def train_double_dqn(
             done = step.done
 
         validation_history, validation_metrics = evaluate_agent(agent, splits["validation"], config)
-        validation_value = float(validation_metrics[config.rl.validation_metric])
+        validation_key = _validation_selection_key(validation_metrics, config.rl.validation_metric)
 
         average_loss = float(np.mean(episode_losses)) if episode_losses else 0.0
         training_log_rows.append(
             {
                 "episode": episode,
+                "seed": config.experiment.random_seed,
                 "run_name": run_name,
                 "state_mode": config.features.state_mode,
                 "reward_mode": config.environment.reward_mode,
                 "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                "differential_sharpe_eta": config.environment.differential_sharpe_eta,
+                "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
+                "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
                 "episode_reward": episode_reward,
                 "average_loss": average_loss,
                 "epsilon": agent.epsilon,
@@ -119,6 +142,7 @@ def train_double_dqn(
                 "validation_annualized_volatility": validation_metrics["annualized_volatility"],
                 "validation_sharpe_ratio": validation_metrics["sharpe_ratio"],
                 "validation_max_drawdown": validation_metrics["max_drawdown"],
+                "validation_selector": config.rl.validation_metric,
             }
         )
 
@@ -131,22 +155,28 @@ def train_double_dqn(
                 f"[{run_name}] episode {episode}/{config.rl.training_episodes} "
                 f"reward={episode_reward:.6f} loss={average_loss:.6f} "
                 f"epsilon={agent.epsilon:.4f} "
-                f"val_{config.rl.validation_metric}={validation_value:.6f}",
+                f"val_{config.rl.validation_metric}={_format_validation_value(validation_key)}",
                 flush=True,
             )
 
-        if validation_value > best_validation_value:
-            best_validation_value = validation_value
+        if best_validation_key is None or validation_key > best_validation_key:
+            best_validation_key = validation_key
             agent.save_checkpoint(
                 best_checkpoint_path,
                 metadata={
                     "episode": episode,
                     "validation_metrics": validation_metrics,
+                    "validation_selector": config.rl.validation_metric,
+                    "validation_selection_key": list(validation_key),
                     "dataset": dataset_name,
                     "run_name": run_name,
+                    "seed": config.experiment.random_seed,
                     "state_mode": config.features.state_mode,
                     "reward_mode": config.environment.reward_mode,
                     "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                    "differential_sharpe_eta": config.environment.differential_sharpe_eta,
+                    "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
+                    "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
                 },
             )
             validation_history.to_csv(
@@ -155,7 +185,7 @@ def train_double_dqn(
             )
             print(
                 f"[{run_name}] new best checkpoint at episode {episode} "
-                f"with val_{config.rl.validation_metric}={validation_value:.6f}",
+                f"with val_{config.rl.validation_metric}={_format_validation_value(validation_key)}",
                 flush=True,
             )
 
@@ -171,10 +201,14 @@ def train_double_dqn(
         history, metrics = evaluate_agent(agent, split_frame, config)
         split_metrics_rows.append(
             {
+                "seed": config.experiment.random_seed,
                 "run_name": run_name,
                 "state_mode": config.features.state_mode,
                 "reward_mode": config.environment.reward_mode,
                 "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                "differential_sharpe_eta": config.environment.differential_sharpe_eta,
+                "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
+                "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
                 "dataset": split_name,
                 "strategy": "double_dqn",
                 **metrics,

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -56,8 +56,11 @@ class EnvironmentConfig:
     transaction_cost: float = 0.001
     reward_mode: str = "profit"
     annualization_factor: int = 252
-    differential_sharpe_eta: float = 0.01
+    differential_sharpe_eta: float = 0.005
+    differential_sharpe_eta_candidates: list[float] = field(default_factory=lambda: [0.001, 0.005, 0.01])
     differential_sharpe_epsilon: float = 1e-8
+    differential_sharpe_warmup_steps: int = 20
+    differential_sharpe_min_variance: float = 1e-6
 
 
 @dataclass(slots=True)
@@ -70,6 +73,7 @@ class SplitConfig:
 @dataclass(slots=True)
 class ExperimentOptions:
     random_seed: int = 42
+    seed_values: list[int] = field(default_factory=lambda: [42, 43, 44, 45, 46])
 
 
 @dataclass(slots=True)
@@ -86,7 +90,7 @@ class RLConfig:
     epsilon_start: float = 1.0
     epsilon_end: float = 0.05
     epsilon_decay_steps: int = 5_000
-    validation_metric: str = "cumulative_return"
+    validation_metric: str = "sharpe_ratio"
     checkpoint_dir: str = "checkpoints/double_dqn"
     results_dir: str = "results/double_dqn"
     gradient_clip_norm: float = 1.0

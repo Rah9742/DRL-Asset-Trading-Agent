@@ -25,7 +25,10 @@
     "reward_mode": "profit",
     "annualization_factor": 252,
     "differential_sharpe_eta": 0.01,
-    "differential_sharpe_epsilon": 1e-08
+    "differential_sharpe_eta_candidates": [0.001, 0.005, 0.01],
+    "differential_sharpe_epsilon": 1e-08,
+    "differential_sharpe_warmup_steps": 20,
+    "differential_sharpe_min_variance": 1e-06
   },
   "splits": {
     "train_end": "2020-12-31",
@@ -33,16 +36,17 @@
     "test_end": "2024-12-31"
   },
   "experiment": {
-    "random_seed": 42
+    "random_seed": 42,
+    "seed_values": [42]
   },
   "rl": {
     "algorithm": "double_dqn",
-    "hidden_dim": 64,
-    "learning_rate": 0.001,
+    "hidden_dim": 128,
+    "learning_rate": 0.0001,
     "gamma": 0.99,
-    "batch_size": 64,
-    "buffer_capacity": 10000,
-    "target_update_frequency": 100,
+    "batch_size": 128,
+    "buffer_capacity": 25000,
+    "target_update_frequency": 250,
     "training_episodes": 50,
     "warmup_steps": 250,
     "epsilon_start": 1.0,
