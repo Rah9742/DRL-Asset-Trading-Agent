@@ -1,4 +1,4 @@
-"""Run all ablation variants and produce one combined comparison report."""
+"""Run heuristic baselines plus all six DDQN reward/sentiment combinations."""
 
 from __future__ import annotations
 
@@ -10,25 +10,20 @@ import numpy as np
 import pandas as pd
 
 from ..agents.training import train_double_dqn
+from ..artifacts import experiment_manifest, write_json_artifact
 from ..config import ExperimentConfig
 from ..evaluation import plot_drawdowns, plot_equity_curves, run_benchmark_suite, save_benchmark_outputs
 from ..evaluation.benchmarks import default_processed_dataset_path, load_processed_dataset
-from .run_ablation import ABLATION_VARIANTS, configure_variant
+from .run_ablation import configure_experiment
 
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments for the full comparison runner."""
-    parser = argparse.ArgumentParser(description="Run all ablation variants and build a final comparison table.")
+    parser = argparse.ArgumentParser(description="Run heuristic baselines and all six DDQN combinations.")
     parser.add_argument(
         "--config",
         default="configs/baseline_experiment.json",
         help="Path to the experiment config JSON.",
-    )
-    parser.add_argument(
-        "--sentiment-imputation-mode",
-        choices=["zero", "decay"],
-        default="decay",
-        help="Sentiment imputation mode used for price_sentiment variants.",
     )
     parser.add_argument(
         "--seeds",
@@ -40,10 +35,9 @@ def parse_args() -> argparse.Namespace:
 
 def run_full_comparison(
     config: ExperimentConfig,
-    sentiment_imputation_mode: str = "decay",
     seeds: list[int] | None = None,
 ) -> dict[str, object]:
-    """Run heuristics and Double DQN across all configured ablation variants."""
+    """Run heuristics and all six DDQN reward/sentiment comparisons."""
     base_config = deepcopy(config)
     seed_values = seeds or list(base_config.experiment.seed_values)
     comparison_rows: list[pd.DataFrame] = []
@@ -53,10 +47,10 @@ def run_full_comparison(
     report_dir.mkdir(parents=True, exist_ok=True)
 
     heuristic_config = deepcopy(config)
-    heuristic_config, heuristic_dataset_name, heuristic_run_name = configure_variant(
+    heuristic_config, heuristic_dataset_name, heuristic_run_name = configure_experiment(
         config=heuristic_config,
-        variant_name="baseline",
-        sentiment_imputation_mode=sentiment_imputation_mode,
+        reward_mode="profit",
+        sentiment_variant="none",
     )
     heuristic_dataset_path = default_processed_dataset_path(
         dataset_name=heuristic_dataset_name,
@@ -70,16 +64,16 @@ def run_full_comparison(
         )
 
     heuristic_dataset = load_processed_dataset(heuristic_dataset_path)
-    heuristic_metrics, heuristic_histories = run_benchmark_suite(heuristic_dataset, heuristic_config)
-    heuristic_metrics["variant"] = "shared_baselines"
+    heuristic_metrics, heuristic_histories, heuristic_scaler = run_benchmark_suite(heuristic_dataset, heuristic_config)
+    heuristic_metrics["comparison_group"] = "shared_baselines"
     heuristic_metrics["run_name"] = "heuristic_reference"
-    heuristic_metrics["state_mode"] = "price_only"
     heuristic_metrics["reward_mode"] = "profit"
-    heuristic_metrics["sentiment_imputation_mode"] = "none"
+    heuristic_metrics["sentiment_variant"] = "none"
     heuristic_metrics["dataset_name"] = heuristic_dataset_name
-    save_benchmark_outputs(
+    heuristic_metrics_path, heuristic_history_paths, heuristic_scaler_path, heuristic_manifest_path = save_benchmark_outputs(
         metrics=heuristic_metrics,
         histories=heuristic_histories,
+        scaler=heuristic_scaler,
         dataset_name="heuristic_reference",
         ticker=heuristic_config.data.ticker,
         start_date=heuristic_config.data.start_date,
@@ -92,12 +86,21 @@ def run_full_comparison(
     ddqn_seed_metrics: list[pd.DataFrame] = []
     ddqn_summary_rows: list[dict[str, object]] = []
 
-    for variant_name in ABLATION_VARIANTS:
+    experiment_settings = [
+        ("profit", "none"),
+        ("profit", "zero"),
+        ("profit", "decay"),
+        ("sharpe", "none"),
+        ("sharpe", "zero"),
+        ("sharpe", "decay"),
+    ]
+
+    for reward_mode, run_sentiment_variant in experiment_settings:
         variant_config = deepcopy(config)
-        variant_config, dataset_name, run_name = configure_variant(
+        variant_config, dataset_name, run_name = configure_experiment(
             config=variant_config,
-            variant_name=variant_name,
-            sentiment_imputation_mode=sentiment_imputation_mode,
+            reward_mode=reward_mode,
+            sentiment_variant=run_sentiment_variant,
         )
         dataset_path = default_processed_dataset_path(
             dataset_name=dataset_name,
@@ -112,9 +115,9 @@ def run_full_comparison(
 
         dataset = load_processed_dataset(dataset_path)
         print(
-            f"Running variant '{variant_name}' "
-            f"(state_mode={variant_config.features.state_mode}, reward_mode={variant_config.environment.reward_mode}, "
-            f"sentiment_imputation_mode={variant_config.features.sentiment_imputation_mode}, seeds={seed_values})",
+            f"Running experiment '{run_name}' "
+            f"(reward_mode={variant_config.environment.reward_mode}, "
+            f"sentiment_variant={variant_config.features.sentiment_variant}, seeds={seed_values})",
             flush=True,
         )
 
@@ -135,7 +138,7 @@ def run_full_comparison(
             )
 
             ddqn_metrics = ddqn_results["split_metrics"].copy()
-            ddqn_metrics["variant"] = variant_name
+            ddqn_metrics["comparison_group"] = run_name
             ddqn_metrics["dataset_name"] = dataset_name
             ddqn_metrics["seed"] = seed
             per_seed_metrics.append(ddqn_metrics)
@@ -148,11 +151,10 @@ def run_full_comparison(
         test_only = variant_metrics.loc[variant_metrics["dataset"] == "test"].copy()
         ddqn_summary_rows.append(
             {
-                "variant": variant_name,
+                "comparison_group": run_name,
                 "strategy": "double_dqn",
-                "state_mode": variant_config.features.state_mode,
                 "reward_mode": variant_config.environment.reward_mode,
-                "sentiment_imputation_mode": variant_config.features.sentiment_imputation_mode,
+                "sentiment_variant": variant_config.features.sentiment_variant,
                 "dataset_name": dataset_name,
                 "seed_count": len(seed_values),
                 "test_sharpe_ratio_mean": test_only["sharpe_ratio"].mean(),
@@ -178,11 +180,10 @@ def run_full_comparison(
     for _, row in heuristic_test.iterrows():
         heuristic_summary_rows.append(
             {
-                "variant": "shared_baselines",
+                "comparison_group": "shared_baselines",
                 "strategy": row["strategy"],
-                "state_mode": row["state_mode"],
                 "reward_mode": row["reward_mode"],
-                "sentiment_imputation_mode": row["sentiment_imputation_mode"],
+                "sentiment_variant": row["sentiment_variant"],
                 "dataset_name": heuristic_dataset_name,
                 "seed_count": 1,
                 "test_sharpe_ratio_mean": row["sharpe_ratio"],
@@ -197,6 +198,24 @@ def run_full_comparison(
     summary_table = pd.DataFrame(heuristic_summary_rows + ddqn_summary_rows)
     summary_path = report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_summary.csv"
     summary_table.to_csv(summary_path, index=False)
+    manifest_path = write_json_artifact(
+        report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_manifest.json",
+        experiment_manifest(
+            base_config,
+            dataset_name="comparison_suite",
+            run_name="full_comparison",
+            scaler_path=heuristic_scaler_path,
+            extra={
+                "comparison_path": comparison_path,
+                "ddqn_seed_metrics_path": ddqn_seed_metrics_path,
+                "summary_path": summary_path,
+                "heuristic_metrics_path": heuristic_metrics_path,
+                "heuristic_manifest_path": heuristic_manifest_path,
+                "seed_values": seed_values,
+                "comparison_groups": [f"{reward_mode}_{sentiment_variant}" for reward_mode, sentiment_variant in experiment_settings],
+            },
+        ),
+    )
 
     equity_plot_path = plot_equity_curves(
         histories=test_histories_for_plots,
@@ -225,6 +244,7 @@ def run_full_comparison(
         "equity_plot_path": equity_plot_path,
         "drawdown_plot_path": drawdown_plot_path,
         "report_dir": report_dir,
+        "manifest_path": manifest_path,
     }
 
 
@@ -265,7 +285,6 @@ def main() -> None:
     seeds = _parse_seed_override(args.seeds) if args.seeds else None
     run_full_comparison(
         config=config,
-        sentiment_imputation_mode=args.sentiment_imputation_mode,
         seeds=seeds,
     )
 

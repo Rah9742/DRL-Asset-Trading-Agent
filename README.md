@@ -36,6 +36,15 @@ Coursework-oriented codebase for evaluating reward engineering and state augment
 3. Implement DQN/Double DQN agent training and validation.
 4. Add reward-engineering and state-augmentation variants, then compare out-of-sample performance.
 
+## Experiment Naming
+
+The experiment interface uses two explicit axes:
+
+- `reward_mode`: `profit` or `sharpe`
+- `sentiment_variant`: `none`, `zero`, or `decay`
+
+Run names are built directly from those choices, for example `profit_none` or `sharpe_decay`.
+
 ## Setup
 
 ```bash

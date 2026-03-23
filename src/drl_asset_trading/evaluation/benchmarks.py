@@ -6,12 +6,14 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..artifacts import write_json_artifact
 from ..config import EnvironmentConfig, ExperimentConfig
 from ..data import split_by_dates
 from ..envs import TradingEnvironment
 from ..strategies import BuyAndHoldStrategy, RandomStrategy
 from .metrics import compute_performance_metrics
 from .runner import run_strategy_episode
+from .scaling import FeatureScaler, save_feature_scaler, scale_dataset_splits
 
 NON_FEATURE_COLUMNS = ["Open", "High", "Low", "Close", "Adj Close", "Volume", "Ticker"]
 
@@ -32,10 +34,14 @@ def derive_feature_columns(dataset: pd.DataFrame) -> list[str]:
     return [column for column in dataset.columns if column not in NON_FEATURE_COLUMNS]
 
 
-def run_benchmark_suite(dataset: pd.DataFrame, config: ExperimentConfig) -> tuple[pd.DataFrame, dict[str, pd.DataFrame]]:
+def run_benchmark_suite(
+    dataset: pd.DataFrame,
+    config: ExperimentConfig,
+) -> tuple[pd.DataFrame, dict[str, pd.DataFrame], FeatureScaler]:
     """Run heuristic benchmarks across train, validation, and test splits."""
     feature_columns = derive_feature_columns(dataset)
     splits = split_by_dates(dataset, config.splits)
+    scaled_splits, scaler = scale_dataset_splits(splits, feature_columns)
     strategies = {
         "buy_and_hold": BuyAndHoldStrategy(),
         "random": RandomStrategy(seed=config.experiment.random_seed),
@@ -44,7 +50,7 @@ def run_benchmark_suite(dataset: pd.DataFrame, config: ExperimentConfig) -> tupl
     metrics_rows: list[dict[str, object]] = []
     history_frames: dict[str, pd.DataFrame] = {}
 
-    for split_name, split_frame in splits.items():
+    for split_name, split_frame in scaled_splits.items():
         for strategy_name, strategy in strategies.items():
             environment = TradingEnvironment(
                 market_data=split_frame,
@@ -66,21 +72,23 @@ def run_benchmark_suite(dataset: pd.DataFrame, config: ExperimentConfig) -> tupl
             )
             history_frames[f"{split_name}_{strategy_name}"] = history
 
-    return pd.DataFrame(metrics_rows), history_frames
+    return pd.DataFrame(metrics_rows), history_frames, scaler
 
 
 def save_benchmark_outputs(
     metrics: pd.DataFrame,
     histories: dict[str, pd.DataFrame],
+    scaler: FeatureScaler,
     dataset_name: str,
     ticker: str,
     start_date: str,
     end_date: str,
     base_dir: str | Path = "results",
-) -> tuple[Path, list[Path]]:
+) -> tuple[Path, list[Path], Path, Path]:
     """Persist benchmark metrics and episode histories."""
     stem = f"{ticker}_{start_date}_{end_date}"
     base_path = Path(base_dir)
+    dataset_base_path = base_path / dataset_name
     metrics_path = base_path / dataset_name / f"{stem}_metrics.csv"
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
     metrics.to_csv(metrics_path, index=False)
@@ -94,4 +102,14 @@ def save_benchmark_outputs(
         history.to_csv(history_path, index=False)
         history_paths.append(history_path)
 
-    return metrics_path, history_paths
+    scaler_path = save_feature_scaler(scaler, dataset_base_path / f"{stem}_feature_scaler.json")
+    manifest_path = write_json_artifact(
+        dataset_base_path / f"{stem}_manifest.json",
+        {
+            "dataset_name": dataset_name,
+            "scaler_path": str(scaler_path),
+            "metrics_path": str(metrics_path),
+            "history_paths": [str(path) for path in history_paths],
+        },
+    )
+    return metrics_path, history_paths, scaler_path, manifest_path

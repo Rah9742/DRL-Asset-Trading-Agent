@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from ..config import FeatureConfig
+from ..config import FeatureConfig, normalize_sentiment_variant
 
 PRICE_COLUMNS = ["Open", "High", "Low", "Close", "Adj Close", "Volume", "Ticker"]
 SENTIMENT_COLUMNS = [
@@ -178,14 +178,13 @@ def load_sentiment_daily_csv(path: str | Path) -> pd.DataFrame:
     return pd.read_csv(path)
 
 
-def resolve_processed_dataset_name(state_mode: str, sentiment_imputation_mode: str) -> str:
-    """Map an ablation state configuration to a processed dataset name."""
-    if state_mode == "price_only":
+def resolve_processed_dataset_name(sentiment_variant: str) -> str:
+    """Map a sentiment variant to a processed dataset name."""
+    sentiment_variant = normalize_sentiment_variant(sentiment_variant)
+    if sentiment_variant == "none":
         return "baseline"
-    if state_mode != "price_sentiment":
-        raise ValueError(f"Unsupported state mode: {state_mode}")
-    if sentiment_imputation_mode == "zero":
+    if sentiment_variant == "zero":
         return "sentiment_zero"
-    if sentiment_imputation_mode == "decay":
+    if sentiment_variant == "decay":
         return "augmented"
-    raise ValueError(f"Unsupported sentiment imputation mode: {sentiment_imputation_mode}")
+    raise ValueError(f"Unsupported sentiment variant: {sentiment_variant}")

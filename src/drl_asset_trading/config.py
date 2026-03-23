@@ -37,6 +37,7 @@ class DataConfig:
 
 @dataclass(slots=True)
 class FeatureConfig:
+    sentiment_variant: str = "none"
     state_mode: str = "price_only"
     include_returns: bool = True
     include_log_returns: bool = True
@@ -110,10 +111,25 @@ class ExperimentConfig:
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "ExperimentConfig":
         """Build a typed experiment config from a dictionary payload."""
+        feature_payload = dict(payload.get("features", {}))
+        environment_payload = dict(payload.get("environment", {}))
+
+        sentiment_variant = feature_payload.get("sentiment_variant")
+        state_mode = feature_payload.get("state_mode")
+        sentiment_imputation_mode = feature_payload.get("sentiment_imputation_mode")
+        feature_payload["sentiment_variant"] = normalize_sentiment_variant(
+            sentiment_variant=sentiment_variant,
+            state_mode=state_mode,
+            sentiment_imputation_mode=sentiment_imputation_mode,
+        )
+        feature_payload["state_mode"] = state_mode_from_sentiment_variant(feature_payload["sentiment_variant"])
+        feature_payload["sentiment_imputation_mode"] = feature_payload["sentiment_variant"]
+        environment_payload["reward_mode"] = normalize_reward_mode(environment_payload.get("reward_mode", "profit"))
+
         return cls(
             data=DataConfig(**payload.get("data", {})),
-            features=FeatureConfig(**payload.get("features", {})),
-            environment=EnvironmentConfig(**payload.get("environment", {})),
+            features=FeatureConfig(**feature_payload),
+            environment=EnvironmentConfig(**environment_payload),
             splits=SplitConfig(**payload.get("splits", {})),
             experiment=ExperimentOptions(**payload.get("experiment", {})),
             rl=RLConfig(**payload.get("rl", {})),
@@ -125,3 +141,43 @@ class ExperimentConfig:
         with Path(path).open("r", encoding="utf-8") as handle:
             payload = json.load(handle)
         return cls.from_dict(payload)
+
+
+def normalize_reward_mode(reward_mode: str) -> str:
+    """Map user-facing and legacy reward names to the canonical internal label."""
+    normalized = reward_mode.strip().lower()
+    if normalized == "profit":
+        return "profit"
+    if normalized in {"sharpe", "differential_sharpe"}:
+        return "sharpe"
+    raise ValueError(f"Unsupported reward mode: {reward_mode}")
+
+
+def normalize_sentiment_variant(
+    sentiment_variant: str | None,
+    state_mode: str | None = None,
+    sentiment_imputation_mode: str | None = None,
+) -> str:
+    """Map new and legacy sentiment settings to the canonical variant label."""
+    if sentiment_variant is not None:
+        normalized = sentiment_variant.strip().lower()
+        if normalized in {"none", "zero", "decay"}:
+            return normalized
+        raise ValueError(f"Unsupported sentiment variant: {sentiment_variant}")
+
+    if sentiment_imputation_mode is not None:
+        normalized = sentiment_imputation_mode.strip().lower()
+        if normalized in {"none", "zero", "decay"}:
+            return normalized
+        raise ValueError(f"Unsupported sentiment mode: {sentiment_imputation_mode}")
+
+    if state_mode == "price_only":
+        return "none"
+    if state_mode == "price_sentiment":
+        return "zero"
+    return "none"
+
+
+def state_mode_from_sentiment_variant(sentiment_variant: str) -> str:
+    """Derive the legacy state-mode label from the sentiment variant."""
+    return "price_only" if sentiment_variant == "none" else "price_sentiment"

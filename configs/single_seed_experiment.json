@@ -7,7 +7,7 @@
     "interval": "1d"
   },
   "features": {
-    "state_mode": "price_only",
+    "sentiment_variant": "none",
     "include_returns": true,
     "include_log_returns": true,
     "include_momentum": true,
@@ -16,7 +16,6 @@
     "lookback_window": 14,
     "sentiment_lag_days": 1,
     "sentiment_fill_value": 0.0,
-    "sentiment_imputation_mode": "zero",
     "sentiment_decay_rate": 0.25
   },
   "environment": {

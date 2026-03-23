@@ -10,6 +10,7 @@ from .data.run_price_loader import load_and_cache_price_data
 from .data.run_sentiment_loader import build_sentiment_query, load_and_cache_sentiment_data
 from .data.sentiment_loader import SentimentDataLoader
 from .experiments.run_full_comparison import run_full_comparison
+from .experiments.run_profit_sentiment_comparison import run_profit_sentiment_comparison
 from .features.run_feature_builder import build_and_save_feature_datasets
 
 
@@ -25,12 +26,6 @@ def parse_args() -> argparse.Namespace:
         "--ticker",
         default=None,
         help="Override the ticker defined in the config file.",
-    )
-    parser.add_argument(
-        "--sentiment-imputation-mode",
-        choices=["zero", "decay"],
-        default="decay",
-        help="Sentiment imputation mode for price_sentiment variants.",
     )
     parser.add_argument(
         "--env-file",
@@ -67,6 +62,12 @@ def parse_args() -> argparse.Namespace:
         "--seeds",
         default=None,
         help="Optional comma-separated seed list overriding experiment.seed_values.",
+    )
+    parser.add_argument(
+        "--comparison-mode",
+        choices=["full", "profit_sentiment"],
+        default="full",
+        help="Comparison runner to execute after feature building. Default runs buy-and-hold, random, and all six DDQN combinations.",
     )
     return parser.parse_args()
 
@@ -126,15 +127,26 @@ def main() -> None:
     for dataset_name, dataset_path in dataset_paths.items():
         print(f"{dataset_name} dataset ready: {dataset_path}", flush=True)
 
-    print("Step 4/4: running full comparison", flush=True)
-    results = run_full_comparison(
-        config=config,
-        sentiment_imputation_mode=args.sentiment_imputation_mode,
-        seeds=[int(chunk.strip()) for chunk in args.seeds.split(",") if chunk.strip()] if args.seeds else None,
-    )
-    print(f"Comparison table: {results['comparison_path']}", flush=True)
-    print(f"Equity plot: {results['equity_plot_path']}", flush=True)
-    print(f"Drawdown plot: {results['drawdown_plot_path']}", flush=True)
+    seeds = [int(chunk.strip()) for chunk in args.seeds.split(",") if chunk.strip()] if args.seeds else None
+    print(f"Step 4/4: running {args.comparison_mode} comparison", flush=True)
+    if args.comparison_mode == "full":
+        results = run_full_comparison(
+            config=config,
+            seeds=seeds,
+        )
+        print(f"Comparison table: {results['comparison_path']}", flush=True)
+        print(f"Equity plot: {results['equity_plot_path']}", flush=True)
+        print(f"Drawdown plot: {results['drawdown_plot_path']}", flush=True)
+
+    elif args.comparison_mode == "profit_sentiment":
+        results = run_profit_sentiment_comparison(
+            config=config,
+            seeds=seeds,
+        )
+        print(f"Comparison table: {results['comparison_path']}", flush=True)
+        print(f"Summary: {results['summary_path']}", flush=True)
+
+    return
 
 
 if __name__ == "__main__":

@@ -14,9 +14,9 @@ where:
 - `V_{t-1}` is the portfolio value at the previous step
 - `V_t` is computed after the environment applies the action and any transaction costs for that step
 
-## Differential Sharpe Reward
+## Sharpe Reward
 
-The reward-engineering variant uses an online differential Sharpe approximation based on exponentially weighted return moments.
+The `sharpe` reward mode uses an online differential Sharpe approximation based on exponentially weighted return moments.
 
 Let:
 
@@ -32,7 +32,7 @@ where:
 - `B_t` is the exponentially weighted second moment of returns
 - `eta` is the smoothing parameter (`differential_sharpe_eta`)
 
-The implemented differential Sharpe reward uses the previous-step moments:
+The implemented reward uses the previous-step moments:
 
 ```text
 D_t =
@@ -80,7 +80,7 @@ For daily data, the codebase now treats `0.005` as the default working value and
 
 The candidate grid is stored in `environment.differential_sharpe_eta_candidates` so the sweep is reproducible from config.
 
-To run the dedicated eta sweep for the two differential-Sharpe variants (`reward_only` and `both`):
+To run the dedicated eta sweep for the `sharpe` reward mode across multiple sentiment variants:
 
 ```bash
 python -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
@@ -91,7 +91,7 @@ Optional overrides:
 
 - `--etas 0.001 0.005 0.01`
 - `--seeds 42 43 44 45 46`
-- `--variants reward_only both`
+- `--sentiment-variants none decay`
 
 ## Checkpoint Selection
 
@@ -110,7 +110,7 @@ The checked-in default is `sharpe_ratio`.
 ## Interpretation
 
 - `profit` reward encourages pure return maximisation
-- `differential_sharpe` encourages return quality by penalising unstable return paths through the Sharpe-style denominator
+- `sharpe` encourages return quality by penalising unstable return paths through the Sharpe-style denominator
 
 ## Location in Code
 

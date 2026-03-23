@@ -1,138 +1,89 @@
-# Ablation Variants
+# Experiment Axes
 
-This project uses a 2x2 ablation design with two experiment axes:
+This project names DDQN experiments using two explicit axes:
 
-- `state_mode`: what information is given to the agent
-- `reward_mode`: what objective the agent is trained to optimise
+- `reward_mode`
+- `sentiment_variant`
 
-## Experiment Axes
+That is the public experiment interface. The older `state_only`, `both`, and `sentiment_imputation_mode` labels are treated as legacy aliases.
 
-### State Mode
-
-- `price_only`
-  - the agent sees only price-derived and technical-indicator features
-  - this is the plain trading-state baseline
-
-- `price_sentiment`
-  - the agent sees the same price/technical features plus sentiment features
-  - sentiment is merged into the same daily dataframe as the market features
-  - sentiment can use:
-    - `sentiment_imputation_mode = "zero"`
-    - `sentiment_imputation_mode = "decay"`
-
-### Reward Mode
+## Reward Mode
 
 - `profit`
-  - the reward is one-step portfolio return
-  - this is the standard return-maximisation baseline
+  - one-step portfolio return
+  - standard return-maximization objective
 
-- `differential_sharpe`
-  - the reward is an online differential Sharpe approximation
-  - this is the reward-engineering variant
-  - the checked-in default uses `differential_sharpe_eta = 0.005`, with a recommended sweep over `0.001`, `0.005`, and `0.01`
+- `sharpe`
+  - online differential Sharpe reward
+  - risk-aware objective based on exponentially weighted return moments
   - see [`reward_engineering.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/reward_engineering.md)
 
-## Four Variants
+## Sentiment Variant
 
-### 1. Baseline
-
-```text
-state_mode = price_only
-reward_mode = profit
-```
-
-Meaning:
-
-- no sentiment in the state
-- no risk-aware reward shaping
-- this is the plain Double DQN trading baseline
-
-### 2. Reward Only
-
-```text
-state_mode = price_only
-reward_mode = differential_sharpe
-```
-
-Meaning:
-
-- same state as the baseline
-- only the reward changes
-- isolates the effect of reward engineering
-
-### 3. State Only
-
-```text
-state_mode = price_sentiment
-reward_mode = profit
-```
-
-Meaning:
-
-- reward stays the same as the baseline
-- only the state is enriched with sentiment features
-- isolates the effect of state augmentation
-
-### 4. Both
-
-```text
-state_mode = price_sentiment
-reward_mode = differential_sharpe
-```
-
-Meaning:
-
-- sentiment is included in the state
-- the reward is also risk-aware
-- this is the combined extension
-
-## Baseline vs Both
-
-This is the main difference:
-
-- `baseline`
-  - learns from price/technical signals only
-  - is trained to maximise raw step-by-step trading return
-
-- `both`
-  - learns from price/technical signals plus sentiment features
-  - is trained with a differential Sharpe reward that prefers better risk-adjusted return dynamics
-
-So `both` changes two things at once:
-
-1. the information available to the agent
-2. the optimisation target used during training
-
-That is why the intermediate variants are important:
-
-- `reward_only` tells you whether reward engineering helps on its own
-- `state_only` tells you whether sentiment-state augmentation helps on its own
-- `both` tells you whether combining both changes helps more than either alone
-
-## Sentiment State Variants
-
-When `state_mode = price_sentiment`, the sentiment features can be constructed in two ways:
+- `none`
+  - no sentiment columns in the state
+  - loads the processed dataset `baseline`
 
 - `zero`
-  - no-news days set sentiment features to zero
-  - `news_count` remains available so the model can distinguish no-news from neutral sentiment
+  - sentiment columns included
+  - no-news days use zero-filled sentiment values
+  - loads the processed dataset `sentiment_zero`
 
 - `decay`
-  - the latest available sentiment is carried forward with exponential decay
-  - `days_since_last_news` is included as an explicit feature
+  - sentiment columns included
+  - no-news days carry the latest sentiment forward with exponential decay
+  - includes `days_since_last_news`
+  - loads the processed dataset `augmented`
 
-In this project:
+## Canonical Run Names
 
-- `price_only` maps to the processed dataset `baseline`
-- `price_sentiment + zero` maps to `sentiment_zero`
-- `price_sentiment + decay` maps to `augmented`
+Run names are built directly from the two axes:
 
-## Interpretation
+- `profit_none`
+- `sharpe_none`
+- `profit_zero`
+- `profit_decay`
+- `sharpe_zero`
+- `sharpe_decay`
 
-This setup gives a clean interpretation:
+These names are intended to be self-explanatory:
 
-- baseline vs reward_only: effect of reward engineering
-- baseline vs state_only: effect of state augmentation
-- baseline vs both: effect of combining both changes
+- the first part tells you the training objective
+- the second part tells you which sentiment feature set was used
 
-That makes the final experimental story easy to explain in a coursework report.
+## Legacy Mapping
+
+Older coursework labels still map onto the new names:
+
+- `baseline` -> `profit_none`
+- `reward_only` -> `sharpe_none`
+- `state_only` -> `profit_decay`
+- `both` -> `sharpe_decay`
+
+Those aliases are only kept for backward compatibility. New runs should use `reward_mode` and `sentiment_variant` directly.
+
+## Recommended Comparisons
+
+Clean comparisons now read naturally:
+
+- `profit_none` vs `profit_zero`
+- `profit_none` vs `profit_decay`
+- `profit_zero` vs `profit_decay`
+- `sharpe_none` vs `sharpe_decay`
+
+This keeps the experimental story tied to the actual knobs the code is using.
+
+## Single-Call Profit Comparison
+
+To compare the fixed-`profit` runs across all three sentiment settings in one call:
+
+```bash
+python -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
+  --config configs/baseline_experiment.json
+```
+
+That runs:
+
+- `profit_none`
+- `profit_zero`
+- `profit_decay`

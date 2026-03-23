@@ -9,11 +9,13 @@ import numpy as np
 import pandas as pd
 import torch
 
+from ..artifacts import experiment_manifest, write_json_artifact
 from ..config import ExperimentConfig
 from ..data import split_by_dates
 from ..envs import TradingEnvironment
 from ..evaluation import compute_performance_metrics, run_strategy_episode
 from ..evaluation.benchmarks import derive_feature_columns
+from ..evaluation.scaling import save_feature_scaler, scale_dataset_splits
 from .double_dqn import DoubleDQNAgent
 
 
@@ -72,9 +74,10 @@ def train_double_dqn(
     set_global_seeds(config.experiment.random_seed)
     splits = split_by_dates(dataset, config.splits)
     feature_columns = derive_feature_columns(dataset)
+    scaled_splits, scaler = scale_dataset_splits(splits, feature_columns)
 
     train_env = TradingEnvironment(
-        market_data=splits["train"],
+        market_data=scaled_splits["train"],
         feature_columns=feature_columns,
         config=config.environment,
     )
@@ -93,9 +96,20 @@ def train_double_dqn(
     results_dir = Path(config.rl.results_dir) / run_name
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
     results_dir.mkdir(parents=True, exist_ok=True)
+    stem = f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}"
+    scaler_path = save_feature_scaler(scaler, results_dir / f"{stem}_feature_scaler.json")
+    manifest_path = write_json_artifact(
+        results_dir / f"{stem}_manifest.json",
+        experiment_manifest(
+            config,
+            dataset_name=dataset_name,
+            run_name=run_name,
+            scaler_path=scaler_path,
+        ),
+    )
 
     best_validation_key: tuple[float, ...] | None = None
-    best_checkpoint_path = checkpoint_dir / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}_best.pt"
+    best_checkpoint_path = checkpoint_dir / f"{stem}_best.pt"
     training_log_rows: list[dict[str, float | int]] = []
 
     for episode in range(1, config.rl.training_episodes + 1):
@@ -119,7 +133,7 @@ def train_double_dqn(
             episode_reward += step.reward
             done = step.done
 
-        validation_history, validation_metrics = evaluate_agent(agent, splits["validation"], config)
+        validation_history, validation_metrics = evaluate_agent(agent, scaled_splits["validation"], config)
         validation_key = _validation_selection_key(validation_metrics, config.rl.validation_metric)
 
         average_loss = float(np.mean(episode_losses)) if episode_losses else 0.0
@@ -128,9 +142,8 @@ def train_double_dqn(
                 "episode": episode,
                 "seed": config.experiment.random_seed,
                 "run_name": run_name,
-                "state_mode": config.features.state_mode,
                 "reward_mode": config.environment.reward_mode,
-                "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                "sentiment_variant": config.features.sentiment_variant,
                 "differential_sharpe_eta": config.environment.differential_sharpe_eta,
                 "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
                 "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
@@ -171,9 +184,8 @@ def train_double_dqn(
                     "dataset": dataset_name,
                     "run_name": run_name,
                     "seed": config.experiment.random_seed,
-                    "state_mode": config.features.state_mode,
                     "reward_mode": config.environment.reward_mode,
-                    "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                    "sentiment_variant": config.features.sentiment_variant,
                     "differential_sharpe_eta": config.environment.differential_sharpe_eta,
                     "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
                     "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
@@ -190,22 +202,21 @@ def train_double_dqn(
             )
 
     training_log = pd.DataFrame(training_log_rows)
-    training_log_path = results_dir / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}_training_log.csv"
+    training_log_path = results_dir / f"{stem}_training_log.csv"
     training_log.to_csv(training_log_path, index=False)
 
     best_metadata = agent.load_checkpoint(best_checkpoint_path)
     split_metrics_rows: list[dict[str, object]] = []
     split_histories: dict[str, pd.DataFrame] = {}
 
-    for split_name, split_frame in splits.items():
+    for split_name, split_frame in scaled_splits.items():
         history, metrics = evaluate_agent(agent, split_frame, config)
         split_metrics_rows.append(
             {
                 "seed": config.experiment.random_seed,
                 "run_name": run_name,
-                "state_mode": config.features.state_mode,
                 "reward_mode": config.environment.reward_mode,
-                "sentiment_imputation_mode": config.features.sentiment_imputation_mode,
+                "sentiment_variant": config.features.sentiment_variant,
                 "differential_sharpe_eta": config.environment.differential_sharpe_eta,
                 "differential_sharpe_warmup_steps": config.environment.differential_sharpe_warmup_steps,
                 "differential_sharpe_min_variance": config.environment.differential_sharpe_min_variance,
@@ -216,12 +227,12 @@ def train_double_dqn(
         )
         split_histories[split_name] = history
         history.to_csv(
-            results_dir / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}_{split_name}_history.csv",
+            results_dir / f"{stem}_{split_name}_history.csv",
             index=False,
         )
 
     split_metrics = pd.DataFrame(split_metrics_rows)
-    split_metrics_path = results_dir / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}_metrics.csv"
+    split_metrics_path = results_dir / f"{stem}_metrics.csv"
     split_metrics.to_csv(split_metrics_path, index=False)
 
     return {
@@ -229,6 +240,8 @@ def train_double_dqn(
         "best_checkpoint_path": best_checkpoint_path,
         "training_log_path": training_log_path,
         "metrics_path": split_metrics_path,
+        "scaler_path": scaler_path,
+        "manifest_path": manifest_path,
         "split_metrics": split_metrics,
         "split_histories": split_histories,
         "best_metadata": best_metadata,

@@ -47,10 +47,11 @@ def main() -> None:
         )
 
     dataset = load_processed_dataset(dataset_path)
-    metrics, histories = run_benchmark_suite(dataset, config)
-    metrics_path, history_paths = save_benchmark_outputs(
+    metrics, histories, scaler = run_benchmark_suite(dataset, config)
+    metrics_path, history_paths, scaler_path, manifest_path = save_benchmark_outputs(
         metrics=metrics,
         histories=histories,
+        scaler=scaler,
         dataset_name=args.dataset,
         ticker=config.data.ticker,
         start_date=config.data.start_date,
@@ -59,6 +60,8 @@ def main() -> None:
 
     print(f"Dataset: {args.dataset}")
     print(f"Metrics saved: {metrics_path}")
+    print(f"Scaler saved: {scaler_path}")
+    print(f"Manifest saved: {manifest_path}")
     print("Metrics summary:")
     print(metrics.to_string(index=False))
     print(f"History files saved: {len(history_paths)}")

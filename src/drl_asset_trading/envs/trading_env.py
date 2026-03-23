@@ -101,7 +101,7 @@ class TradingEnvironment:
         step_return = (portfolio_value / self.prev_portfolio_value) - 1.0
         if self.config.reward_mode == "profit":
             return float(step_return)
-        if self.config.reward_mode == "differential_sharpe":
+        if self.config.reward_mode == "sharpe":
             return float(self._differential_sharpe_reward(step_return))
         raise ValueError(f"Unsupported reward mode: {self.config.reward_mode}")
 
