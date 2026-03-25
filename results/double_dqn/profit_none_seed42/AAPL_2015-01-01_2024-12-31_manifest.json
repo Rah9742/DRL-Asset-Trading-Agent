@@ -68,7 +68,7 @@
       "log_every_episodes": 5
     }
   },
-  "dataset_name": "baseline",
+  "dataset_name": "price",
   "run_name": "profit_none_seed42",
   "scaler_path": "results/double_dqn/profit_none_seed42/AAPL_2015-01-01_2024-12-31_feature_scaler.json"
 }

@@ -1,0 +1,47 @@
+{
+  "feature_columns": [
+    "return_1",
+    "log_return_1",
+    "momentum_14",
+    "volatility_14",
+    "rsi_14",
+    "volume_change_1",
+    "news_count",
+    "mean_overall_sentiment",
+    "mean_ticker_sentiment",
+    "mean_ticker_relevance",
+    "weighted_ticker_sentiment",
+    "sentiment_std",
+    "days_since_last_news"
+  ],
+  "means": {
+    "return_1": 0.002518236738659134,
+    "log_return_1": 0.001911957845771301,
+    "momentum_14": 0.03604927669073348,
+    "volatility_14": 0.030710112109707716,
+    "rsi_14": 54.05099887727473,
+    "volume_change_1": 0.09240925207460492,
+    "news_count": 0.46158984635938544,
+    "mean_overall_sentiment": 0.07240323059579437,
+    "mean_ticker_sentiment": 0.06148294024834943,
+    "mean_ticker_relevance": 0.4410312734930214,
+    "weighted_ticker_sentiment": 0.062027415340857844,
+    "sentiment_std": 0.032558690486238905,
+    "days_since_last_news": 4.709418837675351
+  },
+  "stds": {
+    "return_1": 0.034811095849067684,
+    "log_return_1": 0.034761185909398064,
+    "momentum_14": 0.14533086667453074,
+    "volatility_14": 0.016029219166319063,
+    "rsi_14": 18.199791987030537,
+    "volume_change_1": 0.5454980926790604,
+    "news_count": 0.850180308655107,
+    "mean_overall_sentiment": 0.15655372344537435,
+    "mean_ticker_sentiment": 0.16798011170647537,
+    "mean_ticker_relevance": 0.31749848231400485,
+    "weighted_ticker_sentiment": 0.16936243154491365,
+    "sentiment_std": 0.09813629679515742,
+    "days_since_last_news": 7.310217280146907
+  }
+}
