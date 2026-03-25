@@ -45,7 +45,11 @@ class DoubleDQNAgent(BaseStrategy):
         self.target_network.load_state_dict(self.policy_network.state_dict())
         self.target_network.eval()
 
-        self.optimizer = Adam(self.policy_network.parameters(), lr=config.learning_rate)
+        self.optimizer = Adam(
+            self.policy_network.parameters(),
+            lr=config.learning_rate,
+            weight_decay=config.weight_decay,
+        )
         self.loss_fn = nn.MSELoss()
         self.replay_buffer = ReplayBuffer(config.buffer_capacity, seed=seed)
         self.action_dim = action_dim

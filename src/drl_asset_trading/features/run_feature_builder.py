@@ -8,6 +8,7 @@ from pathlib import Path
 from ..config import ExperimentConfig
 from ..data.price_loader import MarketDataLoader
 from .engineering import FeatureBuilder, load_sentiment_daily_csv
+from .reporting import default_feature_diagnostics_path, save_feature_diagnostics
 
 
 def build_and_save_feature_datasets(
@@ -39,6 +40,11 @@ def build_and_save_feature_datasets(
     saved_paths: dict[str, Path] = {}
     for dataset_name, dataset in datasets.items():
         saved_paths[dataset_name] = feature_builder.save_dataset(dataset, output_paths[dataset_name])
+    save_feature_diagnostics(
+        datasets=datasets,
+        config=config,
+        path=default_feature_diagnostics_path(config),
+    )
     return saved_paths
 
 
@@ -65,6 +71,7 @@ def main() -> None:
     saved_paths = build_and_save_feature_datasets(config=config, skip_sentiment=args.skip_sentiment)
     for dataset_name, dataset_path in saved_paths.items():
         print(f"{dataset_name} dataset: {dataset_path}")
+    print(f"Feature diagnostics: {default_feature_diagnostics_path(config)}")
 
     sentiment_path = Path("data/interim/sentiment/daily") / f"{config.data.ticker}_{config.data.start_date}_{config.data.end_date}.csv"
     if "price_sentiment_decay" in saved_paths:

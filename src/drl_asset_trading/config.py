@@ -82,6 +82,7 @@ class RLConfig:
     algorithm: str = "double_dqn"
     hidden_dim: int = 64
     learning_rate: float = 1e-3
+    weight_decay: float = 0.0
     gamma: float = 0.99
     batch_size: int = 64
     buffer_capacity: int = 10_000
@@ -92,6 +93,8 @@ class RLConfig:
     epsilon_end: float = 0.05
     epsilon_decay_steps: int = 5_000
     validation_metric: str = "sharpe_ratio"
+    early_stopping_patience: int = 10
+    early_stopping_min_delta: float = 0.0
     checkpoint_dir: str = "checkpoints/double_dqn"
     results_dir: str = "results/double_dqn"
     gradient_clip_norm: float = 1.0

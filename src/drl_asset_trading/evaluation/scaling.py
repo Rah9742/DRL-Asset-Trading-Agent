@@ -60,6 +60,7 @@ def save_feature_scaler(scaler: FeatureScaler, path: str | Path) -> Path:
     output_path.write_text(
         json.dumps(
             {
+                "fit_split": "train",
                 "feature_columns": scaler.feature_columns,
                 "means": scaler.means,
                 "stds": scaler.stds,

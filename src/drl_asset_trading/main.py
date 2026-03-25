@@ -11,6 +11,7 @@ from .data.run_sentiment_loader import build_sentiment_query, load_and_cache_sen
 from .data.sentiment_loader import SentimentDataLoader
 from .experiments.run_full_comparison import run_full_comparison
 from .experiments.run_profit_sentiment_comparison import run_profit_sentiment_comparison
+from .features import default_feature_diagnostics_path
 from .features.run_feature_builder import build_and_save_feature_datasets
 
 
@@ -126,6 +127,7 @@ def main() -> None:
     dataset_paths = build_and_save_feature_datasets(config=config, skip_sentiment=False)
     for dataset_name, dataset_path in dataset_paths.items():
         print(f"{dataset_name} dataset ready: {dataset_path}", flush=True)
+    print(f"Feature diagnostics ready: {default_feature_diagnostics_path(config)}", flush=True)
 
     seeds = [int(chunk.strip()) for chunk in args.seeds.split(",") if chunk.strip()] if args.seeds else None
     print(f"Step 4/4: running {args.comparison_mode} comparison", flush=True)
