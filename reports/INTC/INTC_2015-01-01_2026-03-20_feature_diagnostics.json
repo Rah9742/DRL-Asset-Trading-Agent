@@ -1,0 +1,160 @@
+{
+  "ticker": "INTC",
+  "start_date": "2015-01-01",
+  "end_date": "2026-03-20",
+  "split_boundaries": {
+    "train_end": "2020-12-31",
+    "validation_end": "2024-03-20",
+    "test_end": "2026-03-20"
+  },
+  "leakage_controls": {
+    "feature_scaling_fit_split": "train",
+    "feature_scaler_persisted_per_run": true,
+    "redundant_sentiment_analysis_fit_split": "train",
+    "price_feature_engineering": "causal rolling, return, and cyclical time features only",
+    "sentiment_lag_days": 1,
+    "sentiment_decay_uses_only_past_observations": true,
+    "validation_or_test_used_for_scaling": false,
+    "validation_or_test_used_for_redundancy_detection": false
+  },
+  "state_modes": {
+    "price_only": {
+      "dataset_name": "price",
+      "feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1"
+      ],
+      "price_feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1"
+      ],
+      "sentiment_feature_columns": [],
+      "split_row_counts": {
+        "train": 1497,
+        "validation": 808,
+        "test": 500
+      },
+      "redundant_sentiment_feature_pairs": []
+    },
+    "price_sentiment_sparse": {
+      "dataset_name": "price_sentiment_sparse",
+      "feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1",
+        "news_count",
+        "mean_ticker_sentiment",
+        "mean_ticker_relevance",
+        "sentiment_std",
+        "sentiment_mean_3",
+        "sentiment_mean_7",
+        "sentiment_diff_1",
+        "sentiment_window_spread_3_7"
+      ],
+      "price_feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1"
+      ],
+      "sentiment_feature_columns": [
+        "news_count",
+        "mean_ticker_sentiment",
+        "mean_ticker_relevance",
+        "sentiment_std",
+        "sentiment_mean_3",
+        "sentiment_mean_7",
+        "sentiment_diff_1",
+        "sentiment_window_spread_3_7"
+      ],
+      "split_row_counts": {
+        "train": 1497,
+        "validation": 808,
+        "test": 500
+      },
+      "redundant_sentiment_feature_pairs": []
+    },
+    "price_sentiment_decay": {
+      "dataset_name": "price_sentiment_decay",
+      "feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1",
+        "news_count",
+        "mean_ticker_sentiment",
+        "mean_ticker_relevance",
+        "sentiment_std",
+        "days_since_last_news",
+        "sentiment_mean_3",
+        "sentiment_mean_7",
+        "sentiment_diff_1",
+        "sentiment_window_spread_3_7"
+      ],
+      "price_feature_columns": [
+        "return_1",
+        "log_return_1",
+        "momentum_14",
+        "volatility_14",
+        "rsi_14",
+        "day_of_week_sin",
+        "day_of_week_cos",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "volume_change_1"
+      ],
+      "sentiment_feature_columns": [
+        "news_count",
+        "mean_ticker_sentiment",
+        "mean_ticker_relevance",
+        "sentiment_std",
+        "days_since_last_news",
+        "sentiment_mean_3",
+        "sentiment_mean_7",
+        "sentiment_diff_1",
+        "sentiment_window_spread_3_7"
+      ],
+      "split_row_counts": {
+        "train": 1497,
+        "validation": 808,
+        "test": 500
+      },
+      "redundant_sentiment_feature_pairs": []
+    }
+  }
+}
