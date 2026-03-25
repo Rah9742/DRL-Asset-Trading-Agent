@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 
+import pandas as pd
+
 from ..config import ExperimentConfig, load_env_file
 from .sentiment_loader import SentimentDataLoader, SentimentQuery
 
@@ -23,6 +25,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--sort", default="LATEST", help="LATEST, EARLIEST, or RELEVANCE.")
     parser.add_argument("--limit", type=int, default=1000, help="Maximum article count.")
     parser.add_argument("--env-file", default=".env", help="Path to the local .env file.")
+    parser.add_argument(
+        "--force-download",
+        action="store_true",
+        help="Redownload raw sentiment data even if cached raw/interim artifacts exist.",
+    )
     return parser.parse_args()
 
 
@@ -60,8 +67,9 @@ def load_and_cache_sentiment_data(
     topics: str | None = None,
     sort: str = "LATEST",
     limit: int = 1000,
+    force_download: bool = False,
 ) -> dict[str, object]:
-    """Download sentiment data, normalize it, and save raw/interim artifacts."""
+    """Load or rebuild sentiment artifacts, downloading only when required."""
     query = build_sentiment_query(
         config=config,
         ticker=ticker,
@@ -73,20 +81,34 @@ def load_and_cache_sentiment_data(
     )
     loader = SentimentDataLoader()
     paths = loader.default_paths(query)
+    loaded_from_cache = False
 
-    payload = loader.fetch_all(query)
-    articles = loader.normalize_articles(payload, ticker=query.ticker)
-    daily_features = loader.aggregate_daily_features(articles)
+    if paths.raw_json.exists() and not force_download:
+        payload = loader.load_raw_json(paths.raw_json)
+        loaded_from_cache = True
+    else:
+        payload = loader.fetch_all(query)
+        loader.save_raw_json(payload, paths.raw_json)
 
-    loader.save_raw_json(payload, paths.raw_json)
-    loader.save_articles_csv(articles, paths.articles_csv)
-    loader.save_daily_features_csv(daily_features, paths.daily_sentiment_csv)
+    if paths.articles_csv.exists() and not force_download:
+        articles = loader.load_articles_csv(paths.articles_csv)
+    else:
+        articles = loader.normalize_articles(payload, ticker=query.ticker)
+        loader.save_articles_csv(articles, paths.articles_csv)
+
+    if paths.daily_sentiment_csv.exists() and not force_download:
+        daily_features = pd.read_csv(paths.daily_sentiment_csv)
+    else:
+        daily_features = loader.aggregate_daily_features(articles)
+        loader.save_daily_features_csv(daily_features, paths.daily_sentiment_csv)
+
     return {
         "query": query,
         "paths": paths,
         "payload": payload,
         "articles": articles,
         "daily_features": daily_features,
+        "loaded_from_cache": loaded_from_cache,
     }
 
 
@@ -103,6 +125,7 @@ def main() -> None:
         topics=args.topics,
         sort=args.sort,
         limit=args.limit,
+        force_download=args.force_download,
     )
     query = result["query"]
     payload = result["payload"]

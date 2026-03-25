@@ -113,13 +113,17 @@ def main() -> None:
         print("Step 2/4: using cached sentiment data", flush=True)
         print(f"Sentiment daily CSV ready: {sentiment_paths.daily_sentiment_csv}", flush=True)
     else:
-        print("Step 2/4: loading sentiment data", flush=True)
+        if sentiment_paths.raw_json.exists() and not args.force_sentiment_download:
+            print("Step 2/4: rebuilding sentiment artifacts from cached raw data", flush=True)
+        else:
+            print("Step 2/4: loading sentiment data", flush=True)
         sentiment_result = load_and_cache_sentiment_data(
             config=config,
             ticker=config.data.ticker,
             topics=args.sentiment_topics,
             sort=args.sentiment_sort,
             limit=args.sentiment_limit,
+            force_download=args.force_sentiment_download,
         )
         print(f"Sentiment daily CSV ready: {sentiment_result['paths'].daily_sentiment_csv}", flush=True)
 

@@ -165,6 +165,11 @@ class SentimentDataLoader:
         output_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         return output_path
 
+    def load_raw_json(self, path: str | Path) -> dict:
+        """Load a cached raw API response from disk."""
+        input_path = Path(path)
+        return json.loads(input_path.read_text(encoding="utf-8"))
+
     def normalize_articles(self, payload: dict, ticker: str) -> pd.DataFrame:
         """Flatten raw article data into a tabular article-level dataframe."""
         rows: list[dict[str, object]] = []
@@ -223,6 +228,10 @@ class SentimentDataLoader:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         articles.to_csv(output_path, index=False)
         return output_path
+
+    def load_articles_csv(self, path: str | Path) -> pd.DataFrame:
+        """Load cached article-level sentiment data from disk."""
+        return pd.read_csv(path, parse_dates=["time_published"])
 
     def aggregate_daily_features(self, articles: pd.DataFrame) -> pd.DataFrame:
         """Aggregate article-level sentiment into daily state features."""
