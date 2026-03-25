@@ -1,4 +1,4 @@
-"""Core package for the DRL asset trading coursework project."""
+"""Core package for the DRL asset trading project."""
 
 from .config import ExperimentConfig, load_env_file
 

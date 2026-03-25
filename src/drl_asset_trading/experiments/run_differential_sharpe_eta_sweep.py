@@ -13,7 +13,7 @@ from ..config import ExperimentConfig
 from ..evaluation.benchmarks import default_processed_dataset_path, load_processed_dataset
 from .run_ablation import configure_experiment
 
-ETA_SWEEP_SENTIMENT_VARIANTS = ("none", "decay")
+ETA_SWEEP_SENTIMENT_VARIANTS = ("none", "decay", "sparse")
 
 
 def parse_args() -> argparse.Namespace:

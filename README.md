@@ -59,6 +59,27 @@ Key command options:
 - `--force-price-download`
 - `--force-sentiment-download`
 
+## Runbook
+
+Common entry points:
+
+- full pipeline:
+  - `python3 -m drl_asset_trading.main --config configs/baseline_experiment.json`
+- full comparison only:
+  - `python3 -m drl_asset_trading.experiments.run_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
+- profit-only sentiment comparison:
+  - `python3 -m drl_asset_trading.experiments.run_profit_sentiment_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
+- single DDQN run:
+  - `python3 -m drl_asset_trading.experiments.run_ablation --config configs/baseline_experiment.json --reward-mode profit --sentiment-variant decay`
+- benchmark heuristics only:
+  - `python3 -m drl_asset_trading.evaluation.run_benchmarks --config configs/baseline_experiment.json --dataset price`
+- feature build only:
+  - `python3 -m drl_asset_trading.features.run_feature_builder --config configs/baseline_experiment.json`
+- differential Sharpe eta sweep:
+  - `python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep --config configs/baseline_experiment.json --seeds 42,43,44,45`
+
+For a fuller run guide and config reference, see [`docs/running_experiments.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/running_experiments.md).
+
 ## State Representations
 
 The code builds three processed datasets:
@@ -179,4 +200,5 @@ cp .env.example .env
 ## Docs
 
 - [`docs/ablation_variants.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/ablation_variants.md)
+- [`docs/running_experiments.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/running_experiments.md)
 - [`docs/reward_engineering.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/reward_engineering.md)
