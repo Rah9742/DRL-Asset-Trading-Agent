@@ -216,12 +216,12 @@ def run_full_comparison(
     equity_plot_path = plot_equity_curves(
         histories=test_histories_for_plots,
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_equity_curves.png",
-        title="Test Split Equity Curves",
+        title=f"{base_config.data.ticker} Test Split Equity Curves",
     )
     drawdown_plot_path = plot_drawdowns(
         histories=test_histories_for_plots,
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_drawdowns.png",
-        title="Test Split Drawdowns",
+        title=f"{base_config.data.ticker} Test Split Drawdowns",
     )
 
     print(f"Comparison table: {comparison_path}")

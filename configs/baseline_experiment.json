@@ -1,7 +1,7 @@
 {
   "data": {
     "provider": "yfinance",
-    "ticker": "TSLA",
+    "ticker": "NVDA",
     "start_date": "2015-01-01",
     "end_date": "2026-03-20",
     "interval": "1d"
@@ -36,7 +36,7 @@
   },
   "experiment": {
     "random_seed": 42,
-    "seed_values": [42]
+    "seed_values": [42, 43, 44, 45]
   },
   "rl": {
     "algorithm": "double_dqn",

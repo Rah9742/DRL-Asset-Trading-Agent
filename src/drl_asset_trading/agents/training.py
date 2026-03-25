@@ -88,6 +88,7 @@ def train_double_dqn(
         observation_dim=observation_dim,
         action_dim=action_dim,
         config=config.rl,
+        feature_columns=feature_columns,
         seed=config.experiment.random_seed,
     )
 

@@ -20,11 +20,28 @@ from .replay_buffer import ReplayBuffer
 class DoubleDQNAgent(BaseStrategy):
     """A small Double DQN agent for the single-asset trading environment."""
 
-    def __init__(self, observation_dim: int, action_dim: int, config: RLConfig, seed: int = 42) -> None:
+    def __init__(
+        self,
+        observation_dim: int,
+        action_dim: int,
+        config: RLConfig,
+        feature_columns: list[str],
+        seed: int = 42,
+    ) -> None:
         self.config = config
         self.device = torch.device(config.device)
-        self.policy_network = QNetwork(observation_dim, action_dim, config.hidden_dim).to(self.device)
-        self.target_network = QNetwork(observation_dim, action_dim, config.hidden_dim).to(self.device)
+        self.policy_network = QNetwork(
+            observation_dim,
+            action_dim,
+            config.hidden_dim,
+            feature_columns=feature_columns,
+        ).to(self.device)
+        self.target_network = QNetwork(
+            observation_dim,
+            action_dim,
+            config.hidden_dim,
+            feature_columns=feature_columns,
+        ).to(self.device)
         self.target_network.load_state_dict(self.policy_network.state_dict())
         self.target_network.eval()
 
