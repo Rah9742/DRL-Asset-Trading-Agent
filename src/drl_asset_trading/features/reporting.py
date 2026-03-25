@@ -9,7 +9,7 @@ import pandas as pd
 from ..artifacts import write_json_artifact
 from ..config import ExperimentConfig
 from ..data import split_by_dates
-from .engineering import SENTIMENT_COLUMNS
+from .engineering import BASE_SENTIMENT_COLUMNS
 
 NON_FEATURE_COLUMNS = {"Open", "High", "Low", "Close", "Adj Close", "Volume", "Ticker"}
 STATE_MODE_LABELS = {
@@ -17,7 +17,11 @@ STATE_MODE_LABELS = {
     "price_sentiment_sparse": "price_sentiment_sparse",
     "price_sentiment_decay": "price_sentiment_decay",
 }
-ALL_SENTIMENT_FEATURE_COLUMNS = tuple(SENTIMENT_COLUMNS) + ("days_since_last_news",)
+STATIC_SENTIMENT_FEATURE_COLUMNS = set(BASE_SENTIMENT_COLUMNS) | {
+    "mean_overall_sentiment",
+    "weighted_ticker_sentiment",
+    "days_since_last_news",
+}
 
 
 def default_feature_diagnostics_path(config: ExperimentConfig) -> Path:
@@ -54,7 +58,7 @@ def build_feature_diagnostics(
             "feature_scaling_fit_split": "train",
             "feature_scaler_persisted_per_run": True,
             "redundant_sentiment_analysis_fit_split": "train",
-            "price_feature_engineering": "causal rolling and return features only",
+            "price_feature_engineering": "causal rolling, return, and cyclical time features only",
             "sentiment_lag_days": config.features.sentiment_lag_days,
             "sentiment_decay_uses_only_past_observations": True,
             "validation_or_test_used_for_scaling": False,
@@ -66,8 +70,8 @@ def build_feature_diagnostics(
     state_modes: dict[str, object] = {}
     for dataset_name, dataset in datasets.items():
         feature_columns = [column for column in dataset.columns if column not in NON_FEATURE_COLUMNS]
-        sentiment_feature_columns = [column for column in feature_columns if column in ALL_SENTIMENT_FEATURE_COLUMNS]
-        price_feature_columns = [column for column in feature_columns if column not in ALL_SENTIMENT_FEATURE_COLUMNS]
+        sentiment_feature_columns = [column for column in feature_columns if _is_sentiment_feature_name(column)]
+        price_feature_columns = [column for column in feature_columns if not _is_sentiment_feature_name(column)]
         splits = split_by_dates(dataset, config.splits)
         redundant_pairs = _identify_redundant_sentiment_features(
             train_split=splits["train"],
@@ -85,6 +89,13 @@ def build_feature_diagnostics(
 
     report["state_modes"] = state_modes
     return report
+
+
+def _is_sentiment_feature_name(feature_name: str) -> bool:
+    """Return True when a feature belongs to the sentiment modality."""
+    return feature_name in STATIC_SENTIMENT_FEATURE_COLUMNS or feature_name.startswith(
+        ("sentiment_mean_", "sentiment_diff_", "sentiment_window_spread_")
+    )
 
 
 def _identify_redundant_sentiment_features(

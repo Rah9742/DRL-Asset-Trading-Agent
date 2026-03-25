@@ -10,13 +10,6 @@ from ..config import ExperimentConfig, normalize_reward_mode, normalize_sentimen
 from ..evaluation.benchmarks import default_processed_dataset_path, load_processed_dataset
 from ..features import resolve_processed_dataset_name
 
-LEGACY_VARIANTS = {
-    "baseline": {"reward_mode": "profit", "sentiment_variant": "none"},
-    "reward_only": {"reward_mode": "sharpe", "sentiment_variant": "none"},
-    "state_only": {"reward_mode": "profit", "sentiment_variant": "decay"},
-    "both": {"reward_mode": "sharpe", "sentiment_variant": "decay"},
-}
-
 
 def configure_experiment(
     config: ExperimentConfig,
@@ -34,24 +27,6 @@ def configure_experiment(
     return config, dataset_name, run_name
 
 
-def configure_variant(
-    config: ExperimentConfig,
-    variant_name: str,
-    sentiment_variant: str | None = None,
-) -> tuple[ExperimentConfig, str, str]:
-    """Compatibility shim mapping legacy variant names onto the new experiment axes."""
-    variant = LEGACY_VARIANTS[variant_name]
-    if variant["sentiment_variant"] == "none":
-        resolved_sentiment_variant = "none"
-    else:
-        resolved_sentiment_variant = sentiment_variant or variant["sentiment_variant"]
-    return configure_experiment(
-        config=config,
-        reward_mode=variant["reward_mode"],
-        sentiment_variant=resolved_sentiment_variant,
-    )
-
-
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments for the experiment runner."""
     parser = argparse.ArgumentParser(description="Run a Double DQN experiment.")
@@ -63,26 +38,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--reward-mode",
         choices=["profit", "sharpe"],
-        default=None,
+        required=True,
         help="Reward objective used for training.",
     )
     parser.add_argument(
         "--sentiment-variant",
         choices=["none", "sparse", "decay"],
-        default=None,
+        required=True,
         help="Sentiment feature variant used to select the processed dataset.",
-    )
-    parser.add_argument(
-        "--variant",
-        choices=sorted(LEGACY_VARIANTS),
-        default=None,
-        help="Legacy ablation alias. Prefer --reward-mode and --sentiment-variant for new runs.",
-    )
-    parser.add_argument(
-        "--sentiment-imputation-mode",
-        choices=["zero", "sparse", "decay"],
-        default=None,
-        help="Legacy alias for --sentiment-variant when using price-sentiment variants.",
     )
     return parser.parse_args()
 
@@ -91,22 +54,11 @@ def main() -> None:
     """Run a single Double DQN experiment using the common training pipeline."""
     args = parse_args()
     config = ExperimentConfig.from_json(args.config)
-
-    legacy_sentiment_variant = args.sentiment_variant or args.sentiment_imputation_mode
-    if args.variant is not None:
-        config, dataset_name, run_name = configure_variant(
-            config=config,
-            variant_name=args.variant,
-            sentiment_variant=legacy_sentiment_variant,
-        )
-    else:
-        if args.reward_mode is None or args.sentiment_variant is None:
-            raise ValueError("Use --reward-mode and --sentiment-variant together when --variant is not provided.")
-        config, dataset_name, run_name = configure_experiment(
-            config=config,
-            reward_mode=args.reward_mode,
-            sentiment_variant=args.sentiment_variant,
-        )
+    config, dataset_name, run_name = configure_experiment(
+        config=config,
+        reward_mode=args.reward_mode,
+        sentiment_variant=args.sentiment_variant,
+    )
 
     dataset_path = default_processed_dataset_path(
         dataset_name=dataset_name,

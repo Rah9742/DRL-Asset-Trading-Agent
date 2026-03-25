@@ -10,21 +10,13 @@ import pandas as pd
 from ..config import FeatureConfig, normalize_sentiment_variant
 
 PRICE_COLUMNS = ["Open", "High", "Low", "Close", "Adj Close", "Volume", "Ticker"]
-SENTIMENT_COLUMNS = [
+BASE_SENTIMENT_COLUMNS = [
     "news_count",
-    "mean_overall_sentiment",
     "mean_ticker_sentiment",
     "mean_ticker_relevance",
-    "weighted_ticker_sentiment",
     "sentiment_std",
 ]
-DECAY_SENTIMENT_COLUMNS = [
-    "mean_overall_sentiment",
-    "mean_ticker_sentiment",
-    "mean_ticker_relevance",
-    "weighted_ticker_sentiment",
-    "sentiment_std",
-]
+DECAY_SENTIMENT_COLUMNS = ["mean_ticker_sentiment", "mean_ticker_relevance", "sentiment_std"]
 
 
 class FeatureBuilder:
@@ -54,6 +46,13 @@ class FeatureBuilder:
             frame[f"volatility_{lookback}"] = close.pct_change().rolling(lookback).std()
         if self.config.include_rsi:
             frame[f"rsi_{lookback}"] = self._rsi(close, lookback)
+        if self.config.include_cyclical_time_features:
+            day_of_week = frame.index.dayofweek
+            day_of_year = frame.index.dayofyear
+            frame["day_of_week_sin"] = np.sin(2.0 * np.pi * day_of_week / 7.0)
+            frame["day_of_week_cos"] = np.cos(2.0 * np.pi * day_of_week / 7.0)
+            frame["day_of_year_sin"] = np.sin(2.0 * np.pi * day_of_year / 365.25)
+            frame["day_of_year_cos"] = np.cos(2.0 * np.pi * day_of_year / 365.25)
 
         frame["volume_change_1"] = frame["Volume"].pct_change()
         return frame.dropna().copy()
@@ -111,7 +110,7 @@ class FeatureBuilder:
         sentiment = sentiment.sort_values("date")
         sentiment = sentiment.set_index("date")
         sentiment.index = sentiment.index + pd.Timedelta(days=self.config.sentiment_lag_days)
-        sentiment = sentiment.reindex(columns=SENTIMENT_COLUMNS)
+        sentiment = sentiment.reindex(columns=BASE_SENTIMENT_COLUMNS)
 
         augmented = price_features.copy()
         augmented.index = pd.to_datetime(augmented.index).normalize()
@@ -119,10 +118,12 @@ class FeatureBuilder:
         augmented["news_count"] = augmented["news_count"].fillna(0.0)
 
         if mode == "sparse":
-            augmented[SENTIMENT_COLUMNS] = augmented[SENTIMENT_COLUMNS].fillna(self.config.sentiment_fill_value)
-            return augmented
+            sentiment_fill_columns = [column for column in BASE_SENTIMENT_COLUMNS if column != "news_count"]
+            augmented[sentiment_fill_columns] = augmented[sentiment_fill_columns].fillna(self.config.sentiment_fill_value)
+            return self._add_engineered_sentiment_features(augmented)
 
-        return self._apply_decay_imputation(augmented)
+        decayed = self._apply_decay_imputation(augmented)
+        return self._add_engineered_sentiment_features(decayed)
 
     def _apply_decay_imputation(self, dataset: pd.DataFrame) -> pd.DataFrame:
         """Apply exponential decay to carry sentiment forward across no-news days."""
@@ -142,6 +143,28 @@ class FeatureBuilder:
 
         enriched["news_count"] = enriched["news_count"].fillna(0.0)
         return enriched
+
+    def _add_engineered_sentiment_features(self, dataset: pd.DataFrame) -> pd.DataFrame:
+        """Add causal rolling-window and difference features for the sentiment branch."""
+        enriched = dataset.copy()
+        short_window, long_window = self._sentiment_windows()
+        sentiment_series = enriched["mean_ticker_sentiment"].fillna(self.config.sentiment_fill_value)
+
+        short_mean_name = f"sentiment_mean_{short_window}"
+        long_mean_name = f"sentiment_mean_{long_window}"
+        spread_name = f"sentiment_window_spread_{short_window}_{long_window}"
+
+        enriched[short_mean_name] = sentiment_series.rolling(window=short_window, min_periods=1).mean()
+        enriched[long_mean_name] = sentiment_series.rolling(window=long_window, min_periods=1).mean()
+        enriched["sentiment_diff_1"] = sentiment_series.diff().fillna(0.0)
+        enriched[spread_name] = enriched[short_mean_name] - enriched[long_mean_name]
+        return enriched
+
+    def _sentiment_windows(self) -> tuple[int, int]:
+        """Return validated short and long sentiment windows."""
+        short_window = max(1, int(self.config.sentiment_short_window))
+        long_window = max(short_window, int(self.config.sentiment_long_window))
+        return short_window, long_window
 
     @staticmethod
     def default_processed_paths(ticker: str, start_date: str, end_date: str) -> dict[str, Path]:

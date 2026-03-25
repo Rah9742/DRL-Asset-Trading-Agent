@@ -1,4 +1,4 @@
-"""Single entry point for the full coursework pipeline."""
+"""Single entry point for the full pipeline."""
 
 from __future__ import annotations
 

@@ -79,7 +79,7 @@ class MarketDataLoader:
 
     def _load_from_alpha_vantage(self) -> pd.DataFrame:
         if self.config.interval != "1d":
-            raise ValueError("Alpha Vantage support is limited to daily data in this scaffold.")
+            raise ValueError("Alpha Vantage support is limited to daily data in this implementation.")
 
         api_key = os.getenv("ALPHA_VANTAGE_API_KEY", "").strip()
         if not api_key:

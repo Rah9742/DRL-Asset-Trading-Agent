@@ -10,9 +10,8 @@ r_t = V_t / V_{t-1} - 1
 
 where:
 
-- `V_t` is the portfolio value at time `t`
-- `V_{t-1}` is the portfolio value at the previous step
-- `V_t` is computed after the environment applies the action and any transaction costs for that step
+- `V_t` is the portfolio value after the action and transaction costs at time `t`
+- `V_{t-1}` is the previous portfolio value
 
 ## Sharpe Reward
 
@@ -30,7 +29,7 @@ where:
 - `r_t` is the one-step portfolio return
 - `A_t` is the exponentially weighted first moment of returns
 - `B_t` is the exponentially weighted second moment of returns
-- `eta` is the smoothing parameter (`differential_sharpe_eta`)
+- `eta` is `environment.differential_sharpe_eta`
 
 The implemented reward uses the previous-step moments:
 
@@ -40,47 +39,29 @@ D_t =
     / max(B_{t-1} - A_{t-1}^2, epsilon)^(3/2)
 ```
 
-where:
-
-- `epsilon` is a small numerical stabilizer (`differential_sharpe_epsilon`)
+where `epsilon` is `environment.differential_sharpe_epsilon`.
 
 ## Warm-Up And Stability Rule
 
-The environment does not use the differential Sharpe expression immediately.
+The environment emits plain portfolio return instead of differential Sharpe while either condition holds:
 
-It returns the plain portfolio return `r_t` while either of these conditions holds:
-
-- fewer than `differential_sharpe_warmup_steps` returns have been absorbed into the running moments
-- the estimated return variance `B_{t-1} - A_{t-1}^2` is below `differential_sharpe_min_variance`
-
-With the current checked-in config, that means:
-
-- `differential_sharpe_warmup_steps = 20`
-- `differential_sharpe_min_variance = 1e-6`
+- fewer than `differential_sharpe_warmup_steps` returns have been absorbed
+- the estimated return variance is below `differential_sharpe_min_variance`
 
 This is separate from `rl.warmup_steps`.
 
-- `differential_sharpe_warmup_steps` controls when the environment is allowed to emit differential Sharpe rewards
-- `rl.warmup_steps` controls when the agent starts gradient updates from the replay buffer
-
-The practical effect is:
-
-- early DSR steps use plain net portfolio return
-- once the running moments have at least 20 prior observations and the variance estimate is large enough, the reward switches to the differential Sharpe expression
+- `differential_sharpe_warmup_steps` controls when the environment may emit Sharpe-style rewards
+- `rl.warmup_steps` controls when the agent may start replay-buffer gradient updates
 
 ## Eta Tuning
 
-`eta` controls how quickly the running return moments react to new data.
-
-For daily data, the codebase now treats `0.005` as the default working value and keeps the recommended comparison grid in config:
+For daily data, the checked-in working default is `0.005`, with the recommended comparison grid stored in config:
 
 - `0.001`
 - `0.005`
 - `0.01`
 
-The candidate grid is stored in `environment.differential_sharpe_eta_candidates` so the sweep is reproducible from config.
-
-To run the dedicated eta sweep for the `sharpe` reward mode across multiple sentiment variants:
+To run the eta sweep:
 
 ```bash
 python -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
@@ -90,12 +71,12 @@ python -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
 Optional overrides:
 
 - `--etas 0.001 0.005 0.01`
-- `--seeds 42 43 44 45 46`
+- `--seeds 42,43,44,45`
 - `--sentiment-variants none decay`
 
-## Checkpoint Selection
+## Checkpoint Selection And Early Stopping
 
-The training loop selects the best checkpoint on the validation split using `rl.validation_metric`.
+The training loop selects checkpoints on the validation split using `rl.validation_metric`.
 
 Supported options are:
 
@@ -103,19 +84,46 @@ Supported options are:
 - `cumulative_return`
 - `sharpe_ratio_then_cumulative_return`
 
-The checked-in default is `sharpe_ratio`.
+The same metric is also used for early stopping.
 
-`sharpe_ratio_then_cumulative_return` ranks checkpoints by validation Sharpe ratio first and uses validation cumulative return only as the tiebreak.
+Relevant controls:
+
+- `rl.validation_metric`
+- `rl.early_stopping_patience`
+- `rl.early_stopping_min_delta`
+
+`sharpe_ratio_then_cumulative_return` ranks checkpoints by validation Sharpe ratio first and uses validation cumulative return as the tiebreak.
+
+## Regularisation And Overfitting Controls
+
+The DDQN training pipeline now includes several controls beyond reward design:
+
+- feature scaling fit on the train split only
+- persisted per-run scaler artifacts
+- validation-based checkpointing
+- early stopping on validation performance
+- optional Adam `weight_decay`
+- explicit train/validation/test metric logging
+
+Important leakage rules:
+
+- validation and test data are not used to fit the scaler
+- test data are not used for checkpoint selection or early stopping
+- redundant-feature diagnostics are computed from the train split only
 
 ## Interpretation
 
 - `profit` reward encourages pure return maximisation
 - `sharpe` encourages return quality by penalising unstable return paths through the Sharpe-style denominator
 
-## Location in Code
+Reward changes should be interpreted jointly with the overfitting controls above. A stronger reward function is not useful if model selection still favors unstable checkpoints.
 
-The exact implementation is in:
+## Location In Code
+
+Main implementation points:
 
 - [`trading_env.py`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/src/drl_asset_trading/envs/trading_env.py)
+- [`training.py`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/src/drl_asset_trading/agents/training.py)
+- [`scaling.py`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/src/drl_asset_trading/evaluation/scaling.py)
 - [`config.py`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/src/drl_asset_trading/config.py)
 - [`run_differential_sharpe_eta_sweep.py`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/src/drl_asset_trading/experiments/run_differential_sharpe_eta_sweep.py)

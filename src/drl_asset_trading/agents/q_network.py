@@ -16,10 +16,17 @@ SENTIMENT_FEATURE_COLUMNS = {
 }
 
 
+def is_sentiment_feature_name(feature_name: str) -> bool:
+    """Return True when a feature belongs to the sentiment modality."""
+    return feature_name in SENTIMENT_FEATURE_COLUMNS or feature_name.startswith(
+        ("sentiment_mean_", "sentiment_diff_", "sentiment_window_spread_")
+    )
+
+
 def derive_multimodal_indices(feature_columns: list[str]) -> tuple[list[int], list[int]]:
     """Split feature columns into price-related and sentiment-related indices."""
-    price_indices = [index for index, name in enumerate(feature_columns) if name not in SENTIMENT_FEATURE_COLUMNS]
-    sentiment_indices = [index for index, name in enumerate(feature_columns) if name in SENTIMENT_FEATURE_COLUMNS]
+    price_indices = [index for index, name in enumerate(feature_columns) if not is_sentiment_feature_name(name)]
+    sentiment_indices = [index for index, name in enumerate(feature_columns) if is_sentiment_feature_name(name)]
     return price_indices, sentiment_indices
 
 

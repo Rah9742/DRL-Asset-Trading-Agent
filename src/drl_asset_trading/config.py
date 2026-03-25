@@ -44,8 +44,11 @@ class FeatureConfig:
     include_momentum: bool = True
     include_volatility: bool = True
     include_rsi: bool = True
+    include_cyclical_time_features: bool = True
     lookback_window: int = 14
     sentiment_lag_days: int = 1
+    sentiment_short_window: int = 3
+    sentiment_long_window: int = 7
     sentiment_fill_value: float = 0.0
     sentiment_imputation_mode: str = "sparse"
     sentiment_decay_rate: float = 0.25
@@ -147,7 +150,7 @@ class ExperimentConfig:
 
 
 def normalize_reward_mode(reward_mode: str) -> str:
-    """Map user-facing and legacy reward names to the canonical internal label."""
+    """Map accepted reward names to the canonical internal label."""
     normalized = reward_mode.strip().lower()
     if normalized == "profit":
         return "profit"
@@ -161,7 +164,7 @@ def normalize_sentiment_variant(
     state_mode: str | None = None,
     sentiment_imputation_mode: str | None = None,
 ) -> str:
-    """Map new and legacy sentiment settings to the canonical variant label."""
+    """Map accepted sentiment settings to the canonical variant label."""
     if sentiment_variant is not None:
         normalized = sentiment_variant.strip().lower()
         if normalized == "zero":
@@ -186,5 +189,5 @@ def normalize_sentiment_variant(
 
 
 def state_mode_from_sentiment_variant(sentiment_variant: str) -> str:
-    """Derive the legacy state-mode label from the sentiment variant."""
+    """Derive the state-mode label from the sentiment variant."""
     return "price_only" if sentiment_variant == "none" else "price_sentiment"

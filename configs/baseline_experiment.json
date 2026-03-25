@@ -1,7 +1,7 @@
 {
   "data": {
     "provider": "yfinance",
-    "ticker": "AMZN",
+    "ticker": "AAPL",
     "start_date": "2015-01-01",
     "end_date": "2026-03-20",
     "interval": "1d"
@@ -13,8 +13,11 @@
     "include_momentum": true,
     "include_volatility": true,
     "include_rsi": true,
+    "include_cyclical_time_features": true,
     "lookback_window": 14,
     "sentiment_lag_days": 1,
+    "sentiment_short_window": 3,
+    "sentiment_long_window": 7,
     "sentiment_fill_value": 0.0,
     "sentiment_decay_rate": 0.25
   },
@@ -36,7 +39,7 @@
   },
   "experiment": {
     "random_seed": 42,
-    "seed_values": [42, 43, 44, 45]
+    "seed_values": [42, 43, 44, 45, 46]
   },
   "rl": {
     "algorithm": "double_dqn",

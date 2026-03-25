@@ -1,17 +1,17 @@
 # Experiment Axes
 
-This project names DDQN experiments using two explicit axes:
+This project names DDQN experiments with two explicit axes:
 
 - `reward_mode`
 - `sentiment_variant`
 
-That is the public experiment interface. The older `state_only`, `both`, and `sentiment_imputation_mode` labels are treated as legacy aliases.
+That is the public experiment interface.
 
 ## Reward Mode
 
 - `profit`
   - one-step portfolio return
-  - standard return-maximization objective
+  - pure return objective
 
 - `sharpe`
   - online differential Sharpe reward
@@ -21,69 +21,100 @@ That is the public experiment interface. The older `state_only`, `both`, and `se
 ## Sentiment Variant
 
 - `none`
-  - no sentiment columns in the state
-  - loads the processed dataset `price`
+  - loads dataset `price`
+  - uses the engineered daily price/time state only
+  - DDQN falls back to the price-only MLP path
 
 - `sparse`
-  - sentiment columns included
-  - no-news days use zero-filled sentiment values
-  - loads the processed dataset `price_sentiment_sparse`
+  - loads dataset `price_sentiment_sparse`
+  - uses the same daily price/time state plus lagged daily sentiment
+  - no-news days are zero-filled
 
 - `decay`
-  - sentiment columns included
+  - loads dataset `price_sentiment_decay`
+  - uses the same daily price/time state plus lagged daily sentiment
   - no-news days carry the latest sentiment forward with exponential decay
   - includes `days_since_last_news`
-  - loads the processed dataset `price_sentiment_decay`
+
+## Shared Price Feature Set
+
+All three dataset variants share the same engineered daily price/time features:
+
+- `return_1`
+- `log_return_1`
+- `momentum_{lookback}`
+- `volatility_{lookback}`
+- `rsi_{lookback}`
+- `volume_change_1`
+- cyclical `day_of_week_sin/cos`
+- cyclical `day_of_year_sin/cos`
+
+## Sentiment Feature Set
+
+When sentiment is enabled, the model-facing sentiment branch uses:
+
+- `news_count`
+- `mean_ticker_sentiment`
+- `mean_ticker_relevance`
+- `sentiment_std`
+- `sentiment_mean_3`
+- `sentiment_mean_7`
+- `sentiment_diff_1`
+- `sentiment_window_spread_3_7`
+
+Notes:
+
+- sentiment is lagged by `features.sentiment_lag_days`
+- `mean_overall_sentiment` and `weighted_ticker_sentiment` are still available in the interim daily sentiment CSV but are no longer included in the processed state
+- feature diagnostics flag highly correlated sentiment features on the train split only
+
+## Model Interpretation
+
+The DDQN now treats price and sentiment as separate modalities when sentiment columns are present:
+
+- price features plus position -> price embedding
+- sentiment features -> sentiment embedding
+- each embedding uses `Linear -> ELU`
+- the fused representation feeds the Q-value head
+
+That means the ablation axis now changes both the feature set and, when sentiment is present, the multimodal routing inside the network.
 
 ## Canonical Run Names
 
 Run names are built directly from the two axes:
 
 - `profit_none`
-- `sharpe_none`
 - `profit_sparse`
 - `profit_decay`
+- `sharpe_none`
 - `sharpe_sparse`
 - `sharpe_decay`
 
-These names are intended to be self-explanatory:
-
-- the first part tells you the training objective
-- the second part tells you which sentiment feature set was used
-
-## Legacy Mapping
-
-Older coursework labels still map onto the new names:
-
-- `baseline` -> `profit_none`
-- `reward_only` -> `sharpe_none`
-- `state_only` -> `profit_decay`
-- `both` -> `sharpe_decay`
-
-Those aliases are only kept for backward compatibility. New runs should use `reward_mode` and `sentiment_variant` directly.
-
 ## Recommended Comparisons
 
-Clean comparisons now read naturally:
+The cleanest comparisons are:
 
 - `profit_none` vs `profit_sparse`
 - `profit_none` vs `profit_decay`
 - `profit_sparse` vs `profit_decay`
 - `sharpe_none` vs `sharpe_decay`
 
-This keeps the experimental story tied to the actual knobs the code is using.
+For stability, prefer multiple seeds rather than a single-seed headline result.
 
-## Single-Call Profit Comparison
+## Commands
 
-To compare the fixed-`profit` runs across all three sentiment settings in one call:
+Full comparison:
+
+```bash
+python -m drl_asset_trading.experiments.run_full_comparison \
+  --config configs/baseline_experiment.json \
+  --seeds 42,43,44,45
+```
+
+Profit-only sentiment comparison:
 
 ```bash
 python -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
-  --config configs/baseline_experiment.json
+  --config configs/baseline_experiment.json \
+  --seeds 42,43,44,45
 ```
-
-That runs:
-
-- `profit_none`
-- `profit_sparse`
-- `profit_decay`
