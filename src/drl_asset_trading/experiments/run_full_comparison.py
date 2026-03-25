@@ -222,22 +222,23 @@ def run_full_comparison(
             },
         ),
     )
+    test_range_label = f"{base_config.splits.validation_end} to {base_config.splits.test_end}"
 
     equity_plot_path = plot_equity_curves(
         histories=test_histories_for_plots,
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_equity_curves.png",
-        title=f"{base_config.data.ticker} Test Split Equity Curves",
+        title=f"{base_config.data.ticker} Test Split Equity Curves ({test_range_label})",
     )
     equity_variance_plot_path = plot_equity_curves_with_variance(
         history_groups=test_history_groups_for_plots,
         path=report_dir
         / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_equity_curves_with_variance.png",
-        title=f"{base_config.data.ticker} Test Split Equity Curves with Seed Variance",
+        title=f"{base_config.data.ticker} Test Split Equity Curves with Seed Variance ({test_range_label})",
     )
     drawdown_plot_path = plot_drawdowns(
         histories=test_histories_for_plots,
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_drawdowns.png",
-        title=f"{base_config.data.ticker} Test Split Drawdowns",
+        title=f"{base_config.data.ticker} Test Split Drawdowns ({test_range_label})",
     )
 
     print(f"Comparison table: {comparison_path}")

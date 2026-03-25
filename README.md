@@ -77,6 +77,9 @@ Common entry points:
   - `python3 -m drl_asset_trading.features.run_feature_builder --config configs/baseline_experiment.json`
 - differential Sharpe eta sweep:
   - `python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep --config configs/baseline_experiment.json --seeds 42,43,44,45`
+- replot full-comparison report graphs from existing CSV artifacts only:
+  - `python3 -m drl_asset_trading.experiments.replot_full_comparison --config configs/baseline_experiment.json`
+  - optional seed override: `python3 -m drl_asset_trading.experiments.replot_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
 
 For a fuller run guide and config reference, see [`docs/running_experiments.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/running_experiments.md).
 

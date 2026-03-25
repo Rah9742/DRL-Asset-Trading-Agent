@@ -283,6 +283,23 @@ python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
 
 Use this when tuning `environment.differential_sharpe_eta`.
 
+### 10. Replot Full-Comparison Graphs Only
+
+This rebuilds the report plots from existing saved history CSVs only. It does not rerun training, model selection, or benchmark evaluation.
+
+```bash
+python3 -m drl_asset_trading.experiments.replot_full_comparison \
+  --config configs/baseline_experiment.json
+```
+
+If you want to point the plotter at a specific saved seed set, pass the same seed list used when the histories were generated:
+
+```bash
+python3 -m drl_asset_trading.experiments.replot_full_comparison \
+  --config configs/baseline_experiment.json \
+  --seeds 42,43,44,45
+```
+
 ## When To Rebuild What
 
 Rerun price loading if you changed:
