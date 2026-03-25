@@ -12,7 +12,13 @@ import pandas as pd
 from ..agents.training import train_double_dqn
 from ..artifacts import experiment_manifest, write_json_artifact
 from ..config import ExperimentConfig
-from ..evaluation import plot_drawdowns, plot_equity_curves, run_benchmark_suite, save_benchmark_outputs
+from ..evaluation import (
+    plot_drawdowns,
+    plot_equity_curves,
+    plot_equity_curves_with_variance,
+    run_benchmark_suite,
+    save_benchmark_outputs,
+)
 from ..evaluation.benchmarks import default_processed_dataset_path, load_processed_dataset
 from .run_ablation import configure_experiment
 
@@ -42,6 +48,7 @@ def run_full_comparison(
     seed_values = seeds or list(base_config.experiment.seed_values)
     comparison_rows: list[pd.DataFrame] = []
     test_histories_for_plots: dict[str, pd.DataFrame] = {}
+    test_history_groups_for_plots: dict[str, list[pd.DataFrame]] = {}
 
     report_dir = Path("reports") / base_config.data.ticker
     report_dir.mkdir(parents=True, exist_ok=True)
@@ -82,6 +89,8 @@ def run_full_comparison(
     comparison_rows.append(heuristic_metrics)
     test_histories_for_plots["buy_and_hold"] = heuristic_histories["test_buy_and_hold"]
     test_histories_for_plots["random"] = heuristic_histories["test_random"]
+    test_history_groups_for_plots["buy_and_hold"] = [heuristic_histories["test_buy_and_hold"]]
+    test_history_groups_for_plots["random"] = [heuristic_histories["test_random"]]
     ddqn_seed_metrics: list[pd.DataFrame] = []
     ddqn_summary_rows: list[dict[str, object]] = []
 
@@ -164,6 +173,7 @@ def run_full_comparison(
         )
 
         test_histories_for_plots[f"{run_name}_dqn"] = _average_test_history(test_seed_histories)
+        test_history_groups_for_plots[f"{run_name}_dqn"] = test_seed_histories
 
     comparison_table = pd.concat(comparison_rows, ignore_index=True, sort=False)
     comparison_path = report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_comparison_table.csv"
@@ -218,6 +228,12 @@ def run_full_comparison(
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_equity_curves.png",
         title=f"{base_config.data.ticker} Test Split Equity Curves",
     )
+    equity_variance_plot_path = plot_equity_curves_with_variance(
+        history_groups=test_history_groups_for_plots,
+        path=report_dir
+        / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_equity_curves_with_variance.png",
+        title=f"{base_config.data.ticker} Test Split Equity Curves with Seed Variance",
+    )
     drawdown_plot_path = plot_drawdowns(
         histories=test_histories_for_plots,
         path=report_dir / f"{base_config.data.ticker}_{base_config.data.start_date}_{base_config.data.end_date}_test_drawdowns.png",
@@ -228,6 +244,7 @@ def run_full_comparison(
     print(f"DDQN seed metrics: {ddqn_seed_metrics_path}")
     print(f"Test summary: {summary_path}")
     print(f"Equity plot: {equity_plot_path}")
+    print(f"Equity variance plot: {equity_variance_plot_path}")
     print(f"Drawdown plot: {drawdown_plot_path}")
     print(summary_table.to_string(index=False))
     return {
@@ -238,6 +255,7 @@ def run_full_comparison(
         "summary_table": summary_table,
         "summary_path": summary_path,
         "equity_plot_path": equity_plot_path,
+        "equity_variance_plot_path": equity_variance_plot_path,
         "drawdown_plot_path": drawdown_plot_path,
         "report_dir": report_dir,
         "manifest_path": manifest_path,
