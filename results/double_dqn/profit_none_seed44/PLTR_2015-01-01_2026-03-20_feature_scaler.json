@@ -1,0 +1,39 @@
+{
+  "fit_split": "train",
+  "feature_columns": [
+    "return_1",
+    "log_return_1",
+    "momentum_14",
+    "volatility_14",
+    "rsi_14",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "volume_change_1"
+  ],
+  "means": {
+    "return_1": 0.02055673556236664,
+    "log_return_1": 0.017656717931172152,
+    "momentum_14": 0.3692374138340539,
+    "volatility_14": 0.07037802573941482,
+    "rsi_14": 64.73075820001617,
+    "day_of_week_sin": 0.38741641333854787,
+    "day_of_week_cos": -0.053093155749399046,
+    "day_of_year_sin": -0.5401828040913236,
+    "day_of_year_cos": 0.7612940338604971,
+    "volume_change_1": 0.14555008012960646
+  },
+  "stds": {
+    "return_1": 0.0760618824656564,
+    "log_return_1": 0.0728290139569461,
+    "momentum_14": 0.3763759861402837,
+    "volatility_14": 0.023506683879724523,
+    "rsi_14": 13.690611656196605,
+    "day_of_week_sin": 0.5068428895495872,
+    "day_of_week_cos": 0.7682447037249852,
+    "day_of_year_sin": 0.2917047008467294,
+    "day_of_year_cos": 0.20866791721864467,
+    "volume_change_1": 0.5664793611810944
+  }
+}
