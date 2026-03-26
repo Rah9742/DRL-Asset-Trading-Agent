@@ -1,17 +1,24 @@
 {
+  "fit_split": "train",
   "feature_columns": [
     "return_1",
     "log_return_1",
     "momentum_14",
     "volatility_14",
     "rsi_14",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "day_of_year_sin",
+    "day_of_year_cos",
     "volume_change_1",
     "news_count",
-    "mean_overall_sentiment",
     "mean_ticker_sentiment",
     "mean_ticker_relevance",
-    "weighted_ticker_sentiment",
-    "sentiment_std"
+    "sentiment_std",
+    "sentiment_mean_3",
+    "sentiment_mean_7",
+    "sentiment_diff_1",
+    "sentiment_window_spread_3_7"
   ],
   "means": {
     "return_1": 0.002518236738659134,
@@ -19,13 +26,19 @@
     "momentum_14": 0.03604927669073348,
     "volatility_14": 0.030710112109707716,
     "rsi_14": 54.05099887727473,
+    "day_of_week_sin": 0.3607787182376709,
+    "day_of_week_cos": -0.09155864735955731,
+    "day_of_year_sin": -0.00561651146202242,
+    "day_of_year_cos": -0.01761506095077155,
     "volume_change_1": 0.09240925207460492,
     "news_count": 0.46158984635938544,
-    "mean_overall_sentiment": 0.04177849847472723,
     "mean_ticker_sentiment": 0.0373553381357954,
     "mean_ticker_relevance": 0.2490057746246461,
-    "weighted_ticker_sentiment": 0.03777237402405432,
-    "sentiment_std": 0.020462343369602832
+    "sentiment_std": 0.020462343369602832,
+    "sentiment_mean_3": 0.03717733924913322,
+    "sentiment_mean_7": 0.036882048493017766,
+    "sentiment_diff_1": 0.00015684101536406152,
+    "sentiment_window_spread_3_7": 0.0002952907561154396
   },
   "stds": {
     "return_1": 0.034811095849067684,
@@ -33,12 +46,18 @@
     "momentum_14": 0.14533086667453074,
     "volatility_14": 0.016029219166319063,
     "rsi_14": 18.199791987030537,
+    "day_of_week_sin": 0.5149620608128266,
+    "day_of_week_cos": 0.7721850856393682,
+    "day_of_year_sin": 0.7139738997275735,
+    "day_of_year_cos": 0.699928164124361,
     "volume_change_1": 0.5454980926790604,
     "news_count": 0.850180308655107,
-    "mean_overall_sentiment": 0.13714253474445984,
     "mean_ticker_sentiment": 0.145395418656534,
     "mean_ticker_relevance": 0.38164673861142906,
-    "weighted_ticker_sentiment": 0.14693057088453948,
-    "sentiment_std": 0.0844772357978305
+    "sentiment_std": 0.0844772357978305,
+    "sentiment_mean_3": 0.09074289078284929,
+    "sentiment_mean_7": 0.06412616643919994,
+    "sentiment_diff_1": 0.1944336063573622,
+    "sentiment_window_spread_3_7": 0.0638262469764887
   }
 }

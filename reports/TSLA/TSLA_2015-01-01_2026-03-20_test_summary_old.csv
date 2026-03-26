@@ -1,9 +1,0 @@
-comparison_group,strategy,reward_mode,sentiment_variant,seed_count,test_sharpe_ratio_mean,test_sharpe_ratio_std,test_annualized_return_mean,test_annualized_return_std,test_max_drawdown_mean,test_max_drawdown_std
-shared_baselines,buy_and_hold,profit,none,1,1.286828438510573,0.0,0.8040876395495364,0.0,-0.537656801185852,0.0
-shared_baselines,random,profit,none,1,0.32702310650175664,0.0,0.14186244997026498,0.0,-0.49722805381721713,0.0
-profit_none,double_dqn,profit,none,1,0.6825905406757152,0.0,0.37888244329350695,0.0,-0.5221584329607538,0.0
-profit_sparse,double_dqn,profit,sparse,1,0.9035418739025496,0.0,0.39798152600443726,0.0,-0.397900476802611,0.0
-profit_decay,double_dqn,profit,decay,1,1.2403865808157795,0.0,0.4021058388388563,0.0,-0.3324614775128334,0.0
-sharpe_none,double_dqn,sharpe,none,1,1.7239667942852408,0.0,0.9316586590979081,0.0,-0.503312776276484,0.0
-sharpe_sparse,double_dqn,sharpe,sparse,1,0.906808608835648,0.0,0.43507936873986575,0.0,-0.38147263513702345,0.0
-sharpe_decay,double_dqn,sharpe,decay,1,1.2185387314469063,0.0,0.4450718349330727,0.0,-0.29479247371014916,0.0
