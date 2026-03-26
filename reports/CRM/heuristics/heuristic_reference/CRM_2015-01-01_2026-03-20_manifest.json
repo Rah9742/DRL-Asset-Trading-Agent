@@ -1,0 +1,13 @@
+{
+  "dataset_name": "heuristic_reference",
+  "scaler_path": "reports/CRM/heuristics/heuristic_reference/CRM_2015-01-01_2026-03-20_feature_scaler.json",
+  "metrics_path": "reports/CRM/heuristics/heuristic_reference/CRM_2015-01-01_2026-03-20_metrics.csv",
+  "history_paths": [
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_train_buy_and_hold.csv",
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_train_random.csv",
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_validation_buy_and_hold.csv",
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_validation_random.csv",
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_test_buy_and_hold.csv",
+    "reports/CRM/heuristics/heuristic_reference/histories/CRM_2015-01-01_2026-03-20_test_random.csv"
+  ]
+}
