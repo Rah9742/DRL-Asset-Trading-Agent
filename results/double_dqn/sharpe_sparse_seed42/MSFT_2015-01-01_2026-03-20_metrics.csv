@@ -1,4 +1,0 @@
-seed,run_name,reward_mode,sentiment_variant,differential_sharpe_eta,differential_sharpe_warmup_steps,differential_sharpe_min_variance,dataset,strategy,cumulative_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown
-42,sharpe_sparse_seed42,sharpe,sparse,0.005,20,1e-06,train,double_dqn,47.229788878902056,0.9473959556263074,0.1679357485086664,5.641419197755959,-0.045668428362314106
-42,sharpe_sparse_seed42,sharpe,sparse,0.005,20,1e-06,validation,double_dqn,1.1111990584589764,0.28042474624100455,0.16705632466476278,1.6786239419773048,-0.12941469376471426
-42,sharpe_sparse_seed42,sharpe,sparse,0.005,20,1e-06,test,double_dqn,-0.15973068488886633,-0.07404726089470892,0.14859032683370646,-0.4983316375471618,-0.20966733523451875

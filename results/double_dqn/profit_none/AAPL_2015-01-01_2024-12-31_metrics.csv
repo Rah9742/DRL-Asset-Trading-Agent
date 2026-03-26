@@ -1,4 +1,0 @@
-run_name,state_mode,reward_mode,sentiment_imputation_mode,dataset,strategy,cumulative_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown
-baseline_none,price_only,profit,none,train,double_dqn,8.528748136387538,0.49962862057004753,0.22699870987548254,2.201019648279556,-0.17910344674863143
-baseline_none,price_only,profit,none,validation,double_dqn,0.26784339863792206,0.15617251557730416,0.22861327637403303,0.6831296854422011,-0.24536247153419377
-baseline_none,price_only,profit,none,test,double_dqn,0.43866399914052034,0.2214527081825941,0.18132005653346678,1.2213359758230602,-0.23908831633358318
