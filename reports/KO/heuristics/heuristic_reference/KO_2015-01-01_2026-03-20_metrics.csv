@@ -1,0 +1,7 @@
+dataset,strategy,cumulative_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown,comparison_group,run_name,reward_mode,sentiment_variant
+train,buy_and_hold,0.2662202358277306,0.06016831763352615,0.1925728898389689,0.31244438240418687,-0.3753533892217452,shared_baselines,heuristic_reference,profit,none
+train,random,-0.3030998588181504,-0.04846059145784576,0.14877082828521673,-0.3257398780151932,-0.5373257038461188,shared_baselines,heuristic_reference,profit,none
+validation,buy_and_hold,0.15144052184713197,0.05850456755890088,0.15981461512375206,0.3660777051810813,-0.20888080663938247,shared_baselines,heuristic_reference,profit,none
+validation,random,-0.02912871549562346,-0.003519912609768694,0.10678683319157525,-0.03296204695436544,-0.21448847674754956,shared_baselines,heuristic_reference,profit,none
+test,buy_and_hold,0.24937988302688763,0.13341307615761444,0.160169488161831,0.832949381862402,-0.1671004027663947,shared_baselines,heuristic_reference,profit,none
+test,random,-0.3047079589041589,-0.1623657306347127,0.11264686093305182,-1.4413693314650797,-0.3688275832600524,shared_baselines,heuristic_reference,profit,none
