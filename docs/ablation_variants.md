@@ -108,7 +108,7 @@ Full comparison:
 ```bash
 python -m drl_asset_trading.experiments.run_full_comparison \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```
 
 Profit-only sentiment comparison:
@@ -116,5 +116,5 @@ Profit-only sentiment comparison:
 ```bash
 python -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```

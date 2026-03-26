@@ -23,9 +23,9 @@ Example:
 {
   "data": {
     "provider": "yfinance",
-    "ticker": "AAPL",
+    "ticker": "NVDA",
     "start_date": "2015-01-01",
-    "end_date": "2024-12-31",
+    "end_date": "2026-03-20",
     "interval": "1d"
   },
   "features": {
@@ -52,12 +52,12 @@ Example:
   },
   "splits": {
     "train_end": "2020-12-31",
-    "validation_end": "2022-12-31",
-    "test_end": "2024-12-31"
+    "validation_end": "2024-03-20",
+    "test_end": "2026-03-20"
   },
   "experiment": {
     "random_seed": 42,
-    "seed_values": [42, 43, 44, 45]
+    "seed_values": [42, 43, 44, 45, 46]
   },
   "rl": {
     "algorithm": "double_dqn",
@@ -156,7 +156,7 @@ Runs price load, sentiment load, feature building, then a comparison runner.
 python3 -m drl_asset_trading.main \
   --config configs/baseline_experiment.json \
   --comparison-mode full \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```
 
 Useful overrides:
@@ -191,6 +191,11 @@ Use this when:
 - you changed ticker or date range
 - you changed sentiment query settings
 - you want fresh raw or interim sentiment artifacts
+
+Cache behavior:
+
+- if `data/raw/sentiment/...json` already exists, the loader rebuilds missing interim `articles` or `daily` CSVs from cache
+- use `--force-download` only when you explicitly want to redownload raw sentiment from Alpha Vantage
 
 ### 4. Feature Building Only
 
@@ -259,7 +264,7 @@ Runs:
 ```bash
 python3 -m drl_asset_trading.experiments.run_full_comparison \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```
 
 ### 8. Profit-Only Sentiment Comparison
@@ -269,7 +274,7 @@ Useful when you want to isolate the effect of state augmentation under a fixed r
 ```bash
 python3 -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```
 
 ### 9. Differential Sharpe Eta Sweep
@@ -277,7 +282,7 @@ python3 -m drl_asset_trading.experiments.run_profit_sentiment_comparison \
 ```bash
 python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45 \
+  --seeds 42,43,44,45,46 \
   --sentiment-variants none decay
 ```
 
@@ -297,7 +302,7 @@ If you want to point the plotter at a specific saved seed set, pass the same see
 ```bash
 python3 -m drl_asset_trading.experiments.replot_full_comparison \
   --config configs/baseline_experiment.json \
-  --seeds 42,43,44,45
+  --seeds 42,43,44,45,46
 ```
 
 ## When To Rebuild What

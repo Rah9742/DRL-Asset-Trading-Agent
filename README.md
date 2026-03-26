@@ -55,7 +55,7 @@ Key command options:
 - `--ticker AAPL`
 - `--comparison-mode full`
 - `--comparison-mode profit_sentiment`
-- `--seeds 42,43,44,45`
+- `--seeds 42,43,44,45,46`
 - `--force-price-download`
 - `--force-sentiment-download`
 
@@ -66,9 +66,9 @@ Common entry points:
 - full pipeline:
   - `python3 -m drl_asset_trading.main --config configs/baseline_experiment.json`
 - full comparison only:
-  - `python3 -m drl_asset_trading.experiments.run_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
+  - `python3 -m drl_asset_trading.experiments.run_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45,46`
 - profit-only sentiment comparison:
-  - `python3 -m drl_asset_trading.experiments.run_profit_sentiment_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
+  - `python3 -m drl_asset_trading.experiments.run_profit_sentiment_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45,46`
 - single DDQN run:
   - `python3 -m drl_asset_trading.experiments.run_ablation --config configs/baseline_experiment.json --reward-mode profit --sentiment-variant decay`
 - benchmark heuristics only:
@@ -76,10 +76,10 @@ Common entry points:
 - feature build only:
   - `python3 -m drl_asset_trading.features.run_feature_builder --config configs/baseline_experiment.json`
 - differential Sharpe eta sweep:
-  - `python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep --config configs/baseline_experiment.json --seeds 42,43,44,45`
+  - `python3 -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep --config configs/baseline_experiment.json --seeds 42,43,44,45,46`
 - replot full-comparison report graphs from existing CSV artifacts only:
   - `python3 -m drl_asset_trading.experiments.replot_full_comparison --config configs/baseline_experiment.json`
-  - optional seed override: `python3 -m drl_asset_trading.experiments.replot_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45`
+  - optional seed override: `python3 -m drl_asset_trading.experiments.replot_full_comparison --config configs/baseline_experiment.json --seeds 42,43,44,45,46`
 
 For a fuller run guide and config reference, see [`docs/running_experiments.md`](/Users/rahilshah/Development/DRL-Asset-Trading-Agent/docs/running_experiments.md).
 
@@ -190,6 +190,11 @@ The full comparison runner now saves:
 - test equity curves
 - test drawdowns
 - test equity curves with seed-variance bands
+
+Sentiment caching behavior:
+
+- if cached raw sentiment JSON exists, missing interim sentiment files are rebuilt from cache
+- the API is only called again when raw sentiment is missing or `--force-sentiment-download` is used
 
 ## Setup
 

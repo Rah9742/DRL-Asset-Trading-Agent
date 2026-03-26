@@ -71,7 +71,7 @@ python -m drl_asset_trading.experiments.run_differential_sharpe_eta_sweep \
 Optional overrides:
 
 - `--etas 0.001 0.005 0.01`
-- `--seeds 42,43,44,45`
+- `--seeds 42,43,44,45,46`
 - `--sentiment-variants none decay`
 
 ## Checkpoint Selection And Early Stopping
